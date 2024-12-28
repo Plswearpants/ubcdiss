@@ -46,6 +46,7 @@
   \expandafter\xdef\csname#1\endcsname{\the\toks1 \the\toks2 }
 }
 
+
 % balanced: cause the text of each page to be centred; only effective
 % if using twosided
 \newif\ifb@l@nced\b@l@ncedfalse
