@@ -2,21 +2,26 @@
 \subsection{Shortcomings of existing algorithm}
 \begin{itemize}
 	\item 1. Their simulation data used truncated QPI pattern, not true to the real STM case. 
-	\item 2. Too ideal to be useful in most cases ho
+	\item 2. Too ideal to be useful in most cases,
 \end{itemize}
 \subsection{Out mitigation}
 To avoid truncated QPI pattern, during simulation. There are a few things to keep in mind: 
 \begin{itemize}
 	\item 1. Forming observation by 2d convolution of activation and single defect QPI pattern is much time/computationally efficient to work with, than directly simulate multi defect QPI pattern. 
 	\item 2. So we will use single defect QPI pattern. 
-	\item 3. To simulate single defect QPI pattern, we will need to define, apart from physical constants: a. n$_l$: number of lattice points along one dimension. b. n$_p$: number of pixels of this simulation in one dimension. From a, b we can then compute the grid resolution pixel/nm that this simulation correspond to in physical system, for instance given a lattice parameter a, then for our kernel, we have grid resolution = a*n$_l$/n$_p$ nm/pixel.
-	\item 4. Note that a physical activation is nothing but a r*r square lattice span some real space area of $(r*a)^2$with N$_d$ number of defect located on some of the lattice points. However, in simulfation activation, we have a matrix of n*n that on each point there is a certain probability it is a defect site, this means, here n has the same physical meaning as r.
-	\item 5. $Y=conv2d(X,A)$ but this convolution assumes that we have the kernel's resolution same as the activation. To make that assumption hold, we need the activation's resolution = lattice constant/pixel = a nm/pixel, then we need to have n$_l$ = n$_p$. However, this case we lost the flexibility of changing or activation resolution. Another case is to let the activation holds the same resolution to the kernel, which is conventionally arbitrary, and this is also problematic as this case we are allowing defects sitting not on their lattice site, which is only true for defects like interstitial.
+	\item 3. To simulate single defect QPI pattern, we will need to define, apart from the lattice constants($a$), n$_l$: number of lattice points along one dimension, and n$_p$: number of pixels of this simulation in one dimension. We can then compute the grid resolution pixel/nm that this simulation correspond to in a physical system, for instance given a lattice parameter $a$, then for our kernel, we have grid resolution = $a$*n$_l$/n$_p$ nm/pixel.
+	\item 4. Note that a physical activation is nothing but a r*r square lattice span some real space area of $(r*a)^2$with N$_d$ number of defect located on some of the lattice points. However, in simulation activation, we have a matrix of n*n that on each point there is a certain probability it is a defect site, this means, here n has the same physical meaning as r.
+	\item 5. $Y=conv2d(X,A)$ but this convolution assumes that we have the kernel's resolution same as the activation. To make that assumption hold, we need the activation's resolution = lattice constant/pixel = a nm/pixel, then we need to have n$_l$ = n$_p$. However, this case we lost the flexibility of changing our activation resolution. Another case is to let the activation holds the same resolution to the kernel, which is conventionally arbitrary, and this is also problematic as this case we are allowing defects sitting not on their lattice site, which is only true for defects like interstitial.
 	\item The ideal case would be, the  activation resolution/kernel resolution is an integer, meaning n$_l$/n$_p$ =q, q is an integer. Then we should have a fake activation whose side = n*q, where as defects are only allowed to sit in the real activation whose side is n.
 \end{itemize}
-Then how do we determine the window size? it really 
+Then how do we determine the window size?  
 \section{SBD-STM Performance Analysis}
-\subsection{Analysis for Different Regimes for Scatter Density}
-\subsection{Analysis for Dataset with Different Noise Structure}
-\subsection{Analysis for Scattering with Long Coherent Length (Ag Dataset)}
+
 \section{Multi-Type-Scatters (MT) SBD-STM}
+
+
+\subsection{Bench Mark of MT-SBD-STM}
+
+\subsubsection{system parameter space}
+
+\subsubsection{data set parameter space}

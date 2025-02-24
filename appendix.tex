@@ -1,9 +1,29 @@
 \chapter{Supporting Materials}
 
 This would be any supporting material not central to the dissertation.
-For example:
+
 \begin{itemize}
-\item additional details of methodology and/or data;
+\item Choice of $\epsilon$ in Numerical QPI Simulations;
 \item diagrams of specialized equipment developed.;
 \item copies of questionnaires and survey instruments.
 \end{itemize}
+
+\chapter{Choice of $\epsilon$ in Numerical QPI Simulations}
+\label{app:epsilon}
+
+In numerical simulations of quasiparticle interference (QPI) patterns on a square lattice, the parameter $\epsilon$, which enters as an $i\epsilon$ term in the Green's function, plays a pivotal role. Its selection is guided by both physical considerations and numerical stability requirements. In this appendix, we discuss the factors influencing the choice of $\epsilon$ and the trade-offs involved.
+
+In a real material, quasiparticles have finite lifetimes due to various interactions, such as electron-electron, electron-phonon, and impurity scattering. The $i\epsilon$ term in the Green’s function is introduced as a phenomenological means to incorporate this finite lifetime. If experimental measurements or more detailed microscopic calculations suggest a particular scattering rate or linewidth, denoted by $\Gamma$, it is physically reasonable to choose $\epsilon \sim \Gamma$. For example, if the typical inverse lifetime is on the order of a few percent of the hopping parameter $t$, one might set $\epsilon \approx 0.01\,t$ to $0.05\,t$. A finite $\epsilon$ broadens sharp spectral features—such as van Hove singularities or defect-induced resonances—into Lorentzian peaks. However, if $\epsilon$ is too small, these peaks become excessively sharp, which may lead to numerical artifacts like spikes or convergence issues that do not accurately reflect the intrinsic physics. Conversely, an overly large $\epsilon$ may result in over-broadening, causing a loss of resolution in the QPI pattern.
+
+The $i\epsilon$ prescription also has important implications for numerical stability and convergence. By moving poles away from the real axis, a finite $\epsilon$ prevents numerical divergences when evaluating the Green's function, particularly near band edges or resonances. In practice, when performing $k$-space integrations or Fourier transforms, the finite $\epsilon$ regularizes contributions from singular points, thereby enhancing the convergence of these integrals. Nevertheless, there is an inherent balance to be struck: while a smaller $\epsilon$ might capture finer spectral details, a slightly larger value is often required to ensure numerical stability. In some instances, adaptive schemes are used—starting with a larger $\epsilon$ for stability and then systematically reducing it while monitoring the convergence of the results.
+
+Another important consideration is the relative scale of $\epsilon$ compared to other energy scales in the system. The dimensionless parameter in the Green’s function is frequently expressed as
+\[
+b = \frac{\omega + i\epsilon - E_0}{2t},
+\]
+which naturally suggests that $\epsilon$ should be small compared to the hopping parameter $t$ (and by extension, the bandwidth) so that it acts merely as a minor broadening factor rather than dominating the energy scale of the system. Additionally, in lattice simulations the momentum space is discretized, and a minimum broadening is required to mitigate aliasing or discretization errors. If $\epsilon$ is chosen too small, the computed density of states or QPI patterns may become overly sensitive to finite-size effects associated with the simulation grid.
+
+Finally, practical considerations in QPI simulations often involve matching the simulation parameters to experimental observations. For instance, if scanning tunneling microscopy (STM) data show broadened features with a known linewidth, setting $\epsilon$ to mimic that broadening can enhance the fidelity of the simulation. It is also advisable to conduct sensitivity analyses by varying $\epsilon$ within a physically reasonable range. If the qualitative features of the QPI pattern remain robust under small changes in $\epsilon$, one can be more confident that the simulation is capturing the correct underlying physics.
+
+In summary, the choice of $\epsilon$ in numerical QPI simulations is a balancing act. It must be small enough relative to the hopping parameter $t$ and the system's bandwidth to ensure that it only introduces a controlled broadening reflective of the finite quasiparticle lifetime, yet large enough to regularize singularities and smooth out discretization effects inherent in a finite simulation grid. By judiciously selecting $\epsilon$, one achieves both physical accuracy and numerical robustness in the simulation results.
+
