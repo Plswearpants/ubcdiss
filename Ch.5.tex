@@ -16,6 +16,7 @@ We should note that STM is not the only tool that can perform QPI measurement. I
 I will then elaborate what these terms mean in the context of STM study, and to reduce redundancy, in the following writing, QPI, QPI pattern and QPI measurement will be referred specifically to STM studies.
 
 \subsection{what is QPI measurement in STM studies}
+%todo: to plot a standard grid and its FFT here.
 In a word. QPI measurement is an STM technique that aims to probe the band structure of a material by studying QPI patterns presented on the surface of a material. 
 
 Imagine an ideal metal with no crystal imperfection, with Landau's Fermi liquid theory, we know that the Landau quasiparticle has an eigenstate described by a Bloch wavefunction: 
@@ -53,12 +54,12 @@ $\hat{H} = \hat{H}_0 + \hat{H}_d$. $\hat{H}_d$ can be written as:
 \[
 \hat{H}_d = \sum_{\alpha=1}^{N_d} E_\alpha \lvert \alpha \rangle \langle \alpha \rvert,
 \] 
-where $\alpha$ enumerates $\alpha^{th}$ defect located at $x_\alpha$, we then write the \ac{TB} Hamiltonian and transfer it into momentum space:
-\begin{align}
-\hat{H}_0 = E_0 -t \sum_{j,\tau} (c_j^{+} c_{j+\tau} + c_{j+\tau}^{+} c_j) \label{h0_real} \\
-\hat{H}_0 = E_0 -\sum_{k} \epsilon_k c_k^{+} c_k \label{h0_k} \\
-\epsilon_k = -2t(cos(k_x a)+cos(k_y a)) \label{E_k}
-\end{align}
+where $\alpha$ enumerates $\alpha^{th}$ defect located at $x_\alpha$, with energy $E_\alphas$ much smaller than hopping parameter $t$, we then write the \ac{TB} Hamiltonian and transfer it into momentum space:
+	\begin{align}
+	\hat{H}_0 = E_0 -t \sum_{j,\tau} (c_j^{+} c_{j+\tau} + c_{j+\tau}^{+} c_j) \label{h0_real} \\
+	\hat{H}_0 = E_0 -\sum_{k} \epsilon_k c_k^{+} c_k \label{h0_k} \\
+	\epsilon_k = -2t(cos(k_x a)+cos(k_y a)) \label{E_k}
+	\end{align}
 Now we consider our measurable \ac{LDOS} $\rho(\mathbf{x},\omega)$:
 \begin{equation}
 \rho(\mathbf{x},\omega) = \rho^{0}(\mathbf{x},\omega) - \frac{1}{\pi} \operatorname{Im} \left[ \langle \mathbf{x} | \hat{G}_0 \hat{T} \hat{G}_0 |\mathbf{x} \rangle \right],
@@ -143,13 +144,4 @@ Estimating the multidefect result with convolution approach inherently makes ass
 \subsubsection{the result}
 
 
-\section{QPI measurements}
-How do we measure QPI pattern with STM, the process and analysis we do 
-\subsubsection{QPI quality}
-Factors determining quality of a QPI measurement, and what is an ideal quality. 
-1. high resolution in q-space <-> range in real-space
-2. high range in q-space <-> resolution in real-space
-3. low noise level-> machine's intrinsic noise level, voltage sweeps and averaging.
-4. no phase noise 
-\subsubsection{challenges to obtain optimal QPI measurements}
- 
+\input{Ch.5.2}
