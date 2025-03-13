@@ -65,7 +65,7 @@ Now we consider our measurable \ac{LDOS} $\rho(\mathbf{x},\omega)$:
 \rho(\mathbf{x},\omega) = \rho^{0}(\mathbf{x},\omega) - \frac{1}{\pi} \operatorname{Im} \left[ \langle \mathbf{x} | \hat{G}_0 \hat{T} \hat{G}_0 |\mathbf{x} \rangle \right],
 \label{ldos}
 \end{equation}
-where $\hat{G}_0$ and $\hat{T}$ are the \ac{BLGF} and the scattering T-matrix, respectively, according to the pertubative scattering theory. And since we are interested in the modulation of \ac{LDOS} caused by the defects, our actual observable is $\delta \rho(\mathbf{x}, \omega) \equiv \rho(\mathbf{x}, \omega) - \rho^{(0)}(\mathbf{x}, \omega)
+where $\hat{G}_0$ and $\hat{T}$ are the \ac{BLGF} and the scattering T-matrix, respectively, according to the pertubative scattering theory. Since we are interested in the modulation of \ac{LDOS} caused by the defects, our actual observable is $\delta \rho(\mathbf{x}, \omega) \equiv \rho(\mathbf{x}, \omega) - \rho^{(0)}(\mathbf{x}, \omega)
 $, which is the second term in Equation (\ref{ldos}).
 To start, we need to compute the matrix element of \ac{BLGF} $G_0(\mathbf{x},\mathbf{x'},\omega)$:
 \begin{align}
@@ -74,16 +74,16 @@ To start, we need to compute the matrix element of \ac{BLGF} $G_0(\mathbf{x},\ma
 where
 \begin{align}
 	\hat{G}_0(\omega) &= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - \hat{H}_0} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert \nonumber \\ 
-	&= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - E_\mathbf{k}} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert.
+	&= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - E_\mathbf{k}} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert,
 \end{align}
-Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation (\ref{E_k}) in, we get: 
+where we have $\omega= \omega + i\epsilon$ to indicate the retarded green's function and to capture the analytic continuation. Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation (\ref{E_k}) in, we get: 
 \begin{align}
 	G_0(\mathbf{x}, \mathbf{x}') = 
 	\frac{1}{(2\pi)^2} \frac{1}{2t} 
 	\int_{\text{BZ}} \mathrm{d}\mathbf{k} \, 
-	\frac{e^{i k_1 (x_1 - x_1')} e^{i k_2 (x_2 - x_2')}}{b - \left( \cos(k_1 a) + \cos(k_2 a) \right)}. 
+	\frac{e^{i k_1 (x_1 - x_1')} e^{i k_2 (x_2 - x_2')}}{b + \left( \cos(k_1 a) + \cos(k_2 a) \right)}. 
 \end{align}
-where $b \equiv \frac{\omega + i\epsilon-E_0}{2t}$ is a dimensionless parameter, we can then define a normalized position deviation $s_j \equiv \frac{1}{a}(x_j-x_j')$ and further reduced the matrix element to its final form: 
+where $b \equiv \frac{\omega+ i\epsilon-E_0}{2t}$ is a dimensionless parameter, to  we can then define a normalized position deviation $s_j \equiv \frac{1}{a}(x_j-x_j')$ and further reduced the matrix element to its final form: 
 \begin{align}
 	G_0(\mathbf{x}, \mathbf{x}') = 
 	\frac{1}{(2\pi)^2} \frac{1}{2t a^2} 4 \, I_{\text{sq}} 
@@ -93,7 +93,7 @@ where
 \begin{align}
 	I_{\text{sq}}(s_1, s_2, b) \equiv 
 	\int_0^\pi \int_0^\pi \mathrm{d}\phi_1 \, \mathrm{d}\phi_2 \, 
-	\frac{\cos(s_1 \phi_1) \cos(s_2 \phi_2)}{b - \cos\phi_1 - \cos\phi_2} \label{Isq}.
+	\frac{\cos(s_1 \phi_1) \cos(s_2 \phi_2)}{b + \cos\phi_1 +b  \cos\phi_2} \label{Isq}.
 \end{align}
 Now we proceed to compute the matrix element of T-matrix, we know that: 
 \begin{equation}
@@ -117,17 +117,32 @@ In single defect case, where $\mathbf{x_\alpha} = \mathbf{x_\beta} = \mathbf{x_d
 \end{align}
 and therefore: 
 \begin{align}
-	\delta\rho(\mathbf{x},\omega) &= - \frac{1}{\pi} \operatorname{Im}(\frac{(G_0^2(\mathbf{x},\mathbf{x_d};\omega)}{E_d^{-1} - G_0(\mathbf{x_d},\mathbf{x_d};\omega)}) \label{singleldos}. 
+	\delta\rho(\mathbf{x},\omega) &= - \frac{1}{\pi} \operatorname{Im}(\frac{G_0^2(\mathbf{x},\mathbf{x_d};\omega)}{E_d^{-1} - G_0(\mathbf{x_d},\mathbf{x_d};\omega)}) \label{singleldos}. 
 \end{align}
 And Equation (\ref{singleldos}) can be evaluated numerically with Equation (\ref{blgf}) and Equation (\ref{Isq}).
 
-\subsubsection{Simulation setup}
+\subsubsection{Simulation result}
+A repository for \ac{LDOS} simulation on the model described above is made and shared on this \hyperlink{https://github.com/Plswearpants/QPI_simulation}{github repository}
+
+The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $128x128$ in real space covering a $20x20$ lattice space indicated in orange dots. We can implant defects on different lattice sites, indicated in green dots. 
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch5_QPIsim_demo.pdf}
 	\caption{schematics for the simulation}
 	\label{fig:ch5_qpisim_demo}
 \end{figure}
+
+A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, the image is cropped from a simulation where $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $50x50$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$
+
+Observations can be made on this simulation, in particular, we can see that 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image-b} % Replace with your image file
+	\caption{single defect scattering result, details: }
+	\label{fig:ch5_single_scattering}
+\end{figure}
+
 \subsubsection{Single defect result}
 
 \subsubsection{Multi defect result}
