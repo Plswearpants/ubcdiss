@@ -1,6 +1,26 @@
 \chapter{Quasiparticle Interference (QPI)}
 %todo: to write the abstract of this chapter after finishing this chapter
 %todo: to standardize the vector form in this chapter 
+
+\section{Introduction to Quasiparticle}
+Quasiparticles is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it correspond to a sharp peak in the spectra function: 
+	\[
+	A(\mathbf{k}, \omega) = -\frac{1}{\pi} \frac{\operatorname{Im} \Sigma(\mathbf{k}, \omega)}{(\omega - \tilde{E}_{\mathbf{k}})^2 + [\operatorname{Im} \Sigma(\mathbf{k}, \omega)]^2}.
+	\]
+
+Quasiparticle is an object in the semi-classical picture that aims to capture the excitation of a system with interactive particles. As a term used extensively by the condensed matter physics community, nuanced discussions on the underlying assumptions and limitations of the semi-classical picture is often lacking. 
+
+This sections aims to help establish a firm understanding of the semi-classical picture through the lens of Fermi liquid theory, more specifically, it aims to answer the following practical questions:
+\begin{itemize}
+	\item 1. What are the assumptions that validates the quasiparticle approximation? 
+	\item 2. How does these assumptions 
+\end{itemize}
+the theoretical framework and limitations of the semi-classical picture is often lacking. 
+  
+\subsection{Fermi liquid theory}
+Fermi liquid theory is conceptually essential for the understanding
+
+
 \section{Introduction to Quasiparticle Interference measurement}
 
 \subsection{Terminology}
@@ -133,9 +153,14 @@ The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $
 	\label{fig:ch5_qpisim_demo}
 \end{figure}
 
-A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, the image is cropped from a simulation where $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $50x50$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$
+A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, the image is cropped from a simulation where $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $50x50$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$. 
 
-Observations can be made on this simulation, in particular, we can see that 
+Observations can be made on this simulation, in particular, we can see that:
+1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
+2. The modulation is strongly correlated with the underlying lattice corrugation. 
+3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{example-image-b} % Replace with your image file
