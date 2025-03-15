@@ -1,0 +1,32 @@
+@article{Landau1956,
+	author = {L. D. Landau},
+	title = {The Theory of a Fermi Liquid},
+	journal = {Zh. Eksp. Teor. Fiz.},
+	volume = {30},
+	pages = {1058},
+	year = {1956},
+	note = {English translation: Sov. Phys. JETP 3, 920 (1957)}
+}
+
+@article{Landau1957,
+	author = {L. D. Landau},
+	title = {Oscillations in a Fermi Liquid},
+	journal = {Zh. Eksp. Teor. Fiz.},
+	volume = {32},
+	pages = {59},
+	year = {1957},
+	note = {English translation: Sov. Phys. JETP 5, 101 (1957)}
+}
+
+@incollection{SommerfeldBethe1933,
+	author    = {A. Sommerfeld and H. Bethe},
+	title     = {The Electron Theory of Metals},
+	booktitle = {Handbuch der Physik},
+	editor    = {H. Geiger and K. Scheel},
+	volume    = {24, Part 2},
+	year      = {1933},
+	publisher = {Springer},
+	address   = {Berlin},
+	language  = {German},
+	note      = {In German}
+}
