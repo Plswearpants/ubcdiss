@@ -3,14 +3,35 @@
 %todo: to standardize the vector form in this chapter 
 
 \section{Introduction to Quasiparticle}
-Quasiparticles is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it correspond to a sharp peak in the spectra function: 
+Quasiparticle is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it correspond to a sharp peak in the spectra function: 
 	\[
-	A(\mathbf{k}, \omega) = -\frac{1}{\pi} \frac{\operatorname{Im} \Sigma(\mathbf{k}, \omega)}{(\omega - \tilde{E}_{\mathbf{k}})^2 + [\operatorname{Im} \Sigma(\mathbf{k}, \omega)]^2}.
+	A(\mathbf{k}, \omega) = -\frac{1}{\pi} \frac{\operatorname{Im} \Sigma(\mathbf{k}, \omega)}{(\omega - \tilde{E}_{\mathbf{k}})^2 + [\operatorname{Im} \Sigma(\mathbf{k}, \omega)]^2},
 	\]
+%todo: cite Landau's original paper
+%the development of quasiparticle theroies has a long history going back all the way to 1940s and 50s during the investigation of quantum liquids \textsuperscript{3}He and \textsuperscript{4}He. 
 
-Quasiparticle is an object in the semi-classical picture that aims to capture the excitation of a system with interactive particles. As a term used extensively by the condensed matter physics community, nuanced discussions on the underlying assumptions and limitations of the semi-classical picture is often lacking. 
+The development of quasiparticle model for Fermionic system started in 1940s, when Sommerfeld and Bethe\cite{SommerfeldBethe1933} developed a model for non-interacting electron gas, also known as the 'Fermi gas', in which a series of important terms are introduced. Consider a system made of non-interacting electrons with momentum $k$ and spin $\sigma = 1/2$, and is in touch with an electron reservoir with chemical potential $\mu$. The occupation number naturally follows the Fermi-Dirac distribution $n_{k,\sigma}=1/(1+e^{(k^2/(2m)-\mu)/T}))$. At $T=0$, the occupation thus has a sharp boundary famously known as the Fermi surface, in the momentum space confined by the Fermi wave number $k_f$, and the energy defined by the Fermi surface is called the Fermi energy. At non-zero temperature, electrons at the Fermi energy will started to be excited to above the Fermi energy, this excitation can also be described in second-quantization by the creation of a quasiparticle with energy: $\epsilon_{k,sigma} = k^2/2m - \mu$. 
 
-This sections aims to help establish a firm understanding of the semi-classical picture through the lens of Fermi liquid theory, more specifically, it aims to answer the following practical questions:
+Sommerfeld's theory of electron gas worked quite well in normal metallic systems, but the success is unexpected, as the model neglected the Coulomb interaction between electrons. In a metallic system where the electron separation is in the order of lattice spacing, the Coulomb interaction is in the order of eV, which is much larger than other, say the thermal excitation considered in the electron gas mode. 
+
+In late 1960s, Landau raised a theory of Fermi liquid with a series of foundational papers\cite{Landau1956}\cite{Landau1957}, to address that even in the presence of interactions, we can find fermionic excitations in these many-body systems, and describe these excitations with what is known as the Landau quasiparticles. By adding a time variant interaction term, defined by time constant $\zeta$ to the non-interactive system, and constructing the system Hamiltonian as
+\[
+H_{\zeta} = H_0 + H_{\text{int}} e^{-\zeta t}, \quad t > 0,
+\]
+By the principle of adiabatic continuity, Landau is able to bridge between the states of interactive and non-interactive system. The consequence is that the states describing interactive system can now be reduced to states in the non-interactive system with the same quantum numbers $k, \sigma$. More specifically, as quoted from \textit{What is a Quasi-Particle?} by J.R.Schrieffer, "these many-body states are well characterized in terms of a set of elementary excitations, called quasi-particles, which for the interacting system play the same role as the excited electrons(above the Fernu surface) and the excited holes(below the Fermi surface) in the Independent-particle approximation(IPA)". 
+
+Landau quasiparticle is an extremely useful concept in computing the screening and the transport properties of an electron-gas-like system. However, we should emphasis that the theory is only valid with several assumptions, which are keys to understand Landau quasiparticles. 
+
+
+
+
+
+Most of the quasiparticles can be well understood by the Fermi liquid theory. The theory is extremely successful in explaining why the apparently complicated system of for example interacting electrons can be considered as a gas of non-interacting particles. 
+
+In this section aims to help establish a firm ground of the concepts around quasiparticle by clarifying assumptions and limitations of this semi-classicle picture. 
+Quasiparticle is used extensively by the community, but nuanced discussions on the underlying assumptions and limitations of this semi-classical picture is often lacking.  by clarifying some essential ass
+ and of the semi-classical picture through the lens of Fermi liquid theory, more specifically, it aims to answer the following practical questions:
+
 \begin{itemize}
 	\item 1. What are the assumptions that validates the quasiparticle approximation? 
 	\item 2. How does these assumptions 
