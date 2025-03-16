@@ -33,31 +33,25 @@ since typical excited energy is in the order of temperature, and the lifetime is
 \end{equation}
 This requirement can be satisfied at a range of low temperature. Later we will also see that the requirements also extend to the energy level of the states, as the quasiparticle lifetime decreases as the energy deviate from the Fermi energy. 
 %todo: can refer to the chapter where we talk about the lifetime decay with simulation. 
-Therefore, Landau's theory of Fermi liquid postulated that an interacting fermionic system can we mapped adiabatically to a non-interacting Fermi gas, with long-lived quasiparticle that shares the same quantum numbers near the Fermi surface. It works in a regime with weak to moderate correlations at sufficiently low temperatures, and thus why worked extremely well in explaining properties in simple and noble metals
+Therefore, Landau's theory of Fermi liquid postulated that an interacting fermionic system can we mapped adiabatically to a non-interacting Fermi gas, with long-lived quasiparticle that shares the same quantum numbers near the Fermi surface. It works in a regime with weak to moderate correlations at sufficiently low temperatures, and thus why worked extremely well in explaining properties in simple and noble metals. For more detailed reading regarding the theory, the textbooks of Pines and Nozieres\cite{nozieresTheoryQuantumLiquids2018a} Nozieres \cite{nozieresDerivationLandauTheory1962} offers derivations and in depth discussions. 
 
-However, based on the theory, scientists managed to formulate a more generalized concept of quasiparticle through the lens of Green's function scheme of many-body perturbation theory. 
-
-
-
-
-
-
-
-
-Most of the quasiparticles can be well understood by the Fermi liquid theory. The theory is extremely successful in explaining why the apparently complicated system of for example interacting electrons can be considered as a gas of non-interacting particles. 
-
-In this section aims to help establish a firm ground of the concepts around quasiparticle by clarifying assumptions and limitations of this semi-classicle picture. 
-Quasiparticle is used extensively by the community, but nuanced discussions on the underlying assumptions and limitations of this semi-classical picture is often lacking.  by clarifying some essential ass
- and of the semi-classical picture through the lens of Fermi liquid theory, more specifically, it aims to answer the following practical questions:
-
+Landau's theory failed to address more involved systems, however, based on the theory, scientists managed to formulate a more generalized concept of quasiparticle through the lens of Green's function scheme of many-body perturbation theory, here I would like to provide a rought list of the theories chronologically that extended or refined quasiparticle to new regimes:
 \begin{itemize}
-	\item 1. What are the assumptions that validates the quasiparticle approximation? 
-	\item 2. How does these assumptions 
+	\item\textbf{Hatree-Fock Approximation (HF)} (1930s)
+	HF approximation is not an extension of Fermi liquid theory but it is the first step beyond a purely free-electron model, and it lays groundwork for diagrammatic expansions \cite{fockNaeherungsmethodeZurLoesung1930}, \cite{slaterNoteHartreesMethod1930}.
+	
+	\item\textbf{Random Phase Approximation(RPA)} (1950s): 
+	RPA extend the theory to moderate correlations where long-range screening is crucial, included dynamical screening. Successfully explains plasmon dispersion and optical properties in metals and semiconductors \cite{bohmCollectiveDescriptionElectron1951}, \cite{nozieresCorrelationEnergyFree1958}.
+	
+	\item\textbf{GW Approximation} (1965)
+	GW approximation provided a more accurate approximation than RPA and can be implemented to stronger correlated systems \cite{hedinNewMethodCalculating1965}, \cite{aryasetiawanGWMethod1998}.
+	
+	\item\textbf{Dynamical Mean-Field Theory(DMFT)} (1990s)
+	DMFT was developed via a non-perturbative approach, this allows it to extend the concept of quasiparticles to account for strong local correlations in systems like transition metal oxides and f-electron materials. Although it kept the concpt of quasiparticles, it showed that they failed near Mott transitions when electron-electron interaction is large enough \cite{metznerCorrelatedLatticeFermions1989}, \cite{georgesDynamicalMeanfieldTheory1996}.
+	
+	\item\textbf{GW + DMFT} (2000s)
+	This combined method took the best of GW(dynamic and non-local screening) with DMFT(local, but exact correlation), making it suitable for systems with moderate to strong correlation as well as significant screening effects, like heavy fermion compounds \cite{biermannFirstprinciplesApproachElectronic2003}.
 \end{itemize}
-the theoretical framework and limitations of the semi-classical picture is often lacking. 
-  
-\subsection{Fermi liquid theory}
-Fermi liquid theory is conceptually essential for the understanding
 
 
 \section{Introduction to Quasiparticle Interference measurement}
@@ -92,7 +86,7 @@ where $k$ is the crystal momentum of the quasiparticle. And the electron \ac{LDO
 
 where  $\epsilon(k)$ is the energy dispersion of the Bloch state for different $\vec{k}$. And if we plug Equation (\ref{eq:bloch}) into Equation (\ref{eq:ldos}), we see that $\text{LDOS}$ is translationally invariant at all Bravais-lattice-equivalent points. Thus why in ideal case, real space imaging technique like \ac{STM}, can not be used to measure $\epsilon(k)$. 
 
-However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{bena_friedel_2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can observe this QPI pattern in the momentum space. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
+However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{benaFriedelOscillationsDecoding2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can observe this QPI pattern in the momentum space. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
 
 We will show case this \ac{LDOS} modulation with a simulation on a toy model in the following section. 
 
@@ -105,7 +99,7 @@ We will show case this \ac{LDOS} modulation with a simulation on a toy model in 
 
 \subsection{LDOS modulation simulation on a square lattice}
 
-As mentioned in last section \ac{QPI} measurement is the Fourier transformed spatial \ac{STS} measurement, which is proportional to the \ac{LDOS}. Thus, to understand \ac{QPI} measurement, we must understand the origin of \ac{QPI} pattern and how it modifies \ac{LDOS}. Here, I present an investigation into the \ac{LDOS} modulation caused by point defects on a square lattice, this textbook exercise is inspired by work from Cheung et al \cite{cheung_dictionary_nodate}.
+As mentioned in last section \ac{QPI} measurement is the Fourier transformed spatial \ac{STS} measurement, which is proportional to the \ac{LDOS}. Thus, to understand \ac{QPI} measurement, we must understand the origin of \ac{QPI} pattern and how it modifies \ac{LDOS}. Here, I present an investigation into the \ac{LDOS} modulation caused by point defects on a square lattice, this textbook exercise is inspired by work from Cheung et al \cite{cheungDictionaryLearningFouriertransform2020}.
 
 \subsubsection{Theory}
 We first consider a square lattice with lattice constant $a$, and model it through the single-electron \ac{TB} model considering only nearest-neighbor hopping. This hopping is characterized with a fixed negative number $t$ named hopping-parameter. We then place $N_d$ number of defects onto different lattice sites as a perturbation to the \ac{TB} Hamiltonian $H_0$. The total Hamiltonian can then be written as: 
