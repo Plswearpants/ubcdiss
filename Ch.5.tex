@@ -157,16 +157,16 @@ where $k$ is the crystal momentum of the quasiparticle. And the electron \ac{LDO
 
 where  $\epsilon(k)$ is the renormalized energy dispersion of the Bloch state for different $\vec{k}$; Remark: from now on all the renormalized energy will be write directly as $\epsilon(k)$ unless otherwise mentioned. And if we plug Equation (\ref{eq:bloch}) into Equation (\ref{eq:ldos}), we see that $\text{LDOS}$ is translationally invariant at all Bravais-lattice-equivalent points. Thus why in ideal case, real space imaging technique like \ac{STM}, can not be used to measure $\epsilon(k)$. 
 
-However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{benaFriedelOscillationsDecoding2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can observe this QPI pattern in the momentum space. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
+However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{benaFriedelOscillationsDecoding2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can also view this QPI pattern in the momentum space, the q-space QPI pattern is directly related to the quasiparticle band strucutre. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
 
-We will show case this \ac{LDOS} modulation with a simulation on a toy model in the following section. 
+We will quantitatively show case this \ac{LDOS} modulation with a simulation on a toy model in the following section. 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{example-image-a} % Replace with your image file
-	\caption{Friedel oscillation and QPI}
-	\label{fig:example}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{example-image-a} % Replace with your image file
+%	\caption{Friedel oscillation and QPI}
+%	\label{fig:example}
+%\end{figure}
 
 \subsection{LDOS modulation simulation on a square lattice}
 
@@ -207,7 +207,7 @@ where we have $\omega= \omega + i\epsilon$ to indicate the retarded green's func
 	\int_{\text{BZ}} \mathrm{d}\mathbf{k} \, 
 	\frac{e^{i k_1 (x_1 - x_1')} e^{i k_2 (x_2 - x_2')}}{b + \left( \cos(k_1 a) + \cos(k_2 a) \right)}. 
 \end{align}
-where $b \equiv \frac{\omega+ i\epsilon-E_0}{2t}$ is a dimensionless parameter, to  we can then define a normalized position deviation $s_j \equiv \frac{1}{a}(x_j-x_j')$ and further reduced the matrix element to its final form: 
+where $b \equiv \frac{\omega+ i\epsilon-E_0}{2t}$ is a dimensionless parameter, the $\i\epsilon$ is used to defined the retarded green's function by creating a pole in the complex plane, it also produces a better analytical continuation. we can then define a normalized position deviation $s_j \equiv \frac{1}{a}(x_j-x_j')$ and further reduced the matrix element to its final form: 
 \begin{align}
 	G_0(\mathbf{x}, \mathbf{x}') = 
 	\frac{1}{(2\pi)^2} \frac{1}{2t a^2} 4 \, I_{\text{sq}} 
@@ -219,6 +219,7 @@ where
 	\int_0^\pi \int_0^\pi \mathrm{d}\phi_1 \, \mathrm{d}\phi_2 \, 
 	\frac{\cos(s_1 \phi_1) \cos(s_2 \phi_2)}{b + \cos\phi_1 +b  \cos\phi_2} \label{Isq}.
 \end{align}
+Note that in the actual numerical calculation, the integral will be evaluated on a n by n grid of k-points.  
 Now we proceed to compute the matrix element of T-matrix, we know that: 
 \begin{equation}
 	\hat{T} = \hat{H_d} (\hat{I} - \hat{G_0}\hat{H_d})^{-1}.
@@ -232,7 +233,7 @@ And for locations $x_\alpha$, $x_\beta$ on defect sites $\alpha$ and $\beta$, we
 Now with both matrix elements of the \ac{BLGF} and T-matrix, we can finally express $\delta\rho(\mathbf{x},\omega)$ as 
 \begin{align}
 	\delta\rho(\mathbf{x},\omega) &= - \frac{1}{\pi} \operatorname{Im} \left[ \langle \mathbf{x} | \hat{G}_0 \hat{T} \hat{G}_0 | \mathbf{x} \rangle \right] \\
-	&= -\frac{1}{\pi} \operatorname{Im} \left[\sum_{\alpha, \beta=1}^{N_{\text{d}}} G_0(\mathbf{x}, \mathbf{x}_\alpha) T_{\alpha, \beta} G_0(\mathbf{x}_\beta, \mathbf{x})\right].
+	&= -\frac{1}{\pi} \operatorname{Im} \left[\sum_{\alpha, \beta=1}^{N_{\text{d}}} G_0(\mathbf{x}, \mathbf{x}_\alpha) T_{\alpha, \beta} G_0(\mathbf{x}_\beta, \mathbf{x})\right]. \label{multi_defect_eq}
 \end{align}
 In single defect case, where $\mathbf{x_\alpha} = \mathbf{x_\beta} = \mathbf{x_d}$, we have: 
 \begin{align}
@@ -253,39 +254,39 @@ The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch5_QPIsim_demo.pdf}
-	\caption{schematics for the simulation}
+	\caption{schematics for the simulation, in the actual calculation, we place defect at locations defined by lattice points, and compute $\delta\rho(\textbf{x},\omega)$ at each spatial grid point (128 by 128 here)}
 	\label{fig:ch5_qpisim_demo}
 \end{figure}
 
-A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, the image is cropped from a simulation where $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $50x50$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$. 
+A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $51x51$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$.  
 
 Observations can be made on this simulation, in particular, we can see that:
-1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
-2. The modulation is strongly correlated with the underlying lattice corrugation. 
-3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level.
+\begin{itemize}
+	\item 1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
+	\item 2. The modulation is strongly correlated with the underlying lattice corrugation. 
+	\item 3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level, this is exactly how we expected. 
+	\item 4. The pattern persists further for patterns near the Fermi level. 
+\end{itemize}
 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{example-image-b} % Replace with your image file
-	\caption{single defect scattering result, details: }
+	\includegraphics[width=\textwidth]{Ch5_singe_defect.png} % Replace with your image file
+	\caption{$\delta\rho(\textbf{x},\omega)$ for single defect at the center of the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. }
 	\label{fig:ch5_single_scattering}
 \end{figure}
 
-\subsubsection{Single defect result}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Ch5_multi_defect.png} 
+	\caption{$\delta\rho(\textbf{x},\omega)$ for 5 randomly placed defect on the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. }
+	\label{fig:ch5_multi_scattering}
+\end{figure}
 
-\subsubsection{Multi defect result}
-\begin{itemize}
-	\item direct evaluation of $\delta\rho(\mathbf{x},\omega)$
-	\item Convolution approach
-\end{itemize} 
-Estimating the multidefect result with convolution approach inherently makes assumption into the independent nature of scattering, which is only true for weak scattering and sparse impurity distributions. 
-
-\subsubsection{Limitations and assumptions}
+We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in \ref{multi_defect_eq}, 5 defect locations are randomly selected on the lattice points, we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
 
 
-\subsubsection{the process}
-\subsubsection{the result}
+%Estimating the multidefect result with convolution approach inherently makes assumption into the independent nature of scattering, which is only true for weak scattering and sparse impurity distributions. 
 
 
-\input{Ch.5.2}
+%\input{Ch.5.2}
