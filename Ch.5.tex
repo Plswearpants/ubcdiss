@@ -1,7 +1,6 @@
 \chapter{Quasiparticle Interference (QPI)}
 %todo: to write the abstract of this chapter after finishing this chapter
 %todo: to standardize the vector form in this chapter 
-Quasiparticle interference is a technique used in STM to 
 \section{Introduction to Quasiparticle}
 A Quasiparticle is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it corresponds to a sharp peak in the spectra function: 
 	\[
@@ -39,22 +38,22 @@ In electronic systems, the theory works in a regime with weak to moderate electr
 
 Landau's theory failed to address more involved systems; however, based on the theory, scientists formulated a more generalized concept of quasiparticles through the lens of Green's function scheme of many-body theory. There have been many extensions and refinements of the quasiparticle theory throughout history; the meaning of quasiparticles and the corresponding regime where this can be applied varied drastically. Here, I would like to provide a rough list of those theories chronologically and give brief notes on them:
 \begin{itemize}
-	\item\textbf{Hartree-Fock Approximation (HF)} (1930s)
+	\item\textbf{Hartree-Fock Approximation (HF)} (1930s):
 	HF approximation is not an extension of Fermi liquid theory but it is the first step beyond a purely free-electron model, and it lays groundwork for diagrammatic expansions \cite{fockNaeherungsmethodeZurLoesung1930}, \cite{slaterNoteHartreesMethod1930}.
 	
 	\item\textbf{Random Phase Approximation(RPA)} (1950s): 
 	RPA extends the theory to moderate correlations where long-range screening is crucial, including dynamical screening. It successfully explains quasiparticle dispersion like plasmon dispersion and optical properties in metals and semiconductors \cite{bohmCollectiveDescriptionElectron1951}, \cite{nozieresCorrelationEnergyFree1958}.
 	
-	\item \textbf{BCS theory} (1957)
-	BCS theory of superconductivity extends Fermi liquid theory by explicitly incorporating second-order phase transitions with an order parameter $\Delta$. For $T>T_c$, one can describe the normal state low temperature excitations with landau quasiparticles, these quasiparticle is unstable approaching $T_c$ and forms Copper pairs that breaks gauge symmetry and lead to superconducting phase. In the superconducting phase, the low energy excitations can be described by Bogoliubov quasiparticles, and since the excitations are gapped by a pairing gap $\Delta_k$. Bogoliubov quasiparticles thus have a finite energy and therefore are well defined and long-lived in a clean superconductor \cite{bardeenTheorySuperconductivity1957},\cite{tinkhamIntroductionSuperconductivity2004}.
+	\item \textbf{BCS theory} (1957):
+	BCS theory of superconductivity established a microscopic explanation for the superconducting phase transition, which was initially described macroscopically by Ginzburg–Landau theory as a second-order phase transition with an order parameter $\Delta$. For $T>T_c$, one can describe the normal state low temperature excitations with landau quasiparticles, these quasiparticles are unstable approaching $T_c$ with a weak attractive interaction, as shown by Cooper\cite{cooperBoundElectronPairs1956}, and forms Copper pairs that breaks gauge symmetry and lead to superconducting phase. In the superconducting phase, the low energy excitations can be described by Bogoliubov quasiparticles. Since the excitations are gapped by a pairing gap $\Delta_k$; Bogoliubov quasiparticles have a finite energy and therefore are well defined and long-living in a clean superconductor \cite{bardeenTheorySuperconductivity1957},\cite{tinkhamIntroductionSuperconductivity2004}.
  
-	\item\textbf{Gutzwiller(GW) Approximation} (1965)
+	\item\textbf{Gutzwiller(GW) Approximation} (1965):
 	GW approximation provided a more accurate approximation than RPA and can be implemented to stronger correlated systems \cite{hedinNewMethodCalculating1965}, \cite{aryasetiawanGWMethod1998}.
 	
-	\item\textbf{Dynamical Mean-Field Theory(DMFT)} (1990s)
+	\item\textbf{Dynamical Mean-Field Theory(DMFT)} (1990s):
 	DMFT was developed via a non-perturbative approach, this allows it to extend the concept of quasiparticles to account for strong local correlations in systems like transition metal oxides and f-electron materials. Although it kept the concpt of quasiparticles, it showed that they failed near Mott transitions when electron-electron interaction is large enough \cite{metznerCorrelatedLatticeFermions1989}, \cite{georgesDynamicalMeanfieldTheory1996}.
 	
-	\item\textbf{GW + DMFT} (2000s)
+	\item\textbf{GW + DMFT} (2000s):
 	This combined method took the best of GW(dynamic and non-local screening) with DMFT(local, but exact correlation), making it suitable for systems with moderate to strong correlation as well as significant screening effects, like heavy fermion compounds \cite{biermannFirstprinciplesApproachElectronic2003}.
 \end{itemize}
 
@@ -121,13 +120,11 @@ Fig. \ref{fig:ch5_spect} \cite{bruusManyBodyQuantum2004} illustrates this effect
 
 \section{Introduction to Quasiparticle Interference}
 
-In the Fermi liquid theory, an interactive many-particle system is modeled by a renormalized single-particle system, with quasiparticles capturing the excitations near the renormalized Fermi level. These quasiparticles are long-living and carry the same quantum numbers $(\textbf{k}, \sigma)$ as the bare particles. The non-infinite lifetime corresponds to the weakly interactive nature of the quasiparticles; interactions involved quasiparticles include quasiparticles-quasiparticle interaction of the same kind, e.g. the phonon-phonon interaction in anharmonic lattices \cite{bibid}; quasiparticles of a different kind, e.g. the exciton-phonon coupling in ZnO \cite{bibid}; or interact with other elements like impurities on the lattices \cite{avrahamQuasiparticleInterferenceStudies2018}. 
+In the Fermi liquid theory, an interactive many-particle system is modeled by a renormalized single-particle system, with quasiparticles capturing the excitations near the renormalized Fermi level. These quasiparticles are long-living and carry the same quantum numbers $(\textbf{k}, \sigma)$ as the bare particles. The non-infinite lifetime corresponds to the weakly interactive nature of the quasiparticles; interactions involved quasiparticles include quasiparticles-quasiparticle interaction of the same kind, e.g. the phonon-phonon interaction in anharmonic lattices \cite{kimExploringAnharmonicLattice2023}; quasiparticles of a different kind, e.g. the exciton-phonon coupling in ZnO \cite{mendelsbergPhotoluminescenceExcitonphononCoupling2011}; or interact with other elements like impurities on the lattices \cite{avrahamQuasiparticleInterferenceStudies2018}. 
 
-Some experimental techniques utilizes the interactive nature of the quasiparticle as a channel to explore characters like the renormalized energy dispersion $\epsilon^*(\textbf{k})$. In particular, \ac{STM} make use of the quasiparticle-impurity scattering to perform an experiment called Quasiparticle Interference, which we will explain with the next section. 
+One can utilize the interactions that involve quasiparticles as a channel to explore properties of matters. In particular, when it comes to single-particle properties, or more specifically, probing the spectral function $A(\textbf{k},\omega)$, the tunneling experiment is at a unique position because of its ability to both inject and remove an electron into and out of a many-body system.  
 
-In principle, there is only one way to measure the single particle properties, and more specifically the spectral function $A(\textbf{k},\omega)$, that is to inject/remove an electron into/out of a many-body system, and the tunneling experiment is the most natural way to achieve this. 
-
-As introduced in Ch.2, \ac{STM} can probe both the energy and spatial dimensions of the electron density of states, making it an ideal tool to study quasiparticles. One of the most powerful experiments we perform using \ac{STM} is call Quasiparticle Interference measurement, or \ac{QPI} measurement. This section aims to introduce \ac{QPI} measurement, exploring both its theoretical foundation as well as the experimental details. We will then point out challenges of performing and interpreting a good \ac{QPI} measurement. This should give a direct motivation for our next chapter, which introduced a method that we use to mitigate some of the challenges. 
+As \ac{STM} combines the ability to resolve both the spatial and energy dimensions of the electron density of states; We can perform a powerful measurement call Quasiparticle Interference measurement, or \ac{QPI} measurement. This section aims to introduce \ac{QPI} measurement, exploring both its theoretical foundation as well as the experimental details. We will then point out challenges of performing and interpreting a "good" \ac{QPI} measurement. This should give a direct motivation for our next chapter, which introduced a method that we use to mitigate some of the challenges. 
 
 \subsection{Terminology}
 To set stage for the discussion in this chapter, we must make distinctions between the following terminologies: 
