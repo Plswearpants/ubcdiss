@@ -3,28 +3,28 @@
 %todo: to standardize the vector form in this chapter 
 Quasiparticle interference is a technique used in STM to 
 \section{Introduction to Quasiparticle}
-Quasiparticle is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it correspond to a sharp peak in the spectra function: 
+A Quasiparticle is any long-lived, well-defined excitation in a system that behaves like a particle, it is a semi-classical term used to describe particle interactions in terms of renormalized single-particle excitation. In Fermionic systems, it corresponds to a sharp peak in the spectra function: 
 	\[
 	A(\mathbf{k}, \omega) = -\frac{1}{\pi} \frac{\operatorname{Im} \Sigma(\mathbf{k}, \omega)}{(\omega - \tilde{E}_{\mathbf{k}})^2 + [\operatorname{Im} \Sigma(\mathbf{k}, \omega)]^2},
 	\]
 
-This section aims to introduce the concept of quasiparticle, first through a historical overview of the development of quasiparticle theory, relevant languages and terms will be established, as well as the assumptions and limitations of the theory; then we illustrate the concept quantitatively through a microscopy theory of landau quasiparticles. 
+This section aims to introduce the concept of a quasiparticle, first through a historical overview of the development of quasiparticle theory, relevant languages and terms will be established, as well as the assumptions and limitations of the theory; then we illustrate the concept quantitatively through a microscopic theory of landau quasiparticles. 
 
 \subsection{The historical overview}
-The development of quasiparticle model for Fermionic system started in 1940s, when Sommerfeld and Bethe\cite{SommerfeldBethe1933} developed a model for non-interacting electron gas, also known as the 'Fermi gas', in which a series of important terms are introduced. Consider a system made of non-interacting electrons with momentum $k$ and spin $\sigma = 1/2$, and is in touch with an electron reservoir with chemical potential $\mu$. The occupation number naturally follows the Fermi-Dirac distribution $n_{k,\sigma}=1/(1+e^{(k^2/(2m)-\mu)/T}))$. At $T=0$, the occupation thus has a sharp boundary famously known as the Fermi surface, in the momentum space confined by the Fermi wave number $k_f$, and the energy defined by the Fermi surface is called the Fermi energy. At non-zero temperature, electrons at the Fermi energy will started to be excited to above the Fermi energy, this excitation can also be described in second-quantization by the creation of a quasiparticle with energy: $\epsilon_{k,sigma} = k^2/2m - \mu$. 
+The development of a quasiparticle model for Fermionic systems started in 1940s, when Sommerfeld and Bethe\cite{SommerfeldBethe1933} developed a model for a non-interacting electron gas, also known as the 'Fermi gas', in which a series of important terms are introduced. Consider a system made of non-interacting electrons with momentum $k$ and spin $\sigma = 1/2$, which is in touch with an electron reservoir with chemical potential $\mu$. The occupation number follows the Fermi-Dirac distribution $n_{k,\sigma}=1/(1+e^{(k^2/(2m)-\mu)/T}))$. At $T=0$, the occupation thus has a sharp boundary known as the Fermi surface, in the momentum space confined by the Fermi wave number $k_f$, and the energy defined by the Fermi surface is called the Fermi energy. At non-zero temperature, electrons at the Fermi energy will start to be excited above the Fermi energy; this excitation can also be described in second-quantization by the creation of a quasiparticle with energy: $\epsilon_{k,sigma} = k^2/2m - \mu$. 
 
-Sommerfeld's theory of electron gas worked quite well in normal metallic systems, but the success is unexpected, as the model neglected the Coulomb interaction between electrons. In a metallic system where the electron separation is in the order of lattice spacing, the Coulomb interaction is in the order of eV, which is much larger than other, say the thermal excitation considered in the electron gas mode. 
+Sommerfeld's theory of the electron gas worked quite well in standard metallic systems, but the success was unexpected, as the model neglected the Coulomb interaction between electrons. In a metallic system where the electron separation is in the order of the lattice spacing, the Coulomb interaction is in the order of eV, which is much larger than other energy scales, say, the thermal excitation considered in the electron gas mode. 
 
-In late 1960s, Landau raised a theory of Fermi liquid with a series of foundational papers\cite{Landau1956}\cite{Landau1957}, to address that even in the presence of interactions, we can find fermionic excitations in these many-body systems, and describe these excitations with what is known as the Landau quasiparticles. By adding a time variant interaction term, defined by time constant $\zeta$ to the non-interactive system, and constructing the system Hamiltonian as
+In the late 1960s, Landau raised a theory of the Fermi liquid with a series of foundational papers\cite{Landau1956}\cite{Landau1957} to address that even in the presence of interactions, we can find fermionic excitations in these many-body systems, and describe these excitations with what is known as the Landau quasiparticles. By adding a time-variant interaction term, defined by time constant $\zeta$ to the non-interactive system, and constructing the system Hamiltonian as
 \begin{equation}\label{adiabatic}
 	H_{\zeta} = H_0 + H_{\text{int}} e^{-\zeta t}, \quad t > 0,
 \end{equation}
 
-By the principle of adiabatic continuity, Landau is able to bridge between the states of interactive and non-interactive system. The consequence is that the states describing interactive system can now be reduced to states in the non-interactive system with the same quantum numbers $k, \sigma$. More specifically, as quoted from \textit{What is a Quasi-Particle?} by J.R.Schrieffer, "these many-body states are well characterized in terms of a set of elementary excitations, called quasi-particles, which for the interacting system play the same role as the excited electrons(above the Fermi surface) and the excited holes(below the Fermi surface) in the Independent-particle approximation(IPA)". 
+By the principle of adiabatic continuity, Landau is able to bridge between the states of interactive and non-interactive systems. Consequently, the states describing the interactive system can now be reduced to states in the non-interactive system with the same quantum numbers $k, \sigma$. More specifically, as quoted from \textit{What is a Quasi-Particle?} by J.R.Schrieffer, "these many-body states are well characterized in terms of a set of elementary excitations, called quasi-particles, which for the interacting system play the same role as the excited electrons(above the Fermi surface) and the excited holes(below the Fermi surface) in the Independent-particle approximation(IPA)." 
 
-Landau's quasiparticle is an extremely useful concept in computing the screening and the transport properties of an electron-gas-like system. However, we should emphasis that the theory is only valid with several assumptions:
+Landau's quasiparticle is an extremely useful concept in computing the screening and the transport properties of an electron-gas-like system. However, we should emphasize that the theory is only valid with several assumptions:
 
-For adiabatic procedure to hold, time scale $\zeta$ in \ref{adiabatic} should be bounded by two conditions: 1. rate of evolution should be small compared to the energy of the state: $\zeta << \epsilon_{k,\sigma}$, 2. the final bound state remains the same as the initial one, meaning the lifetime $\tau_{life}$ of the bound state should be long enough: $\tau_{life} >> \zeta^{-1}$. Therefore, $\zeta$ should suits: 
+For an adiabatic procedure to hold, time scale $\zeta$ in Equation \ref{adiabatic} should be bounded by two conditions: 1. rate of evolution should be small compared to the energy of the state: $\zeta << \epsilon_{k,\sigma}$, 2. the final bound state remains the same as the initial one, meaning the lifetime $\tau_{life}$ of the bound state should be long enough: $\tau_{life} >> \zeta^{-1}$. Therefore, $\zeta$ should suits: 
 \begin{equation}
 	\tau_{life}^{-1} << \zeta << \epsilon_{k,\sigma},
 \end{equation}
@@ -32,22 +32,23 @@ since typical excited energy is in the order of temperature, and the lifetime is
 \begin{equation}
 	T^2 << \zeta << k_B T,
 \end{equation}
-This requirement can be satisfied at a range of low temperature. Later we will also see that the requirements also extend to the energy level of the states, as the quasiparticle lifetime decreases as the energy deviate from the Fermi energy. 
+This requirement can be satisfied at a range of low temperature. Later we will also see that the requirements also extend to the energy level of the states, since the quasiparticle lifetime decreases as energies deviate from the Fermi energy. 
 %todo: can refer to the chapter where we talk about the lifetime decay with simulation. 
-Therefore, Landau's theory of Fermi liquid postulated that an interacting fermionic system can we mapped adiabatically to a non-interacting Fermi gas, with long-lived quasiparticle that shares the same quantum numbers near the Fermi surface. It works in a regime with weak to moderate correlations at sufficiently low temperatures, and thus why worked extremely well in explaining properties in simple and noble metals. For more detailed reading regarding the theory, the textbooks of Pines and Nozieres\cite{nozieresTheoryQuantumLiquids2018a} Nozieres \cite{nozieresDerivationLandauTheory1962} offers derivations and in depth discussions. 
+%Therefore, Landau's theory of Fermi liquid postulated that an interacting fermionic system can we mapped adiabatically to a non-interacting Fermi gas, with long-lived quasiparticle that shares the same quantum numbers near the Fermi surface. 
+In electronic systems, the theory works in a regime with weak to moderate electron-electron correlations at sufficiently low temperatures, and thus, it succeeds in explaining the properties of simple and noble metals. For more detailed reading regarding the theory, the textbooks of Pines and Nozieres\cite{nozieresTheoryQuantumLiquids2018a} and Nozieres \cite{nozieresDerivationLandauTheory1962} offer derivations and in-depth discussions. 
 
-Landau's theory failed to address more involved systems, however, based on the theory, scientists managed to formulate a more generalized concept of quasiparticle through the lens of Green's function scheme of many-body theory. There are many extensions and refinements of quasiparticle theory throughout history, the meaning of quasiparticles adn the corresponding regime that this can be applied varied drastically. Here I would like to provide a rought list of those theories chronologically and give brief notes on them:
+Landau's theory failed to address more involved systems; however, based on the theory, scientists formulated a more generalized concept of quasiparticles through the lens of Green's function scheme of many-body theory. There have been many extensions and refinements of the quasiparticle theory throughout history; the meaning of quasiparticles and the corresponding regime where this can be applied varied drastically. Here, I would like to provide a rough list of those theories chronologically and give brief notes on them:
 \begin{itemize}
-	\item\textbf{Hatree-Fock Approximation (HF)} (1930s)
+	\item\textbf{Hartree-Fock Approximation (HF)} (1930s)
 	HF approximation is not an extension of Fermi liquid theory but it is the first step beyond a purely free-electron model, and it lays groundwork for diagrammatic expansions \cite{fockNaeherungsmethodeZurLoesung1930}, \cite{slaterNoteHartreesMethod1930}.
 	
 	\item\textbf{Random Phase Approximation(RPA)} (1950s): 
-	RPA extends the theory to moderate correlations where long-range screening is crucial, included dynamical screening. Successfully explains quasiparticle dispersion like plasmon dispersion and optical properties in metals and semiconductors \cite{bohmCollectiveDescriptionElectron1951}, \cite{nozieresCorrelationEnergyFree1958}.
+	RPA extends the theory to moderate correlations where long-range screening is crucial, including dynamical screening. It successfully explains quasiparticle dispersion like plasmon dispersion and optical properties in metals and semiconductors \cite{bohmCollectiveDescriptionElectron1951}, \cite{nozieresCorrelationEnergyFree1958}.
 	
 	\item \textbf{BCS theory} (1957)
 	BCS theory of superconductivity extends Fermi liquid theory by explicitly incorporating second-order phase transitions with an order parameter $\Delta$. For $T>T_c$, one can describe the normal state low temperature excitations with landau quasiparticles, these quasiparticle is unstable approaching $T_c$ and forms Copper pairs that breaks gauge symmetry and lead to superconducting phase. In the superconducting phase, the low energy excitations can be described by Bogoliubov quasiparticles, and since the excitations are gapped by a pairing gap $\Delta_k$. Bogoliubov quasiparticles thus have a finite energy and therefore are well defined and long-lived in a clean superconductor \cite{bardeenTheorySuperconductivity1957},\cite{tinkhamIntroductionSuperconductivity2004}.
  
-	\item\textbf{GW Approximation} (1965)
+	\item\textbf{Gutzwiller(GW) Approximation} (1965)
 	GW approximation provided a more accurate approximation than RPA and can be implemented to stronger correlated systems \cite{hedinNewMethodCalculating1965}, \cite{aryasetiawanGWMethod1998}.
 	
 	\item\textbf{Dynamical Mean-Field Theory(DMFT)} (1990s)
@@ -57,7 +58,7 @@ Landau's theory failed to address more involved systems, however, based on the t
 	This combined method took the best of GW(dynamic and non-local screening) with DMFT(local, but exact correlation), making it suitable for systems with moderate to strong correlation as well as significant screening effects, like heavy fermion compounds \cite{biermannFirstprinciplesApproachElectronic2003}.
 \end{itemize}
 
-A more detailed trace of the development of quasiparticle theory and its more recent application into systems like topological materials can be found in review paper \cite{wolfleQuasiparticlesCondensedMatter2018}. 
+A more detailed history of the development of the quasiparticle theory and its more recent application into systems like topological materials can be found in Peter et al.\cite{wolfleQuasiparticlesCondensedMatter2018}. 
 
 \subsection{Microscopic Theory of Quasiparticles}
 Landau quasiparticles are added to a system with the creation of the excitations, therefore, we need to look at the retarted Green's function $G^R$ as it measures the density of states for adding particles, and thus a system's response to creating or annihilating a single fermion at a given state. We consider the one-particle retarded Green's function: 
@@ -66,7 +67,7 @@ Landau quasiparticles are added to a system with the creation of the excitations
 \end{equation}
 where $\epsilon_k= \frac{k^2}{2m-\mu}$ is the free electron energy with respect to the chemical potential $\mu$, and $\Sigma^R_{k \sigma, \omega}$ is the retarded self-energy that is irreducible in diagrammatic expansion. 
 
-We then expand the self-energy into real and imaginary part, the effective single-electron energy is $\epsilon'_{k} = \epsilon_k + \operatorname{Re}\Sigma^R(k,\omega)$, we can then define the renormalized Fermi momentum $k^*_{F}$ as $\epsilon'_{\tilde{k_{F}}} = 0$. Then we expand $G^R_{k, \omega}$ around $k = k^*_{F}$ and get: 
+We then expand the self-energy into real and imaginary parts, the effective single-electron energy is $\epsilon'_{k} = \epsilon_k + \operatorname{Re}\Sigma^R(k,\omega)$. We can then define the renormalized Fermi momentum $k^*_{F}$ as $\epsilon'_{\tilde{k_{F}}} = 0$. Then we expand $G^R_{k, \omega}$ around $k = k^*_{F}$ and get: 
 
 \begin{equation}
 \label{gr_full}
@@ -82,7 +83,7 @@ where
 	\Gamma_{\mathbf{k}} &= Z \mathrm{Im} \Sigma^{R}({k}, 0) 
 \end{align}
 
-Here, $\epsilon^*_{\mathbf{k}}$ is the renoramlized energy, $\Gamma_{\mathbf{k}}$ is the relaxation rate which is inverse proportional to the quasiparticle lifetime $\tau_{life}$, and $Z$ is called the weight factor of qausiparticles. We can further parameterize the renormalized energy with effective mass $m^*$: 
+\noindent here, $\epsilon^*_{\mathbf{k}}$ is the renoramlized energy, $\Gamma_{\mathbf{k}}$ is the relaxation rate which is inverse proportional to the quasiparticle lifetime $\tau_{life}$, and $Z$ is called the weight factor of qausiparticles. We can further parameterize the renormalized energy with effective mass $m^*$: 
 \begin{equation}\label{energy}
 	\epsilon^*_{\mathbf{k}} = \frac{k^*_F(k-k^*_F)}{m^*}
 \end{equation}
@@ -109,7 +110,7 @@ we need to incorporate another term $A'(\textbf{k},\omega)$ into $ A(\textbf{k},
 	\label{eq.akw}
 	A(\textbf{k},\omega) = 2\pi Z\delta(\omega-\epsilon^*_\textbf{k}) + A'(\textbf{k},\omega)
 \end{equation}
-Fig. \ref{fig:ch5_spect} \cite{bruusManyBodyQuantum2004} illustrates this affect, and that term $A'(\textbf{k},\omega)$ captures the remaining excitations other than the well defined quasiparticle pole. 
+Fig. \ref{fig:ch5_spect} \cite{bruusManyBodyQuantum2004} illustrates this effect, and that term $A'(\textbf{k},\omega)$ captures the remaining excitations other than the well defined quasiparticle pole. 
 
 \begin{figure}
 	\centering
@@ -118,22 +119,20 @@ Fig. \ref{fig:ch5_spect} \cite{bruusManyBodyQuantum2004} illustrates this affect
 	\label{fig:ch5_spect}
 \end{figure}
 
-\subsection{Quasiparticle interference}
+\section{Introduction to Quasiparticle Interference}
 
-In the picture of Fermi liquid theory, interactive many-particle system is modeled by a renormalized single-particle system, with quasiparticles capturing the excitations near the renormalized Fermi level. These quasiparticles are long-living and carry the same quantum numbers $(\textbf{k}, \sigma)$ with the bare particles. The non-infinite lifetime correspond to the weakly interactive nature of the quasiparticles, interactions involved quasiparticles include quasiparticles-quasiparticle interaction of the same kind, e.g phonon-phonon interaction in anharmonic lattices \cite{bibid}; quasiparticles of different kind, e.g exciton-phonon coupling in ZnO \cite{bibid}; or interact with other elements like impurities on the lattices \cite{avrahamQuasiparticleInterferenceStudies2018}. 
+In the Fermi liquid theory, an interactive many-particle system is modeled by a renormalized single-particle system, with quasiparticles capturing the excitations near the renormalized Fermi level. These quasiparticles are long-living and carry the same quantum numbers $(\textbf{k}, \sigma)$ as the bare particles. The non-infinite lifetime corresponds to the weakly interactive nature of the quasiparticles; interactions involved quasiparticles include quasiparticles-quasiparticle interaction of the same kind, e.g. the phonon-phonon interaction in anharmonic lattices \cite{bibid}; quasiparticles of a different kind, e.g. the exciton-phonon coupling in ZnO \cite{bibid}; or interact with other elements like impurities on the lattices \cite{avrahamQuasiparticleInterferenceStudies2018}. 
 
-Some experimental techniques utilizes the interactive nature of the quasiparticle as a channel to explore characters like the renormalized energy dispersion $\epsilon^*(\textbf{k})$. In particular, \ac{STM} make use of the quasiparticle-impurity scattering to perform an experiment called Quasiparticle Interference measurement, which we will elaborate with the next section. 
-
-\section{Introduction to Quasiparticle Interference measurement}
+Some experimental techniques utilizes the interactive nature of the quasiparticle as a channel to explore characters like the renormalized energy dispersion $\epsilon^*(\textbf{k})$. In particular, \ac{STM} make use of the quasiparticle-impurity scattering to perform an experiment called Quasiparticle Interference, which we will explain with the next section. 
 
 In principle, there is only one way to measure the single particle properties, and more specifically the spectral function $A(\textbf{k},\omega)$, that is to inject/remove an electron into/out of a many-body system, and the tunneling experiment is the most natural way to achieve this. 
 
-As introduced in Ch.2, \ac{STM} can probe both the energy and spatial dimensions of the electron density of states, making it an ideal tool to study quasiparticles. One of the most powerful experiments we perform on \ac{STM} is call Quasiparticle Interference measurement, or \ac{QPI} measurement. This section aims to introduce \ac{QPI} measurement, exploring both its theoretical foundation as well as the experimental details. We will then point out challenges of performing and interpreting a good \ac{QPI} measurement. This should give a direct motivation for our next chapter, which introduced a method that we use to mitigate some of the challenges. 
+As introduced in Ch.2, \ac{STM} can probe both the energy and spatial dimensions of the electron density of states, making it an ideal tool to study quasiparticles. One of the most powerful experiments we perform using \ac{STM} is call Quasiparticle Interference measurement, or \ac{QPI} measurement. This section aims to introduce \ac{QPI} measurement, exploring both its theoretical foundation as well as the experimental details. We will then point out challenges of performing and interpreting a good \ac{QPI} measurement. This should give a direct motivation for our next chapter, which introduced a method that we use to mitigate some of the challenges. 
 
 \subsection{Terminology}
 To set stage for the discussion in this chapter, we must make distinctions between the following terminologies: 
 \begin{itemize}
-	\item QPI: a physical phenomenon describing the scattering between quasiparticles and lattice imperfections.  
+	\item QPI: The interference between the incoming quasiparticle and the outgoing quasiparticle in a scattering event between quasiparticles and lattice imperfections.  
 	\item QPI pattern: an interference pattern that can be observed by \ac{STM} on the surface of the material.
 	\item QPI measurement: a measurement that measures the QPI patterns presented in systems that intrinsically host QPI. This hinted an assumption that the tunneling experiment did not induce the scattering, but act as a mere observer of this phenomenon.
 \end{itemize}
@@ -143,7 +142,7 @@ I will then elaborate what these terms mean in the context of an STM study, and 
 
 \subsection{QPI measurement in STM}
 %todo: to plot a standard grid and its FFT here.
-Understanding QPI pattern is the first step to understand QPI measurement. QPI pattern is the modulation of \ac{LDOS} due to quasiparticle-impurity scattering. The modulated \ac{LDOS} provides direct insight on the quasiparticle band structure. Imagine an ideal metal with no crystal imperfection, we know that the Landau quasiparticle has an eigenstate in real space described by a Bloch wavefunction: 
+Understanding QPI pattern is the first step to understand QPI measurement. QPI pattern is the modulation of \ac{LDOS} due to quasiparticle-impurity scattering. The modulated \ac{LDOS} provides direct insight on the quasiparticle band structure. Imagine an ideal metal with no crystal imperfection; we know that the Landau quasiparticle has an eigenstate in real space described by a Bloch wavefunction: 
 
 \begin{equation}
 \psi(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r}} u(\mathbf{r})
@@ -159,7 +158,7 @@ where  $\epsilon(k)$ is the renormalized energy dispersion of the Bloch state fo
 
 However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{benaFriedelOscillationsDecoding2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can also view this QPI pattern in the momentum space, the q-space QPI pattern is directly related to the quasiparticle band strucutre. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
 
-We will quantitatively show case this \ac{LDOS} modulation with a simulation on a toy model in the following section. 
+We will quantitatively showcase this \ac{LDOS} modulation with a simulation on a toy model in the following section. 
 
 %\begin{figure}
 %	\centering
@@ -170,10 +169,10 @@ We will quantitatively show case this \ac{LDOS} modulation with a simulation on 
 
 \subsection{LDOS modulation simulation on a square lattice}
 
-As mentioned in last section \ac{QPI} measurement is the Fourier transformed spatial \ac{STS} measurement, which is proportional to the \ac{LDOS}. Thus, to understand \ac{QPI} measurement, we must understand the origin of \ac{QPI} pattern and how it modifies \ac{LDOS}. Here, I present an investigation into the \ac{LDOS} modulation caused by point defects on a square lattice, this textbook exercise is inspired by work from Cheung et al \cite{cheungDictionaryLearningFouriertransform2020}.
+As mentioned in last section \ac{QPI} measurement is achieved by taking spectroscopy measurements on a real-space region that presents QPI pattern; As \ac{STM} spectroscopy probes the \ac{LDOS}, We must therefore, understand the origin of \ac{QPI} pattern and how it modifies \ac{LDOS}. Here, I present an investigation into the \ac{LDOS} modulation caused by point defects on a square lattice, this textbook exercise is inspired by work from Cheung et al \cite{cheungDictionaryLearningFouriertransform2020}.
 
 \subsubsection{Theory}
-We first consider a square lattice with lattice constant $a$, and model it through the single-electron \ac{TB} model considering only nearest-neighbor hopping. This hopping is characterized with a fixed negative number $t$ named hopping-parameter. We then place $N_d$ number of defects onto different lattice sites as a perturbation to the \ac{TB} Hamiltonian $H_0$. The total Hamiltonian can then be written as: 
+We first consider a square lattice with lattice constant $a$, and model it through the single-electron Tight-Binding model considering only nearest-neighbor hopping. This hopping is characterized with a fixed negative number $t$ named hopping-parameter. We then place $N_d$ number of defects onto different lattice sites as a perturbation to the \ac{TB} Hamiltonian $H_0$. The total Hamiltonian can then be written as: 
 $\hat{H} = \hat{H}_0 + \hat{H}_d$. $\hat{H}_d$ can be written as: 
 \[
 \hat{H}_d = \sum_{\alpha=1}^{N_d} E_\alpha \lvert \alpha \rangle \langle \alpha \rvert,
@@ -200,7 +199,7 @@ where
 	\hat{G}_0(\omega) &= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - \hat{H}_0} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert \nonumber \\ 
 	&= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - E_\mathbf{k}} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert,
 \end{align}
-where we have $\omega= \omega + i\epsilon$ to indicate the retarded green's function and to capture the analytic continuation. Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation (\ref{E_k}) in, we get: 
+where we have $\omega= \omega + i\epsilon$ to indicate the retarded Green's function and to capture the analytic continuation. Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation (\ref{E_k}) in, we get: 
 \begin{align}
 	G_0(\mathbf{x}, \mathbf{x}') = 
 	\frac{1}{(2\pi)^2} \frac{1}{2t} 
@@ -219,7 +218,7 @@ where
 	\int_0^\pi \int_0^\pi \mathrm{d}\phi_1 \, \mathrm{d}\phi_2 \, 
 	\frac{\cos(s_1 \phi_1) \cos(s_2 \phi_2)}{b + \cos\phi_1 +b  \cos\phi_2} \label{Isq}.
 \end{align}
-Note that in the actual numerical calculation, the integral will be evaluated on a n by n grid of k-points.  
+Note that in the actual numerical calculation, the integral will be evaluated on an n by n grid of k-points.  
 Now we proceed to compute the matrix element of T-matrix, we know that: 
 \begin{equation}
 	\hat{T} = \hat{H_d} (\hat{I} - \hat{G_0}\hat{H_d})^{-1}.
