@@ -254,15 +254,17 @@ The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $
 	\label{fig:ch5_qpisim_demo}
 \end{figure}
 
-A typical \ac{LDOS} map is shown in \ref{fig:ch5_single_scattering}, $\delta\rho$ was numerically computed at a $301x301$ grid chosen to overlap with the square lattice with $51x51$ sites, a single defect is placed on location $\mathbf{x_d}=0$, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$.  
+We first performed a single defect calculation, where we place the defect at the center of a square lattice with $51\times51$ sites, $\delta\rho$ was numerically computed at a $301\times301$ grid chosen to overlap with the square lattice, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$. In total, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$.  
 
-Observations can be made on this simulation, in particular, we can see that:
+Typical \ac{LDOS} maps at different energy are shown in \ref{fig:ch5_single_scattering}, the figures are plotted on a gray scale image with the contrast indicating the level of \ac{LDOS} modulation. From the figures, we can make several observations:
 \begin{itemize}
-	\item 1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
+	\item The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
 	\item 2. The modulation is strongly correlated with the underlying lattice corrugation. 
-	\item 3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level, this is exactly how we expected. 
+	\item 3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level, this aligns with our understanding about the Landau quasiparticle. 
 	\item 4. The pattern persists further for patterns near the Fermi level. 
 \end{itemize}
+
+
 
 
 \begin{figure}
@@ -279,10 +281,87 @@ Observations can be made on this simulation, in particular, we can see that:
 	\label{fig:ch5_multi_scattering}
 \end{figure}
 
-We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in \ref{multi_defect_eq}, 5 defect locations are randomly selected on the lattice points, we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
+We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, 5 defect locations are randomly selected on the lattice points, we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
+
+
+\subsection{Interpretation of QPI}
+Quasiparticle-impurity scatterings give arise to \ac{QPI}. Interpretations of \ac{QPI} can be quite involved in real materials, but all the factors to consider can be characterized into 2 aspects: 1. the detailed quasiparticle states, and 2. the characteristics of the impurity. We will illustrate these aspects with the system we established for the simulation above. 
+ 
+As mentioned in the start of Ch5.2, quasiparticles carry the same quantum numbers ($\textbf{k}$,$\sigma$) as the bare particles; Therefore, in an electronic system, quasiparticle states are dictated by the system's band structure. For the 2D Tight-binding model with only nearest neighbor hopping that we considered, the energy dispersion $\epsilon_{\mathbf{k}}$ is a parabola in $k_x$ and $k_y$ as denoted in \ref{E_k} and plotted in \ref{fig:ch5_bs} a). In an elastic quasiparticle-impurity scattering process, given our impurity is non-magnetic, we have the incoming state $\Psi(\textbf{k}_i,\sigma)$ and outgoing state $\Psi(\textbf{k}_f,\sigma)$, where $E_{\textbf{k}_f} = E_{\textbf{k}_i}$. To enforce elastic scattering, we can take a constant energy slice at a given energy, this reveals all possible states at that energy; This slice is normally referred as a \ac{CEC} of that particular energy. While real life materials can possess more complicated selection rules, in a single band situation as we formulated here, any state on the \ac{CEC} can be an initial or a final state in the scattering process; Mathematically, to describe the scattering vector $\textbf{q} = \textbf{k}_f -\textbf{k}_i$, we can take a self-convolution of the \ac{CEC}, which we can easily calculate and plot; This self-convolution is often referred as the \ac{JDOS} at the corresponding energy. An example is given at an energy close to the Fermi level in b),c) of Fig \ref{fig:ch5_bs}. 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Ch5_BS_JDOS.png} 
+	\caption{Band structure of 2D tight-binding square lattice with nearest neighbor hopping, a) 3D Energy dispersion in $\textbf{k}_x$ and $\textbf{k}_y$, b) Constant energy contour and c) Joint density of states at $E=0.075eV$}
+	\label{fig:ch5_bs}
+\end{figure}
+
+The real space \ac{LDOS} modulation can now be interpreted, and we illustrate it with \ref{fig:ch5_ldos}. First, to focus us on the interference ripples, we suppress the features from the defect itself by apply a Gaussian masking at the defect location, a)-b). Then we apply the Fourier transform to get the \ac{QPI} map in reciprocal space as shown in c), the red dots in c) are the Bragg peaks of the system. As we know, the range in reciprocal space is inversely proportional to the real space resolution. Longer $\textbf{q}-space$ features correspond to high frequency features in the real space; In most materials, the wavelengths of ordering are confined by the lattice parameter, therefore, a common practice is truncate and keep the feature within the Bragg peaks, this gives us a closer look to the features as shown in d). 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Ch5_LDOS_QPI.png} 
+	\caption{Transfer QPI map from real-space to \textbf{q}-space, an example given at $E=0.075eV$, we first suppress the defect feature with a Gaussian mask at the red dot in a), this gives us b). We then apply 2D Fourier transformed to b) and get c), the red dots are indications of the Bragg peaks of the square lattice. d), \textbf{q}-space QPI map cropped within the Bragg peaks for better visibility of low-\textbf{q} features}
+	\label{fig:ch5_ldos}
+\end{figure}
+
+We now make a direct comparison between the $\textbf{q}$-space \ac{QPI}, \ac{CEC} and \ac{JDOS}, as shown in Fig \ref{fig:ch5_compare}. We picked two $\textbf{q}$-vectors $\textbf{q}_1$ and $\textbf{q}_2$ in the $\textbf{q}$-space \ac{QPI}, by transferring them one to one into the \ac{CEC}, we can map two sets of initial and final momentum states. For each $\textbf{q}$-vector, we have $\textbf{q} = \textbf{k}_2 - \textbf{k}_1$. 
+\begin{figure}
+	\includegraphics[width=1.1 \textwidth]{Ch5_QPI_JDOS.png} 
+	\centering
+	\caption{Interpretation of scattering vectors in \textbf{q}-space QPI map. Two \textbf{q}-vectors at horizontal and diagonal directions are drawn from the center to the high-intensity spots in a). b) is the \ac{CEC} in \textbf{k}-space at the same energy as a), states are binary in the \ac{CEC}, the darker gray indicates the presence of a state and lighter gray indicates the absence of a state. 2 arrowed lines of the corresponding colors indicates the scattering process from state in $\textbf{k}_1$ to state in $\textbf{k}_2$. c).\ac{JDOS} at the same energy, arrowed lines are in-scale with the lines in a) and b).}
+	\label{fig:ch5_compare}
+\end{figure}
+
+There are two features in $\textbf{q}$-space \ac{QPI} that are worth mentioning: First, nested \ac{CEC} creates more concentrated intensity in $\textbf{q}$-space \ac{QPI}. Nesting is a term given to an energy iso-surface where there are surfaces with even spacing. In a two-dimensional system, we say a \ac{CEC} is nested when we have pairs of lines that have the same separations; Scattering between the states living on these lines gives the same $\textbf{q}$-vector and thus a concentrated intensity there. We can see this effect more clearly with a comparison as shown in Fig \ref{fig:ch5_compare}; Compare a) and c), we have a less faceted contour in c), and the resulting $\textbf{q}$-space \ac{QPI} has more spread out intensity. 
+
+\begin{table}
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Energy (eV) & Width ($\pi/a$) & Width Uncertainty ($\pi/a$) & R-squared \\
+		\hline
+		-0.5 & 0.0661 & 0.0044 & 0.9689 \\
+		-0.4 & 0.0496 & 0.0040 & 0.9715 \\
+		-0.3 & 0.0383 & 0.0034 & 0.9724 \\
+		-0.2 & 0.0300 & 0.0028 & 0.9767 \\
+		-0.1 & 0.0274 & 0.0032 & 0.9814 \\
+		\hline
+		0.075 & 0.0201 & 0.0014 & 0.9964 \\
+		0.1 & 0.0328 & 0.0145 & 0.8706 \\
+		0.125 & 0.0214 & 0.0013 & 0.9958 \\
+		0.2 & 0.0286 & 0.0065 & 0.9350 \\
+		0.3 & 0.0311 & 0.0048 & 0.9635 \\
+		0.4 & 0.0392 & 0.0051 & 0.9544 \\
+		0.5 & 0.0516 & 0.0062 & 0.9451 \\
+		\hline
+	\end{tabular}
+	\caption{Horizontal profile fitting results showing the width and its uncertainty (in units of $\pi/a$) along with the R-squared values for both positive and negative bias energies.}
+	\label{tab:qpi_fit_results_combined}
+\end{table}
+
+Secondly, the quasiparticle lifetime decreases as we move away from the Fermi surface. Given the momentum dependence of $\operatorname{Im}{\Sigma_{\textbf{k},\sigma}(\omega+i \eta)}$ is negligible, which is usually true, the spectral function is a simple Lorentzian in $\textbf{k}$-space of width $\operatorname{Im}{\Sigma}$ \cite{wolfleQuasiparticlesCondensedMatter2018}; Therefore, the \textbf{q}-space quasiparticle peak is also a Lorentzian with its width approximated at 2$\operatorname{Im}{\Sigma}$. Note that $\operatorname{Im}{\Sigma}$ is inversely proportional to the quasiparticle lifetime $\tau_{life}$, thus, we can probe $\tau_{life}$ by analyzing the broadening of the quasiparticle peaks in $\textbf{q}$-space \ac{QPI} at different energies. As shown in \ref{fig:ch5qplifetime}, we first take a horizontal line profile on the \textbf{q}-space \ac{QPI} that goes through the center, then fit a Lorentzian function on the quasiparticle peak region shown in the green dots in b), we can extract the peak width with its uncertainty. We then apply this process through different energy slices, the results are presented in Table \ref{tab:qpi_fit_results_combined} and plotted in c) of Fig. \ref{fig:ch5qplifetime}. All fittings possess a R-square value greater than 0.90 except for $E=0.1$, we thus marked the datapoint red in the plot. Quasiparticle peaks broadened as the energy deviated from the Fermi energy, however, within the energy range investigated, we still observe very sharp quasiparticle peaks, indicating long-lived and well-defined quasiparticles. 
+
+
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{Ch5_nesting.png} 
+	\centering
+	\caption{Comparison of nesting effect on 2 energy slices of \textbf{q}-space QPI map, a more faceted \ac{CEC} like a) gives a more concentrated intensity in the QPI map b), compare to the unfaceted \ac{CEC} like c) gives a more spread out intensity in d).}
+	\label{fig:ch5_nest}
+\end{figure}
+
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{Ch5_qp_lifetime.pdf} 
+	\centering
+	\caption{Fitting quasiparticle peaks with Lorentzian and extract the width at different energy levels. a)-b) An illustration of the process, we first extract the horizontal profile of the QPI map, then we identify two peaks in the profile, by symmetry argument, we fit one peak with Lorentzian function. c) QPI peak width across different energies, we see that as energy moves away from the Fermi level, the peaks broaden and $\tau_{life}$ decreases.}
+	\label{fig:ch5qplifetime}
+\end{figure}
+
+Finally, it is important to note that different defect configurations will result in different \ac{QPI} patterns. This is due to gauge-field phase sensitivity in \ac{QPI}. As a scattering process, the quasiparticle state not only exchanged momentum with the impurity, it also picks up an additional phase $\delta$ during the process; Thus, certain QPI peaks can be suppressed if the phase shift due to scattering mismatches the phase difference between the two states. Moreover, this relative phase depends on the nature of the defects, similar to the refractive phase picked up by photon changes for different interface material, different defects will suppress \ac{QPI} intensities in different ways, give arise to different \ac{QPI} patterns. 
+%todo: maybe we can talk about the phase effect from impurity configuration. 
 
 
 %Estimating the multidefect result with convolution approach inherently makes assumption into the independent nature of scattering, which is only true for weak scattering and sparse impurity distributions. 
 
 
-%\input{Ch.5.2}
+\input{Ch.5.2}
