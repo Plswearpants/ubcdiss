@@ -30,3 +30,14 @@
 	language  = {German},
 	note      = {In German}
 }
+
+@article{leonard1972,
+	author = {Rodberg, Leonard},
+	year = {1972},
+	month = {01},
+	pages = {},
+	title = {Introduction to the Quantum Theory of Scattering},
+	volume = {40},
+	journal = {American Journal of Physics - AMER J PHYS},
+	doi = {10.1119/1.1986746}
+}
