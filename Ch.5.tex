@@ -243,14 +243,14 @@ and therefore:
 And Equation (\ref{singleldos}) can be evaluated numerically with Equation (\ref{blgf}) and Equation (\ref{Isq}).
 
 \subsubsection{Simulation result}
-A repository for \ac{LDOS} simulation on the model described above is made and shared on this \hyperlink{https://github.com/Plswearpants/QPI_simulation}{github repository}
+A repository for \ac{LDOS} simulation on the model described above is made and shared on this \href{https://github.com/Plswearpants/QPI\_simulation}{github repository}.
 
 The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $128x128$ in real space covering a $20x20$ lattice space indicated in orange dots. We can implant defects on different lattice sites, indicated in green dots. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch5_QPIsim_demo.pdf}
-	\caption{schematics for the simulation, in the actual calculation, we place defect at locations defined by lattice points, and compute $\delta\rho(\textbf{x},\omega)$ at each spatial grid point (128 by 128 here)}
+	\caption{schematics for the simulation, in the actual calculation, we place defect at locations defined by lattice points indicated as green dots, and compute $\delta\rho(\textbf{x},\omega)$ at each spatial grid point (128 by 128 here)}
 	\label{fig:ch5_qpisim_demo}
 \end{figure}
 
@@ -258,60 +258,66 @@ We first performed a single defect calculation, where we place the defect at the
 
 Typical \ac{LDOS} maps at different energy are shown in \ref{fig:ch5_single_scattering}, the figures are plotted on a gray scale image with the contrast indicating the level of \ac{LDOS} modulation. From the figures, we can make several observations:
 \begin{itemize}
-	\item The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy.
-	\item 2. The modulation is strongly correlated with the underlying lattice corrugation. 
-	\item 3. Although the feature is decaying away from the defect location, the wave extend far into the space, indicating a relatively long life-time of this quasiparticle. And the life-time is especially long around the Fermi level, this aligns with our understanding about the Landau quasiparticle. 
-	\item 4. The pattern persists further for patterns near the Fermi level. 
+	\item 1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy. 
+	\item 2. The wave pattern extends far into the space, we will show later that this indicating a relatively long life-time of this quasiparticle. 
+	\item 3. The wave pattern persists furtherest in space near the Fermi level, at $E=-0.05eV$, the diagonal wave extended all the way to the boundary of the image, which correspond to a length of more than 25 lattice sites. 
 \end{itemize}
-
-
-
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Ch5_singe_defect.png} % Replace with your image file
-	\caption{$\delta\rho(\textbf{x},\omega)$ for single defect at the center of the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. }
+	\includegraphics[width=\textwidth]{ch5_singe_simulation.pdf} % Replace with your image file
+	\caption{$\delta\rho(\textbf{x},\omega)$ for single defect at the center of the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
 	\label{fig:ch5_single_scattering}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Ch5_multi_defect.png} 
-	\caption{$\delta\rho(\textbf{x},\omega)$ for 5 randomly placed defect on the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. }
+	\includegraphics[width=\textwidth]{ch5_multi_simulation.pdf} 
+	\caption{$\delta\rho(\textbf{x},\omega)$ for 5 randomly placed defect on the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
 	\label{fig:ch5_multi_scattering}
 \end{figure}
 
-We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, 5 defect locations are randomly selected on the lattice points, we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
+We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, where 5 defect locations are randomly selected on the lattice points. It is worth noting that multi-defect scattering calculation is relatively expensive as the size of T matrix grows as the square of defect numbers, later in Ch.5.3.2 we will show that we could approximate the multi-defect T matrix with only its diagonal terms with some corrections, making the calculation time linear with the defect numbers.  
+%we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
 
 
 \subsection{Interpretation of QPI}
-Quasiparticle-impurity scatterings give rise to \ac{QPI}. Interpretations of \ac{QPI} can be quite involved in real materials, but all the factors to consider can be characterized into two aspects: 1. the detailed quasiparticle states, and 2. the characteristics of the impurity. We will illustrate these aspects with the system we established for the simulation above. 
+Quasiparticle-impurity scatterings give rise to \ac{QPI}. Interpretations of \ac{QPI} can be quite involved in real materials, but all the factors to consider can be characterized into two aspects: 1. the detailes of quasiparticle states, and 2. the characteristics of the impurity. We will illustrate these aspects with the system we established for the simulation above. 
 
 As mentioned at the start of Ch5.2, quasiparticles carry the same quantum numbers ($\textbf{k}$,$\sigma$) as the bare particles. Therefore, quasiparticle states are dictated by the system's band structure in an electronic system. For the 2D Tight-binding model with only nearest-neighbor hopping that we considered, the energy dispersion $\epsilon_{\mathbf{k}}$ is a parabola in $k_x$ and $k_y$ as denoted in \ref{E_k} and plotted in \ref{fig:ch5_bs} a). In an elastic quasiparticle-impurity scattering process, given our impurity is non-magnetic, we have the incoming state $\Psi(\textbf{k}_i,\sigma)$ and outgoing state $\Psi(\textbf{k}_f,\sigma)$, where $E_{\textbf{k}_f} = E_{\textbf{k}_i}$. To enforce elastic scattering, we can take a constant energy slice at a given energy; this reveals all possible states at that energy. This slice is normally referred to as a \ac{CEC} of that particular energy. While real-life materials can possess more complicated selection rules, in a single band situation as we formulated here, any state on the \ac{CEC} can be an initial or a final state in the scattering process. Mathematically, to describe the scattering vector $\textbf{q} = \textbf{k}_f -\textbf{k}_i$, we can take a self-convolution of the \ac{CEC}, which we can easily calculate and plot; This self-convolution is often referred as the \ac{JDOS} at the corresponding energy. An example is given at an energy close to the Fermi level in b),c) of Fig \ref{fig:ch5_bs}. 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Ch5_BS_JDOS.png} 
+	\includegraphics[width=\textwidth]{Ch5_BS_JDOS.pdf} 
 	\caption{Band structure of 2D tight-binding square lattice with nearest neighbor hopping, a) 3D Energy dispersion in $\textbf{k}_x$ and $\textbf{k}_y$, b) Constant energy contour and c) Joint density of states at $E=0.075eV$}
 	\label{fig:ch5_bs}
 \end{figure}
 
-The real space \ac{LDOS} modulation can now be interpreted, and we illustrate it with \ref{fig:ch5_ldos}. First, to focus on the interference ripples, we suppress the features from the defect itself by applying a Gaussian mask at the defect location, a)-b). Then, we apply the Fourier transform to get the \ac{QPI} map in reciprocal space as shown in c); the red dots in c) are the Bragg peaks of the system. As we know, the range in reciprocal space is inversely proportional to the real space resolution. Longer $\textbf{q}-space$ features correspond to high-frequency features in the real space. In most materials, the wavelengths of ordering are confined by the lattice parameter. Therefore, a common practice is to truncate and keep the feature within the Bragg peaks; this gives us a closer look at the features, as shown in d). 
+The real space \ac{LDOS} modulation can now be interpreted, and we illustrate it with \ref{fig:ch5_ldos}. First, to focus on the interference ripples, we suppress the features from the defect itself by applying a Gaussian mask at the defect location, a)-b). Then, we apply the Fourier transform to get the \ac{QPI} map in reciprocal space as shown in c); the red dots in c) are the Bragg peaks of the system. Encoded with Fourier transform, the range in reciprocal space is inversely proportional to the real space resolution. High $\textbf{q}-space$ features correspond to high-frequency features in the real space, and in most cases, scattering vectors are confined in first Brillouin zone. However, there are cases like Umklapp scatterings that presents wavevectors that extend beyond the Bragg peaks, these features are usually low in intensity as they are second-order(or more) effect. Therefore, a common practice is to truncate and keep the feature within the Bragg peaks; this gives us a closer look at the features, as shown in d). You might be wondering why then we take grid map with spatial resolution denser than the lattice parameter; This is because for the reason given Nyquist–Shannon Sampling Theorem, we need to take grid fine enough to see the Bragg peaks; Thus, in practice, we take at least two pixels per lattice site in each direction.  
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Ch5_LDOS_QPI.png} 
+	\includegraphics[width=\textwidth]{Ch5_LDOS_QPI.pdf} 
 	\caption{Transfer QPI map from real-space to \textbf{q}-space, an example given at $E=0.075eV$, we first suppress the defect feature with a Gaussian mask at the red dot in a), this gives us b). We then apply 2D Fourier transformed to b) and get c); the red dots are indications of the Bragg peaks of the square lattice. d), \textbf{q}-space QPI map cropped within the Bragg peaks for better visibility of low-\textbf{q} features}
 	\label{fig:ch5_ldos}
 \end{figure}
 
-We now make a direct comparison between the $\textbf{q}$-space \ac{QPI}, \ac{CEC} and \ac{JDOS}, as shown in Fig \ref{fig:ch5_compare}. We picked two $\textbf{q}$-vectors $\textbf{q}_1$ and $\textbf{q}_2$ in the $\textbf{q}$-space \ac{QPI} by transferring them one to one into the \ac{CEC}, we can map two sets of initial and final momentum states. For each $\textbf{q}$-vector, we have $\textbf{q} = \textbf{k}_2 - \textbf{k}_1$. 
+We now take a closer look at how the scattering wave vectors manifest in real and momentum spaces. As shown in Fig \ref{fig:ch5_compare}, we first measured the real-space wavelength $\lambda_d$ and $\lambda_h$ on the diagonal and horizontal direction, respectively; We then transfer the wavelength into \textbf{q}-space and draw the corresponding $\textbf{q}_d$ and $\textbf{q}_h$ in b). By transferring them one to one into the \ac{CEC} in c), we can map two sets of initial and final momentum states. For each $\textbf{q}$-vector, we have $\textbf{q} = \textbf{k}^2 - \textbf{k}^1$ and the corresponding scattering vector can also be found in the \ac{JDOS} at the same energy. 
 \begin{figure}
-	\includegraphics[width=1.1 \textwidth]{Ch5_QPI_JDOS.png} 
+	\includegraphics[width=1.1 \textwidth]{Ch5_QPI_JDOS.pdf} 
 	\centering
-	\caption{Interpretation of scattering vectors in \textbf{q}-space QPI map. Two \textbf{q}-vectors at horizontal and diagonal directions are drawn from the center to the high-intensity spots in a). b) is the \ac{CEC} in \textbf{k}-space at the same energy as a), states are binary in the \ac{CEC}, the darker gray indicates the presence of a state, and lighter gray indicates the absence of a state. 2 arrowed lines of the corresponding colors indicates the scattering process from state in $\textbf{k}_1$ to state in $\textbf{k}_2$. c).\ac{JDOS} at the same energy, arrowed lines are in-scale with the lines in a) and b).}
+	\caption{Illustration of scattering vectors in both real-space grid map and \textbf{q}-space QPI map, and comparison with the band structure and JDOS. a) horizontal(colored in cyan) and diagonal(colored in magenta) profile on the grid map, the real space wavelengths $\lambda$s are calculated by mapping the peaks in profile as shown in the insets, $\lambda_d = \frac{X_{d2}-X_{d1}}{5} \approx 1.53 a$, $\lambda_h = \frac{X_{h2}-X_{h1}}{5} \approx 1.21 a$. We then draw these 2 vectors in \textbf{q}-space in b), we can see the 2 corresponding vectors points at the high-intensity contour. We then transfer these 2 vector \textbf{k}-space in c) and we found that they corresponds to states on the \ac{CEC}, which correspond to the same \textbf{q}-vectors in the \ac{JDOS} in d).}
 	\label{fig:ch5_compare}
 \end{figure}
 
-There are two features in $\textbf{q}$-space \ac{QPI} that are worth mentioning: First, nested \ac{CEC} creates more concentrated intensity in $\textbf{q}$-space \ac{QPI}. Nesting is a term given to an energy iso-surface where there are surfaces with even spacing. In a two-dimensional system, we say a \ac{CEC} is nested when we have pairs of lines that have the same separations; Scattering between the states living on these lines gives the same $\textbf{q}$-vector, and thus a concentrated intensity there. We can see this effect more clearly with Comparison as shown in Fig \ref{fig:ch5_compare}; Compare a) and c), we have a less faceted contour in c), and the resulting $\textbf{q}$-space \ac{QPI} has more spread out intensity. 
+There are two features in $\textbf{q}$-space \ac{QPI} that are worth mentioning: First, nested \ac{CEC} creates more concentrated intensity in $\textbf{q}$-space \ac{QPI}. Nesting is a Fermiology term that refers to situations where relatively large portions of the Fermi surface (or \ac{CEC}) can be connected by the same scattering wavevector \textbf{q}; As many initial and final states differ by the same wavevector, the scattering is strongly enhanced at that wavevector. This results in high \textbf{q}‐space overlap and thus one observes strong intensity (peaks) at the nesting wavevectors. 
+
+In a two-dimensional system, a \ac{CEC} is nested when we have pairs of lines that have the same separation. A schematic is shown in Fig. \ref{fig:ch5_schema_nesting} to illustrate nesting effect, for a square \ac{CEC}, scattering between many states on the parallel lines can be described by the red arrows, and in b), the log-scale self-convolution of a), this correspond to the intensity concentration at the red arrow. While for a circle like c), nesting is not presented, and thus the intensity of the self-convolution map d) is more spread. This can also be seen in the simulation data as shown in Fig. \ref{fig:ch5_nest}; a) and c) are 2 \ac{CEC} at two different energies that present different shapes. Compared with the circle-like shape c), a) can be approximated as a square, and thus has a more concentrated intensity in the corresponding \textbf{q}-space QPI map.
+
+\begin{figure}
+	\includegraphics[width= \textwidth]{Ch5_nesting_schematic.pdf} 
+	\centering
+	\caption{Schematic to illustrate the nesting effect. a),c) are two schematic \ac{CEC}s with different shapes; black pixels represent the occupied states, number of states on a) and c) are made the same as ensured by the same circumferences. b) and d) are corresponding log-scaled \ac{JDOS}, with clear difference in the spread of the intensity, b) has a much concentrated intensity due to nesting compared to d).}
+	\label{fig:ch5_schema_nesting}
+\end{figure}
 
 \begin{table}
 	\centering
@@ -343,9 +349,9 @@ Secondly, the quasiparticle lifetime decreases as we move away from the Fermi su
 
 
 \begin{figure}
-	\includegraphics[width=\textwidth]{Ch5_nesting.png} 
+	\includegraphics[width=\textwidth]{Ch5_nesting.pdf} 
 	\centering
-	\caption{Comparison of nesting effect on two energy slices of \textbf{q}-space QPI map, a more faceted \ac{CEC} like a) gives a more concentrated intensity in the QPI map b), compared to the unfaceted \ac{CEC} like c) gives a more spread out the intensity in d).}
+	\caption{Comparison of nesting effect on two energy slices of \textbf{q}-space QPI map. Nesting is presented in the square-like \ac{CEC} a), and gives a more concentrated intensity in the QPI map b). While a circle-like \ac{CEC} like c) gives a more spread out the intensity in d).}
 	\label{fig:ch5_nest}
 \end{figure}
 
