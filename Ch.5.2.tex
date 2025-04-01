@@ -61,6 +61,20 @@ This approximation was then extended to the strong scattering case by Philipp et
 It is further noted that the contribution of the phase can be piratically canceled if we sum over all configurations of randomly distributed defects, which correspond to an infinitely large scanning surface, which can never be achieved. However, a decreased influence of this phase noise can be seen if we increase the density of the defects, as illustrated in Fig \ref{fig:ch5_changephasenoise}. This is because the patterns created by the phase noise become more fine-grained and can eventually be seen as featureless, similar to the random distribution of noise.  
 %todo: verify whether this is true with more literature reviews. 
 
+\subsubsection{Phases in QPI}
+As discussed in the last section, our ability to probe the quasiparticle band structure is hindered by the pattern in \textbf{q}-space from the multi-defect interference effect. Thus, we portray this pattern as the phase noise. However, we should clarify that this multi-defect phase effect contains information about the relative spatial distribution of the defects and, thus, is not strictly noise. A more neutral name for this effect is speckles. In laser physics, when an optically rough object is illuminated with coherent laser light, and the diffusely backscattered light is collected on a screen, the backscattered light will create an interference pattern on this screen, and this interference pattern is referred to as the speckles\cite{ReviewLaserSpeckle}.
+
+There are also many sources of phase in \ac{STM} and \ac{QPI} measurement; more specifically, phases can be introduced in 3 ways: 
+\begin{itemize}
+	\item Different defect potentials can introduce different phases during the scattering process; this typically selects certain channels of scatterings and produces different QPI patterns around different defects. \cite{chenAtomicallyResolvedDefectEngineering2024}
+	\item Different spatial distributions of the defects, as we discussed extensively above. 
+	\item When performing FFT power spectrum, a phase term is eliminated, making the \textbf{q}-space \ac{QPI} invariant under real-space translations.
+\end{itemize}
+
+Therefore, the name speckles is not only more accurate and neutral in describing the effect but also more precise in distinguishing it from phase effects from other sources. Thus, we will abandon the colloquial term 'Phase noise' and use 'Speckle' to describe this multi-defect interference effect. 
+
+Now, with the proper setup of this challenge to resolve quasiparticle band structure with speckles, we will introduce a method that addresses it. 
+
 \begin{figure}
 	\includegraphics[width=0.7 \textwidth]{Ch5_changephasenoise.pdf} 
 	\centering

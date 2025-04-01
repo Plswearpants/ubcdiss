@@ -86,20 +86,20 @@ where
 \begin{equation}\label{energy}
 	\epsilon^*_{\mathbf{k}} = \frac{k^*_F(k-k^*_F)}{m^*}
 \end{equation}
-We can then plug \ref{energy} to \ref{eq2} and get: 
+We can then plug Equation \ref{energy} to Equation \ref{eq2} and get: 
 
 \begin{equation}
 	\frac{m}{m^*} = Z(1 + \frac{m}{k^*_F}\frac{\partial}{\partial k}\operatorname{Re}\Sigma(k,0)|_{k = k^*_{F}})
 \end{equation}
 
-We can see that by introducing the retarded self-energy that encodes the interaction effects on single particles, we can describe the system near the modified Fermi momentum with quasiparticles. These quasiparticles are characterized by an effective mass $m^*$ that is dictated by the real part of self-energy and a lifetime $\tau_{life}$ that is inversely proportional to the imaginary part of self-energy. Providing the imaginary part of self-energy very small, we have long lived quasiparticles, and hence we can write the Spectral function from \ref{gr_full}:
+We can see that by introducing the retarded self-energy that encodes the interaction effects on single particles, we can describe the system near the modified Fermi momentum with quasiparticles. These quasiparticles are characterized by an effective mass $m^*$ that is dictated by the real part of self-energy and a lifetime $\tau_{life}$ that is inversely proportional to the imaginary part of self-energy. Providing the imaginary part of self-energy very small, we have long lived quasiparticles, and hence we can write the Spectral function from Equation \ref{gr_full}:
 \begin{equation}
 	\label{eq.akw}
 	A(\textbf{k},\omega) = -2\operatorname{Im}G^R(\textbf{k}, \omega) 
 	\approx 2\pi Z\delta(\omega-\epsilon^*_\textbf{k}) 
 \end{equation}
 
-This indicate a sharp peak at $\omega=\epsilon^*_\textbf{k}$, thus resembles the spectral function of a Fermi gas, and the pole is what we call the quasiparticle in the Fermi liquid theory. However, we can see that \ref{eq.akw} does not fulfill the normalization rule: 
+This indicate a sharp peak at $\omega=\epsilon^*_\textbf{k}$, thus resembles the spectral function of a Fermi gas, and the pole is what we call the quasiparticle in the Fermi liquid theory. However, we can see that Equation \ref{eq.akw} does not fulfill the normalization rule: 
 \begin{equation}
 	\int_{-\infty}^{+\infty} \frac{d\omega}{2\pi} A(\textbf{k},\omega) = 1, 
 \end{equation}
@@ -151,7 +151,7 @@ where $k$ is the crystal momentum of the quasiparticle. And the electron \ac{LDO
 \label{eq:ldos}
 \end{equation}
 
-where  $\epsilon(k)$ is the renormalized energy dispersion of the Bloch state for different $\vec{k}$; Remark: from now on all the renormalized energy will be write directly as $\epsilon(k)$ unless otherwise mentioned. And if we plug Equation (\ref{eq:bloch}) into Equation (\ref{eq:ldos}), we see that $\text{LDOS}$ is translationally invariant at all Bravais-lattice-equivalent points. Thus why in ideal case, real space imaging technique like \ac{STM}, can not be used to measure $\epsilon(k)$. 
+where  $\epsilon(k)$ is the renormalized energy dispersion of the Bloch state for different $\vec{k}$; Remark: from now on all the renormalized energy will be write directly as $\epsilon(k)$ unless otherwise mentioned. And if we plug Equation \ref{eq:bloch} into Equation \ref{eq:ldos}, we see that $\text{LDOS}$ is translationally invariant at all Bravais-lattice-equivalent points. Thus why in ideal case, real space imaging technique like \ac{STM}, can not be used to measure $\epsilon(k)$. 
 
 However, crystal imperfections as discussed in Ch.4 can help us introduce a momentum texture to the $\text{LDOS}(E, \vec{r})$. In low temperature STM, where the phonon modes and other excitation are rare or absent, lattice imperfections such as point defects can cause elastic scattering which mixes electronic eigenstates at different $\vec{k}$ but at the same energy, the interference between the incoming and outgoing wave forms a "standing wave" that act as a real space modulation in $\text{LDOS}(E)$ described as a impurity-induced Friedel oscillation\cite{benaFriedelOscillationsDecoding2016}. This spatial modulation in $\text{LDOS}$ is the QPI pattern that we refer to in STM studies. We can perform \ac{STS} measurement on the region that presents this QPI pattern, then perform Fourier transformation to the STS, we can also view this QPI pattern in the momentum space, the q-space QPI pattern is directly related to the quasiparticle band strucutre. This whole process of detecting QPI pattern and analyze it in momentum space is what we call a QPI measurement. 
 
@@ -186,7 +186,7 @@ Now we consider our measurable \ac{LDOS} $\rho(\mathbf{x},\omega)$:
 \label{ldos}
 \end{equation}
 where $\hat{G}_0$ and $\hat{T}$ are the \ac{BLGF} and the scattering T-matrix, respectively, according to the pertubative scattering theory. Since we are interested in the modulation of \ac{LDOS} caused by the defects, our actual observable is $\delta \rho(\mathbf{x}, \omega) \equiv \rho(\mathbf{x}, \omega) - \rho^{(0)}(\mathbf{x}, \omega)
-$, which is the second term in Equation (\ref{ldos}).
+$, which is the second term in Equation \ref{ldos}.
 To start, we need to compute the matrix element of \ac{BLGF} $G_0(\mathbf{x},\mathbf{x'},\omega)$:
 \begin{align}
 	G_0(\mathbf{x},\mathbf{x}';\omega) &= \langle \mathbf{x} | \hat{G}_0(\omega) | \mathbf{x}' \rangle, \\
@@ -196,7 +196,7 @@ where
 	\hat{G}_0(\omega) &= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - \hat{H}_0} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert \nonumber \\ 
 	&= \int_{\text{BZ}} \mathrm{d}\mathbf{k} \, \frac{1}{\omega - E_\mathbf{k}} \lvert \mathbf{k} \rangle \langle \mathbf{k} \rvert,
 \end{align}
-where we have $\omega= \omega + i\epsilon$ to indicate the retarded Green's function and to capture the analytic continuation. Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation (\ref{E_k}) in, we get: 
+where we have $\omega= \omega + i\epsilon$ to indicate the retarded Green's function and to capture the analytic continuation. Then we remind ourselves that in 2D, $\langle \mathbf{k}|\mathbf{x} \rangle = (\frac{1}{\sqrt{2\pi}})^2 e^{-i\mathbf{k}\mathbf{x}}$, and plug the energy dispersion Equation \ref{E_k} in, we get: 
 \begin{align}
 	G_0(\mathbf{x}, \mathbf{x}') = 
 	\frac{1}{(2\pi)^2} \frac{1}{2t} 
@@ -240,12 +240,12 @@ and therefore:
 \begin{align}
 	\delta\rho(\mathbf{x},\omega) &= - \frac{1}{\pi} \operatorname{Im}(\frac{G_0^2(\mathbf{x},\mathbf{x_d};\omega)}{E_d^{-1} - G_0(\mathbf{x_d},\mathbf{x_d};\omega)}) \label{singleldos}. 
 \end{align}
-And Equation (\ref{singleldos}) can be evaluated numerically with Equation (\ref{blgf}) and Equation (\ref{Isq}).
+And Equation \ref{singleldos} can be evaluated numerically with Equation (\ref{blgf}) and Equation (\ref{Isq}).
 
 \subsubsection{Simulation result}
 A repository for \ac{LDOS} simulation on the model described above is made and shared on this \href{https://github.com/Plswearpants/QPI\_simulation}{github repository}.
 
-The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $128x128$ in real space covering a $20x20$ lattice space indicated in orange dots. We can implant defects on different lattice sites, indicated in green dots. 
+The setup of simulation is illustrated in Fig. \ref{fig:ch5_qpisim_demo}, a grid of $128x128$ in real space covering a $20x20$ lattice space indicated in orange dots. We can implant defects on different lattice sites, indicated in green dots. 
 
 \begin{figure}
 	\centering
@@ -256,7 +256,7 @@ The setup of simulation is illustrated in \ref{fig:ch5_qpisim_demo}, a grid of $
 
 We first performed a single defect calculation, where we place the defect at the center of a square lattice with $51\times51$ sites, $\delta\rho$ was numerically computed at a $301\times301$ grid chosen to overlap with the square lattice, with defect energy $E_d$, hopping parameter $t$, onsite energy $E_0$. In total, 41 energy slices are computed in an energy range of $(-0.5, 0.5)V$.  
 
-Typical \ac{LDOS} maps at different energy are shown in \ref{fig:ch5_single_scattering}, the figures are plotted on a gray scale image with the contrast indicating the level of \ac{LDOS} modulation. From the figures, we can make several observations:
+Typical \ac{LDOS} maps at different energy are shown in Fig. \ref{fig:ch5_single_scattering}, the figures are plotted on a gray scale image with the contrast indicating the level of \ac{LDOS} modulation. From the figures, we can make several observations:
 \begin{itemize}
 	\item 1. The \ac{LDOS} modulation is featured by wave-like pattern similar to the Friedel oscillation we seen, and the pattern varies with energy. 
 	\item 2. The wave pattern extends far into the space, we will show later that this indicating a relatively long life-time of this quasiparticle. 
@@ -277,14 +277,14 @@ Typical \ac{LDOS} maps at different energy are shown in \ref{fig:ch5_single_scat
 	\label{fig:ch5_multi_scattering}
 \end{figure}
 
-We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, where 5 defect locations are randomly selected on the lattice points. It is worth noting that multi-defect scattering calculation is relatively expensive as the size of T matrix grows as the square of defect numbers, later in Ch.5.3.2 we will show that we could approximate the multi-defect T matrix with only its diagonal terms with some corrections, making the calculation time linear with the defect numbers.  
+We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, where 5 defect locations are randomly selected on the lattice points. It is worth noting that multi-defect scattering calculation is relatively expensive as the size of T matrix grows as the square of defect numbers, later in Ch.5.3.2 we will show that we could approximate the multi-defect T matrix with only its diagonal terms with some corrections, making the calculation time linear with the defect numbers.  
 %we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
 
 
 \subsection{Interpretation of QPI}
 Quasiparticle-impurity scatterings give rise to \ac{QPI}. Interpretations of \ac{QPI} can be quite involved in real materials, but all the factors to consider can be characterized into two aspects: 1. the detailes of quasiparticle states, and 2. the characteristics of the impurity. We will illustrate these aspects with the system we established for the simulation above. 
 
-As mentioned at the start of Ch5.2, quasiparticles carry the same quantum numbers ($\textbf{k}$,$\sigma$) as the bare particles. Therefore, quasiparticle states are dictated by the system's band structure in an electronic system. For the 2D Tight-binding model with only nearest-neighbor hopping that we considered, the energy dispersion $\epsilon_{\mathbf{k}}$ is a parabola in $k_x$ and $k_y$ as denoted in \ref{E_k} and plotted in \ref{fig:ch5_bs} a). In an elastic quasiparticle-impurity scattering process, given our impurity is non-magnetic, we have the incoming state $\Psi(\textbf{k}_i,\sigma)$ and outgoing state $\Psi(\textbf{k}_f,\sigma)$, where $E_{\textbf{k}_f} = E_{\textbf{k}_i}$. To enforce elastic scattering, we can take a constant energy slice at a given energy; this reveals all possible states at that energy. This slice is normally referred to as a \ac{CEC} of that particular energy. While real-life materials can possess more complicated selection rules, in a single band situation as we formulated here, any state on the \ac{CEC} can be an initial or a final state in the scattering process. Mathematically, to describe the scattering vector $\textbf{q} = \textbf{k}_f -\textbf{k}_i$, we can take a self-convolution of the \ac{CEC}, which we can easily calculate and plot; This self-convolution is often referred as the \ac{JDOS} at the corresponding energy. An example is given at an energy close to the Fermi level in b),c) of Fig \ref{fig:ch5_bs}. 
+As mentioned at the start of Ch5.2, quasiparticles carry the same quantum numbers ($\textbf{k}$,$\sigma$) as the bare particles. Therefore, quasiparticle states are dictated by the system's band structure in an electronic system. For the 2D Tight-binding model with only nearest-neighbor hopping that we considered, the energy dispersion $\epsilon_{\mathbf{k}}$ is a parabola in $k_x$ and $k_y$ as denoted in Equation \ref{E_k} and plotted in Fig. \ref{fig:ch5_bs} a). In an elastic quasiparticle-impurity scattering process, given our impurity is non-magnetic, we have the incoming state $\Psi(\textbf{k}_i,\sigma)$ and outgoing state $\Psi(\textbf{k}_f,\sigma)$, where $E_{\textbf{k}_f} = E_{\textbf{k}_i}$. To enforce elastic scattering, we can take a constant energy slice at a given energy; this reveals all possible states at that energy. This slice is normally referred to as a \ac{CEC} of that particular energy. While real-life materials can possess more complicated selection rules, in a single band situation as we formulated here, any state on the \ac{CEC} can be an initial or a final state in the scattering process. Mathematically, to describe the scattering vector $\textbf{q} = \textbf{k}_f -\textbf{k}_i$, we can take a self-convolution of the \ac{CEC}, which we can easily calculate and plot; This self-convolution is often referred as the \ac{JDOS} at the corresponding energy. An example is given at an energy close to the Fermi level in b),c) of Fig. \ref{fig:ch5_bs}. 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch5_BS_JDOS.pdf} 
@@ -292,7 +292,7 @@ As mentioned at the start of Ch5.2, quasiparticles carry the same quantum number
 	\label{fig:ch5_bs}
 \end{figure}
 
-The real space \ac{LDOS} modulation can now be interpreted, and we illustrate it with \ref{fig:ch5_ldos}. First, to focus on the interference ripples, we suppress the features from the defect itself by applying a Gaussian mask at the defect location, a)-b). Then, we apply the Fourier transform to get the \ac{QPI} map in reciprocal space as shown in c); the red dots in c) are the Bragg peaks of the system. Encoded with Fourier transform, the range in reciprocal space is inversely proportional to the real space resolution. High $\textbf{q}-space$ features correspond to high-frequency features in the real space, and in most cases, scattering vectors are confined in first Brillouin zone. However, there are cases like Umklapp scatterings that presents wavevectors that extend beyond the Bragg peaks, these features are usually low in intensity as they are second-order(or more) effect. Therefore, a common practice is to truncate and keep the feature within the Bragg peaks; this gives us a closer look at the features, as shown in d). You might be wondering why then we take grid map with spatial resolution denser than the lattice parameter; This is because for the reason given Nyquist–Shannon Sampling Theorem, we need to take grid fine enough to see the Bragg peaks; Thus, in practice, we take at least two pixels per lattice site in each direction.  
+The real space \ac{LDOS} modulation can now be interpreted, and we illustrate it with Fig. \ref{fig:ch5_ldos}. First, to focus on the interference ripples, we suppress the features from the defect itself by applying a Gaussian mask at the defect location, a)-b). Then, we apply the Fourier transform and take the power spectrum to get the \ac{QPI} map in reciprocal space as shown in c); the red dots in c) are the Bragg peaks of the system. Encoded with Fourier transform, the range in reciprocal space is inversely proportional to the real space resolution. High $\textbf{q}-space$ features correspond to high-frequency features in the real space, and in most cases, scattering vectors are confined in first Brillouin zone. However, there are cases like Umklapp scatterings that presents wavevectors that extend beyond the Bragg peaks, these features are usually low in intensity as they are second-order(or more) effect. Therefore, a common practice is to truncate and keep the feature within the Bragg peaks; this gives us a closer look at the features, as shown in d). You might be wondering why then we take grid map with spatial resolution denser than the lattice parameter; This is because for the reason given Nyquist–Shannon Sampling Theorem, we need to take grid fine enough to see the Bragg peaks; Thus, in practice, we take at least two pixels per lattice site in each direction.  
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch5_LDOS_QPI.pdf} 
