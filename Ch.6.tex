@@ -1,3 +1,33 @@
+\chapter{Multi Type Sparse Blind Deconvolution STM (MTSBD-STM)}
+\section{Challenge Formulation}
+\subsection{Speckle challenge}
+Speckles capture the information of the spatial distribution of defects. However, the quasiparticle band structure information is embedded in the \ac{QPI} pattern of an individual defect. Therefore, to address the challenge of speckles is to disentangle the spatial information from the \ac{QPI} pattern, and this can be formulated mathematically as a deconvolution problem. 
+\par \noindent Recall that we can write the modulation of \ac{LDOS} from multiple defects as:
+\begin{equation}
+	\delta \rho(\mathbf{x}, \omega) = \sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega),
+\end{equation}
+\noindent where defects are located on $\mathbf{x_j}$. We can further separate the spatial information by utilizing a Kronecker delta $\Delta(\mathbf{u})$, so that $\Delta(\mathbf{u})=1$ if $\mathbf{u} = 0$, and $\Delta(\mathbf{u})=0$ elsewhere: 
+\begin{equation}
+	\sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega) = \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot(\sum_{j=1}^{N} c_j \cdot \Delta(\mathbf{u-x_j})).
+\end{equation}
+\noindent We can then construct a convolution sum between the individual \ac{QPI} pattern and the spatial information by defining a defect location function $D(\mathbf{x}) \equiv \sum_{j=1}^{N} c_j \cdot \Delta(\mathbf{u-x_j})$, we have: 
+\begin{equation}
+ 	\delta \rho(\mathbf{x}, \omega) =  \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot D(\mathbf{u}) = (\delta \rho_0 *D)(\mathbf{x}, \omega).
+\end{equation}
+
+We illustrate this convolution in Fig. \ref{fig:ch6_decon}; First, we use $\delta \rho_0$ simulated in Ch.5.2 as the \ac{QPI} pattern from an single defect, we then randomly generate a binary defect location map given a defect density, and use the convolution sum to construct an observation Y. To unify the language, we will refer the single defect \ac{QPI} pattern as a kernel, denoted as A; and the defect location map as an activation map, denoted as X. Therefore, if we can successfully deconvolute A and X from Y, the challenge of speckles can be addressed.
+
+\begin{figure}
+	\includegraphics[width= \textwidth]{Ch6_deconvolution.pdf} 
+	\centering
+	\caption{}
+	\label{fig:ch6_decon}
+\end{figure}
+
+\subsection{Mixing challenge}
+Materials normally exhibits different types of impurities under STM, in the case of PtSn$_4$, we have 
+\input{Ch.6.1}
+
 \section{Existing Algorithm}
 \subsection{Shortcomings of existing algorithm}
 \begin{itemize}
