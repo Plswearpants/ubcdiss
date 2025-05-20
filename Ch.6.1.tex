@@ -1,5 +1,5 @@
 \section{Challenges of the conventional analysis methods}
-In this section, I will briefly introduce the conventional analysis methods used in the field, 2 fundamental challenges faced with this method, and discuss the current approaches to address these challenges and their limitations. 
+In this section, I will briefly introduce the conventional analysis methods used in the field, 2 fundamental challenges faced with the current method, and discuss the existing approaches to address these challenges and their limitations. 
 
 Fundamentally, experimental results capture the interaction between the probe and the target; To distill the scientific essence presented in the results, complex analysis are usually required. In the case of microscopy measurements like STM, conventional methods like \ac{FT} are commonly used. %todo: add citations on examples of FT microscopy.
 The \ac{FT} reveals characteristic wavelengths and provides insights to the underlying scientific theories of the specimen studied; This is particularly true in cases where the microscopy results contain near perfect periodic features, but when aperiodic signals are presented, the \ac{FT} is less ideal and suffers from loss of information. 
@@ -7,15 +7,15 @@ The \ac{FT} reveals characteristic wavelengths and provides insights to the unde
 There are 2 specific challenges in QPI analysis with conventional \ac{FT} method we would like to focus on, the speckle problem, and the demixing problem. We will also establish their mathematical formulations, which will lead to the convolutional data model we present later. 
 
 \subsection{The Speckle problem}
-As introduced in the end of Ch5 and theorized explicitly in Equation \ref{eq.539}, when we take \ac{FT} of the grid map on multiple occurrence of defects, we get speckles on the \ac{FT-STS}; The problem is that the spatial distribution information of defect manifest as undesirable patterns in the \ac{FT} space, and makes the QPI pattern hard to interpret.
+As introduced in the end of Ch5 and theorized explicitly in Equation \ref{eq.539}, when we take \ac{FT} of the grid map on multiple occurrence of defects, we get speckles on the \ac{FT-STS}; The problem is that the spatial distribution information of the defect location manifest as undesirable patterns in the \ac{FT} space, and makes the QPI pattern hard to interpret.
 
 Therefore, to address the challenge of speckles is to disentangle the spatial information from the \ac{QPI} pattern, and this can be formulated mathematically as a deconvolution problem. 
 
-\par \noindent Recall that we can write the modulation of \ac{LDOS} from multiple defects as:
+\par \noindent Recall that we can write the modulation of \ac{LDOS} $\delta \rho$ from multiple defects as:
 \begin{equation}
 	\delta \rho(\mathbf{x}, \omega) = \sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega),
 \end{equation}
-\noindent where defects are located on $\mathbf{x_j}$. We can further separate the spatial information by utilizing a Kronecker delta $\Delta(\mathbf{u})$, so that $\Delta(\mathbf{u})=1$ if $\mathbf{u} = 0$, and $\Delta(\mathbf{u})=0$ elsewhere: 
+\noindent where $\delta \rho_0$ is the \ac{LDOS} modulation from individual defect located at at $\mathbf{x_j}$. We can further separate the spatial information by utilizing a Kronecker delta $\Delta(\mathbf{u})$, so that $\Delta(\mathbf{u})=1$ if $\mathbf{u} = 0$, and $\Delta(\mathbf{u})=0$ elsewhere: 
 \begin{equation}
 	\sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega) = \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot(\sum_{j=1}^{N} c_j \cdot \Delta(\mathbf{u-x_j})).
 \end{equation}
