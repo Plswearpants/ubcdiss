@@ -24,8 +24,10 @@ Therefore, to address the challenge of speckles is to disentangle the spatial in
 	\delta \rho(\mathbf{x}, \omega) =  \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot D(\mathbf{u}) = (\delta \rho_0 *D)(\mathbf{x}, \omega).
 \end{equation}
 
-We illustrate this convolution in Fig. \ref{fig:ch6_decon}; First, we use $\delta \rho_0$ simulated in Ch.5.2 as the \ac{QPI} pattern from an single defect, we then randomly generate a binary defect location map given a defect density, and use the convolution sum to construct an observation Y. To unify the language, we will refer the single defect \ac{QPI} pattern as a kernel, denoted as A; and the defect location map as an activation map, denoted as X. Therefore, our goal is that given $Y = A * X$, we want to reconstruct A and X. 
+We illustrate this convolution in Fig. \ref{fig:ch6_decon} a); First, we use $\delta \rho_0$ simulated in Ch.5.2 as the \ac{QPI} pattern from an single defect, we then randomly generate a binary defect location map given a defect density, and use the convolution sum to construct an observation. To unify the language, we will now refer the single defect \ac{QPI} pattern as a kernel, denoted as A, and the defect location map as an activation map, denoted as X; thus we can express our observation as $Y = A * X$. Then, We follow the conventional approach and take \ac{FT} of the observation Y, and compare with the \ac{FT} of the kernel A, as shown in panel b), the \ac{FT} of Y shows clear speckles.
 
+There are few attempts made to address the speckles, this is partially because speckles are less disruptive in the regime with higher defect density, as illustrated in Figure. \ref{fig:ch5_changephasenoise}. Another "mitigation" is through brute force and find an isolated defect, which is possible in low defect concentration materials but less so with dense defects. Recently, due to advancement in machine learning, researchers treated speckles as a source of noise and try to address it with self-supervised algorithms like Noise2Self. 
+ 
 \begin{figure}
 	\includegraphics[width= \textwidth]{Ch6_deconvolution.pdf} 
 	\centering
