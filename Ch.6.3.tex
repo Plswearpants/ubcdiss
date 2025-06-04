@@ -6,7 +6,7 @@ In this chapter, we will introduce our approach to address \ac{MC-SBD} problem. 
 
 Our algorithm is a direct method that follows the above recipe, it utilizes Riemannian Trust Region Method(RTRM) to provide local convergence. Standard Trust Region Method is a second-order method that guarantees local minimum recovery, as long as the objective(ie, the cost function $\phi$) has no degenerate stationary points, that is, the Hessian $\Delta^2\phi$ has no zero eigenvalues. This ensures a sufficiently curved optimization landscape for the algorithm to make consistent progress. Moreover, compared to first-order methods based on gradient descent, Trust Region Methods has significantly faster convergences and a better overall tail convergence when the iterates are close to local minima. 
 
-\ac{RTRM} is first raised by Absil et al. in 2007 as the extension of Trust Region Methods on a Riemannian sub-manifold, embedded in Euclidean spaces. This is advantageous 
+\ac{RTRM} is first raised by Absil et al. in 2007 as the extension of Trust Region Methods on a Riemannian sub-manifold, embedded in Euclidean spaces. This is advantageous since enforce our manifold to follow certain geometry, for example in our case, we enforce the kernel to live on a 
 
 
 \subsection{Our algorithm}
