@@ -33,6 +33,7 @@ To understand the \ac{MC-SBD} problem, we need to first formulate its single-cha
 \begin{itemize}
 	\item \textbf{Translation Symmetry}: We obtain the same observation if we shift the kernel and activation map by an in-plane vector $\vec{\Delta}$ in the opposite direction. That is, given a translation operator $\operatorname{T}[f,\vec{\Delta}] \equiv f(\vec{x}+\vec{\Delta})$, we have:  
 	\begin{equation}
+		\label{translational_symm}
 		A_0 * X_0 = T[A_0,\vec{\Delta}] * T[X_0, -\vec{\Delta}].
 	\end{equation}
 	\item \textbf{Associative Symmetry}: Convolution operation is associative, meaning $(f * g) * h = f * (g *h)$, this has two implications, one is we have scaling symmetry: given $g = \alpha$, where $\alpha$ is a non-zero scalar, we have: 
@@ -51,7 +52,7 @@ To understand the \ac{MC-SBD} problem, we need to first formulate its single-cha
 
 In fact, there are two and only two routes to reach the global minimal in a stable and robust manner during nearly all optimization process: 1. Place the initial guess as close to the global minimum as possible. 2. Make the cost function landscape as convex as possible. Our endeavor to break the symmetries mentioned above falls into the second category. Common approaches to break the symmetries include setting constraints on the manifold and introducing asymmetries to the cost function. For example, by enforcing A to stay in a hypersphere manifold: 
 \begin{equation}
-	\label{key}
+	\label{hypersphere}
 	S = \{A \in \mathbb{R}^{m_1 \times m_2}: \vert\vert A \vert \vert_{F}= 1\},
 \end{equation}
 we can break the scaling symmetry except for the case when $\alpha = -1$, which is flipping the sign between the activation map and the kernel. Additionally, the translation symmetry can be addressed by realizing the decaying nature for a QPI pattern, that is, the intensity near the edge of a kernel should approach zero; However, this restrain is weaker for kernels with larger size; this is illustrated in Figure.\ref{fig:ch6_t&s}, a) is the ground truth QPI pattern, it satisfy the constrain we set as the edge intensity naturally approaches zero due to the decay. We can then pad around a) with zeros to get a new kernel like b), note that this will still satisfy our constraints; We can pad it differently as shown in c) and d), thus recreating the degeneracy due to the translation symmetry. For this reason, we will see later that setting a proper spatial kernel size is crucial for our algorithm. 
