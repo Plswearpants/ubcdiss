@@ -1,6 +1,50 @@
-\chapter{MC-SBD-STM Performance}
+\chapter{MC-SBD-STM Result}
 
-\section{Synthetic Data Generation Process}
+In this chapter, we present the result from the \ac{MC-SBD} algorithm(the algorithm from now) on both the synthetic data and real experimental data on various materials. We first introduce a synthetic QPI-STM data generation process, build a corresponding metric system, and evaluate the performance of the algorithm on a wide range of synthetic data. Then we will show results in the real data, and evaluate it with a simple faithfulness metric. 
+
+\section{MT-SBD-STM Result on synthetic data}
+Evaluating the algorithm's performance on synthetic data is necessary, as in the real data we have less access to the ground truth of both kernel and activation. A good synthetic data set should thus capture the physical data generation process during an experiment. In this section, we showcase that the algorithm works well in a wide parameter spaces. We aim to achieve it by presenting an experiment-informed simulation method, build a metric system that evaluates the algorithm from 3 perspectives, and then present results that falls in different parameter spaces. Finally, we will discuss the cases where the algorithm failed and its potential reasons. 
+
+\subsection{Synthetic Data Generation Process}
+The synthetic data generation process follow closely with the convolutional model of QPI-STM that we established in Ch. 5. Mathematically, the synthetic data $Y(\omega)$ is generated via:
+\begin{equation}
+	Y(\omega) = \sum_i^s ( A_i(\omega) * X_i) + \beta. 
+\end{equation} 
+
+%A real STM grid map samples from a continuously varying Local density of states. However, due to the discrete nature of computer simulation, we need to make modifications and even compromises in designing the data generation process. 
+
+In practice, there are 4 parameters that dictates $Y(\omega)$, they are:
+\begin{itemize}
+	\item Signal to Noise Ratio($SNR$): the variance ratio between the noiseless kernel and the noise. This influence $\beta$ and $A_i(\omega)$, we will elaborate the latter influence later. 
+	\item Observation lattice size($N_{obs}$): total number of lattice sites per side within the grid map. This dictates the physical size of the grid map. 
+	\item Linear observation resolution($p$): number of pixels per lattice site, this is enforced to be an integer due to the discrete nature of simulation. 
+	\item defect density($\rho_i$): number of defect i per lattice site. Practically, it is equivalent to the probability of a lattice site to host defect i, a formulation according to the statistical framework of defect we established in Ch. 4.
+\end{itemize}
+\begin{figure}
+	\includegraphics[width= \textwidth]{Ch7_synGen.pdf} 
+	\centering
+	\caption{}
+	\label{fig:ch7syn}
+\end{figure}
+We now illustrate the data generation process: 
+For observation $Y(\omega)$, we first take the noiseless single-defect QPI simulation $\delta\rho_{single} (\omega)$ at that energy, choose an SNR-ratio $SNR$ and apply it onto $\delta\rho_{single} (\omega)$, we can then draw an cutoff location where the signals are buried in the noise, this cutoff location is defined both at the pixel location and the lattice location of $\delta\rho_{single} (\omega)$. Then we choose N that defines the observation on an $N\times N$ lattice sites, and we can choose a linear resolution $\lambda = 1/p$ per lattice site, where $p$ is an integer, this then gives us a $pN \times pN$ pixel observation.
+We then define an activation map X that is $N\times N$, then we choose a surface defect density $\rho_d$ and randomly assign the number of defects onto the X, we then can then match the dimension of X with Y, through an upsampling function that takes a matrix and expands it by a specified scale factor by placing each original value in a grid of zeros, effectively creating a larger sparse matrix where original values are separated by zeros in both horizontal and vertical directions. More specifically, we want to upsample X by $p$ to get dimension of $pN \times pN$. 
+Recall that we have the $\delta\rho_{single} (\omega)$ cutoff at a certain lattice site M and corresponding pixel, now before we perform the convolution, we need to unify the spatial representation of the $\delta\rho_{single} (\omega)$ and Y, more specifically, we need to resize the $\delta\rho^{cutoff}_{single} (\omega)$ to match the pixel size in the observation corresponding to M lattice sites. that is $\delta\rho^{resized}_{single}= imresize(\delta\rho^{cutoff}_{single} (\omega)$, [pM, pM]). And then Y= convolution($\delta\rho^{resized}_{single} (\omega)$, $X^{upsampled}$)
+
+To avoid truncated QPI pattern, during simulation. There are a few things to keep in mind: 
+\begin{itemize}
+	\item 1. Forming observation by 2d convolution of activation and single defect QPI pattern is much time/computationally efficient to work with, than directly simulate multi defect QPI pattern. 
+	\item 2. So we will use single defect QPI pattern. 
+	\item 3. To simulate single defect QPI pattern, we will need to define, apart from the lattice constants($a$), n$_l$: number of lattice points along one dimension, and n$_p$: number of pixels of this simulation in one dimension. We can then compute the grid resolution pixel/nm that this simulation correspond to in a physical system, for instance given a lattice parameter $a$, then for our kernel, we have grid resolution = $a$*n$_l$/n$_p$ nm/pixel.
+	\item 4. Note that a physical activation is nothing but a r*r square lattice span some real space area of $(r*a)^2$with N$_d$ number of defect located on some of the lattice points. However, in simulation activation, we have a matrix of n*n that on each point there is a certain probability it is a defect site, this means, here n has the same physical meaning as r.
+	\item 5. $Y=conv2d(X,A)$ but this convolution assumes that we have the kernel's resolution same as the activation. To make that assumption hold, we need the activation's resolution = lattice constant/pixel = a nm/pixel, then we need to have n$_l$ = n$_p$. However, this case we lost the flexibility of changing our activation resolution. Another case is to let the activation holds the same resolution to the kernel, which is conventionally arbitrary, and this is also problematic as this case we are allowing defects sitting not on their lattice site, which is only true for defects like interstitial.
+	\item The ideal case would be, the  activation resolution/kernel resolution is an integer, meaning n$_l$/n$_p$ =q, q is an integer. Then we should have a fake activation whose side = n*q, where as defects are only allowed to sit in the real activation whose side is n.
+\end{itemize}
+Then how do we determine the window size?  
+
+We also used a new approach in selecting kernel size. In the original model, kernel size was artificially assigned as free parameter; However, we believe the kernel size should represent the natural span of the QPI pattern, where its cutoff is determined by the noise level. We illustrate the process in Figure. \ref{fig:ch7_kernel_size}, 
+
+ 
 \subsection{Shortcomings of existing algorithm}
 \begin{itemize}
 	\item 1. Their simulation data used truncated QPI pattern, not true to the real STM case. 
@@ -38,7 +82,7 @@ Then how do we determine the window size?
 We also used a new approach in selecting kernel size. In the original model, kernel size was artificially assigned as free parameter; However, we believe the kernel size should represent the natural span of the QPI pattern, where its cutoff is determined by the noise level. We illustrate the process in Figure. \ref{fig:ch7_kernel_size}, 
 
 \begin{figure}
-	\includegraphics[width= \textwidth]{kernel_size.pdf} 
+	\includegraphics[width= \textwidth]{Ch7_kernel_size.pdf} 
 	\centering
 	\caption{}
 	\label{fig:ch7_kernel_size}
