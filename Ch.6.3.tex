@@ -152,6 +152,7 @@ Another strategy is the variance-based update ordering, it prioritizes kernel up
 	\textbf{Phase I:}
 	\begin{enumerate}
 		\item Initialize kernels $A^{(0)}_i \in \mathbb{R}^{k_i}$ for $i=1,\dots,s$
+		\item Initialize activation
 		\item For each global iteration $t=1,\dots,T$:
 		\begin{enumerate}
 			\item Compute residual: $Y_{res} = Y - Y_{sum}$; $Y_{sum} = \sum_{j=1}^s A_j * X_j$
