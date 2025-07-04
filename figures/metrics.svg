@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.72604517"
-     inkscape:cx="-143.24178"
-     inkscape:cy="499.28023"
+     inkscape:zoom="0.36302258"
+     inkscape:cx="79.884837"
+     inkscape:cy="670.75717"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -54,7 +54,10 @@
        height="170"
        id="page21"
        margin="0"
-       bleed="0" />
+       bleed="0"
+       inkscape:export-filename="KS.pdf"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <inkscape:page
        x="-268.57547"
        y="182.93742"

@@ -58,7 +58,7 @@ We illustrate the data generation process, the algorithm initialization and resu
 \begin{figure}
 	\includegraphics[width= \textwidth]{metric1.pdf} 
 	\centering
-	\caption{}
+	\caption{Example run of \ac{MC-SBD} algorithm on a synthetic dataset.}
 	\label{fig:metric}
 \end{figure}
 
@@ -92,9 +92,15 @@ Before showing the resulting metric scores for this example run, we first elabor
 	\textbf{\textit{DS}} evaluates how little two activation maps of different kernel types overlap using soften Intersection over Union(softIoU). The rational is that the probability of two different types of defects sitting on the same lattice site is near zero; Thus, a successful demixing should give \textbf{\textit{DS}} close to 1. Note that this metric relies solely on the output activation and thus can also be applied to real data.  
 \end{itemize}
 
-The scores of the four metrics for this example run are listed in Table \ref{table:metric}. All metrics indicate a successful run of the algorithm. First, we have a perfect match for the activation maps as shown in Figure. \ref{fig:metric} c),d) and j),k). For kernel similarities, both \textbf{\textit{KS}} are greater than 0.95, indicating near perfect match. We can take a closer look and plot the detailed \ac{QPI} patterns in both real and reciprocal spaces for type two in Figure. \ref{fig:KS}. From left to right, the 3 columns are noiseless ground truth kernel, output kernel, and the noisy ground truth kernel. Since the input observation $Y$ is noisy, it might be natural to expect the output kernel to resemble the noisy ground truth kernel. However, we see that the output kernel captures more information than the noisy ground truth kernel; This can be seen from the reciprocal \ac{QPI} patterns, where e) has square arcs outside of the high-intensity diamond features. Those faint square arcs exist in d) but are absent in f). This outcome is surprising but also common across different datasets; The reason behind is that while the noise is random, \ac{MC-SBD} algorithm tries to capture the repetitive units(the kernels) in the whole observation, and as a result, the reconstructed kernel is essentially the average of kernels on all activation sites. Therefore, the output kernels are de-noised and resembles closer to the noiseless ground truth; This further illustrates the advantages of this novel approach compared to conventional methods like cropping. 
-% todo: can make a plot of all averaged vs out kernel. 
-However, despite the denoising affect, the output kernel still captures some random fluctuations, making it impossible to match perfectly with the noiseless ground truth. In fact, these random fluctuations are what the algorithm used to "fit" the noise to reduce the residual. Note that we have $\textbf{\textit{OF}} = 1.34 > 1 $, this indicates the existence of some over-fitting. This over-fitting likely roots from the random fluctuations we discussed above. 
+The scores of the four metrics for this example run are listed in Table \ref{table:metric}, all of which indicate a successful execution of the algorithm. In particular, we observe a perfect match for the activation maps, as illustrated in Figure \ref{fig:metric} (panels c, d, j, k). Regarding kernel similarities, both \textbf{\textit{KS}} values exceed 0.95, indicating a near-perfect match. To examine this more closely, Figure \ref{fig:KS} presents the detailed \ac{QPI} patterns in both real and reciprocal spaces for type two. From left to right, the three columns show the noiseless ground truth kernel, the output kernel, and the noisy ground truth kernel.
+
+Since the input observation $Y$ is noisy, it would be natural to expect the output kernel to resemble the noisy ground truth kernel. However, the output kernel actually captures more structural information than the noisy ground truth, as evident in the reciprocal \ac{QPI} patterns. For example, panel e shows faint square arcs outside the high-intensity diamond features, which also faintly appear in panel d but are entirely absent in panel f. This is a surprising, yet consistent, outcome across multiple datasets.
+
+The reason is that while the noise is random, the \ac{MC-SBD} algorithm identifies repetitive units (the kernels) throughout the entire observation, and the signals from all activation sites are taken into account. As a result, the reconstructed kernel is effectively an average over all the instances. It is thus denoised and resembles the noiseless ground truth more closely than the noisy input. This highlights the advantages of this novel approach compared to conventional methods like simple cropping.
+
+Nevertheless, despite this denoising effect, the output kernel still retains some random fluctuations, which makes a perfect match with the noiseless ground truth impossible. In fact, these random fluctuations are exploited by the algorithm to further reduce the residual, contributing to the overfitting factor of $\textbf{\textit{OF}} = 1.34 > 1 $, This elevated \textbf{\textit{OF}} suggests mild overfitting, likely driven by those same random fluctuations in the reconstructed kernel. A detailed comparison between $Y^{res}$ and $Noise$ is provided in Figure. \ref{fig:OF}
+% todo: can make a plot of all averaged vs out kernel.  
+
 \begin{table}[h]
 	\label{table:metric}
 	\centering
@@ -114,28 +120,93 @@ However, despite the denoising affect, the output kernel still captures some ran
 	\caption{Quantitative evaluation of kernel and activation similarity, separation, and observation fidelity for two kernel types.}
 \end{table}
 
+\begin{figure}
+	\includegraphics[width= \textwidth]{KS.pdf} 
+	\centering
+	\caption{Kernel comparison in both real and reciprocal space}
+	\label{fig:KS}
+\end{figure}
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{OF.pdf} 
 	\centering
-	\caption{}
+	\caption{Illustration of the observation fidelity(OF)}
 	\label{fig:OF}
 \end{figure}
+
+
+\section{Benchmark tests on the dataset parameter space}
+Now that we understand what the algorithm can achieve and how to evaluate its performance, it is time to address under what conditions it performs well. Analogous to evaluating an output $y$ given $f(x)=y$, where one must consider both the system parameter space defining the function $f$ and the input parameter space determining $x$, we must consider two aspects of our problem. First, the \ac{MC-SBD} algorithm itself involves several free parameters, such as the number of decomposition iterations, the sparsity regularizer $\lambda$, and the faint factor $\beta$. We have explored this system parameter space and identified sets of optimal values, the details of which will be provided in the supplementary material.
+
+This section focuses on the second aspect: the dataset parameter space, which governs the input observations. This analysis addresses how broad the input landscape can be while still yielding reliable algorithmic performance, and, in the context of experimental data, what types of measurements are most likely to produce successful outcomes. This in turn provides potential guidelines for experimental data acquisition, ensuring the disentanglement of different \ac{QPI} contributions from various defects.
+
+To this end, we generate physics-informed synthetic data with varying parameters and test our algorithm across a range of dataset regimes. Recall that we can explore datasets in these 4 axis: 
+\begin{itemize}
+	\item 1. noise level - $SNR$, 
+	\item 2. Range of the grid map - $N_{obs}$, 
+	\item 3. defect density for each type - $\rho_i$,
+	\item 4. Spatial resolution of the grid map - $p$.
+\end{itemize}
+Since it is a common practice to set the spatial resolution as either 2 or 3 when taking a grid map, we will not explore this axis and set $p=3$ for all our datasets. 
+
+Apart from the above parameters, we also tuned the number of different types of defects(or kernel types). However, due to the drastic increase in computational expense with increasing kernel types, we first run a full exploration of the parameter spaces with 2 types of kernels, and then followed by toy runs with kernel types = 3 and 4. 
+
+In the full exploration runs we ran on 2 types of kernels, we run the algorithm on 3 trials with different datasets. The datasets with different parameter sets are listed in Table.\ref{table: parameter_space}. In total, 180 different observations are generated to cover defect density from sparse to dense, grid map of sizes range from $10^2$ to $10^4$ nanometer squares(given a normal bond length is around 2-5 angstrom), and signal to noise ratio from as low as 0.5 to 3. We then collect the results from all the trails and plot the corresponding metrics to a 3D phase space plot as shown in Figure. \ref{fig:phase_space}. There are two things to evaluate, the kernel and activation maps, since they can behave differently within the parameter space, we make one subplots each. On the left we use \textbf{\textit{KS}} to evaluate the performance on the kernel recovery, and on the right, since there are two metrics defined to evaluate the activation maps, for convenience, we use \textbf{combined score(\textit{CS})}:  
+\begin{equation}
+	\textbf{\textit{CS}} = \sqrt{\textbf{\textit{AS}} \cdot \textbf{\textit{DS}}}.
+\end{equation} 
+
+Each marker on the 3D plot represents a single dataset generated in our experiments. As shown in Table~\ref{table:parameter_space}, some datasets share the same initialization parameters; however, because the activation maps are generated randomly, these datasets are not identical. For parameter combinations that occur more than once, the metric value displayed at that point is the average of the metrics from all corresponding datasets. In total, there are 132 non-overlapping datasets represented in the plot. A triangular marker indicates the case of overlapping datasets, and we take the average of the corresponding metrics, whereas a circular marker indicates a non-overlapping case. The color of each marker indicates the average value of metrics computed over both kernel types within each individual dataset. The metric colorbar of two subplots are defined in the same way; It has 3 sections, red section ranging from $[0.0, 0.85]$, yellow section from $[0.85,0.98]$, and the green section for metrics within $[0.98,1]$. The colorbar is designed around 2 thresholds that are empirically chosen based on manual judgments from STM researchers. $0.85$ is the pass line for a given recovery, below which the recovery is considered failed. Values above $0.98$ gives recoveries that are indistinguishable from the ground-truth kernels and activation maps, and thus is considered a success. It is also worth noting that the ground-truth kernels used in \textbf{\textit{KS}} calculations are noiseless ground-truth, like panel a) in Figure. \ref{fig:KS}. This sets a even higher standard for the algorithm. 
+
+\subsection{discussion on the phase space}
+In general, the algorithm works in most of the phase space we explore, more specifically, it is very successful on datasets with low to medium defect concentration, medium to big $N_{obs}$, and higher SNR. This give us a reference on the robustness of this algorithm, and a rough estimate on the algorithm's effectiveness on real data within these regimes.
+
+We also observe that the two metrics we used respond differently with different parameters. Kernel similarity is more sensitive to the size of scans, with smaller scan sizes, for example when $N_{obs} = 50$, the kernel reconstruction works less well. 
+
+This is likely because of the denoising effect that we discussed; At fixed defect density, the number of occurrence of each kernel drops as we decrease $N_{obs}$, this weakens the denoising effect and makes the output kernels more noisy and less similar to the noiseless ground truth kernels.  
+Comparing at Figure. \ref{fig:metric} panel a) and b),  
+
+The activation combined score is more sensitive to the defect density, with large defect densities. 
+\begin{table}[h!]
+	\label{table: parameter_space}
+	\centering
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Trial} & \textbf{Defect Density} & \textbf{N\_obs} & \textbf{SNR} \\
+		\hline
+		1 & $[1.0e{-3},\ 1.8e{-3},\ 3.2e{-3},\ 5.6e{-3},\ 1.0e{-2}]$ & $[50,\ 100,\ 150,\ 200]$ & $[1,\ 3,\ 5]$ \\
+		2 & $[1.0e{-3},\ 2.4e{-3},\ 5.6e{-3},\ 1.3e{-2},\ 3.2e{-2}]$ & $[50,\ 100,\ 150,\ 200]$ & $[1,\ 2,\ 3]$ \\
+		3 & $[1.0e{-3},\ 3.2e{-3},\ 1.0e{-2},\ 3.2e{-2},\ 1.0e{-1}]$ & $[50,\ 100,\ 150,\ 200]$ & $[0.5,\ 1,\ 3]$ \\
+		\hline
+	\end{tabular}
+	\caption{Parameter spaces for the 3 runs. In total 180 datasets where generated to explore 3 axes of parameters.}
+\end{table}
+
 \begin{figure}
-	\includegraphics[width= \textwidth]{KS.pdf} 
+	\centering
+	\makebox[\textwidth][c]{%
+		\includegraphics[width=1.5\textwidth]{total_metric_space.pdf}
+	}
+	\caption{Metrics phase space}
+	\label{fig:phase_space}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width= \textwidth]{KS_vs_N.pdf} 
 	\centering
 	\caption{}
-	\label{fig:KS}
+	\label{}
 \end{figure}
-\subsection{Tune-able parameter space}
 
-\section{Benchmark tests on the parameter space}
-\subsection{sparsity}
-\subsection{Number of defect types}
-\subsection{spatial resolution and noise level}
 
 \section{MC-SBD-STM on real data}
+This section aims to demonstrate the application of \ac{MC-SBD} algorithm to real experimental data. We first elaborate the layers of complexity posed by real experimental data compared to the synthetic data. We then address the additional complexity by introducing a preprocessing pipeline that removes some common experimental artifacts and standardizes the experimental data condition before we apply the algorithm. At last, we apply the whole workflow to several experimental datasets and discuss the results. 
+
 \subsection{real data complexity}
+The phase space analysis in the last section showed the algorithm can worth robustly in vast regime of synthetic datasets. However, despite the effort we made to generate experiment-informed synthetic data, the real data might deviate from the synthetic data due to the occurrence of experimental artifacts. We thus need to discuss these additional layers of complexity and seek a way to remove them. 
+
+%What define a success in real data? It really depends on the questions we try to answer. But we can roughly define a ladder of the success. Given a 3D grid map with spatial and energy dimensions: $x*y*V$, the lowest level of success is, we can run the algorithm 
+%The lowest level of success is, given a 2D energy slice of the grid map, we can reconstruct The highest level of success is that, given a 3D grid map with spatial and energy dimensions: $x*y*V$, we 
 \subsection{preprocessing pipelines}
 \subsection{Ag}
 \subsection{ZrSiTe}
@@ -143,6 +214,11 @@ However, despite the denoising affect, the output kernel still captures some ran
 \subsection{Potential use in other materials}
 
 \section{Conclusion}
+\ac{MC-SBD} algorithm grant us the impurity-dependent resolution of STM-QPI data, and helps us answer:
+\begin{itemize}
+	\item 1. At a given energy, is there any special states associated with different impurities?
+	\item 2. What are the energy dispersion features of these impurity-dependent states?
+\end{itemize} 
 \subsection{regime it works and doesn't}
 \subsection{Recipe to take data for MC-SBD}
 \subsection{Future directions}
