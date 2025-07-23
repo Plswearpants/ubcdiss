@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="metrics.svg"
-   inkscape:export-filename="Metric_KS.pdf"
+   inkscape:export-filename="KS.pdf"
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4520903"
-     inkscape:cx="-406.31081"
-     inkscape:cy="443.15425"
+     inkscape:zoom="0.51339145"
+     inkscape:cx="-62.330606"
+     inkscape:cy="224.97453"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -899,21 +899,19 @@
    id="tspan24-4">0</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.76111px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
-       x="-50.567764"
+       style="font-size:7.76111px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
+       x="-60.617355"
        y="82.276428"
        id="text23-5-7"><tspan
          sodipodi:role="line"
          id="tspan23-5-9"
-         style="font-size:7.76111px;fill:#000000;fill-opacity:1;stroke-width:0.5;stroke-dasharray:none"
-         x="-50.567764"
+         style="font-size:7.76111px;baseline-shift:baseline;fill:#000000;fill-opacity:1;stroke-width:0.5;stroke-dasharray:none"
+         x="-60.617355"
          y="82.276428">A<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan3">2</tspan><tspan
+   id="tspan4">2</tspan><tspan
    style="font-size:65%;baseline-shift:super"
-   id="tspan24-4-9">0</tspan><tspan
-   id="tspan49"
-   style="font-size:65%;baseline-shift:sub">noisy</tspan></tspan></text>
+   id="tspan5">0</tspan>+ noise </tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.76111px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
@@ -1050,12 +1048,12 @@
        preserveAspectRatio="none"
        id="image7-8" />
     <rect
-       style="fill:none;stroke:#7d00ff;stroke-width:0.508771;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#7d00ff;stroke-width:0.54071;stroke-dasharray:none;stroke-opacity:1"
        id="rect21"
-       width="146.76366"
-       height="95.088776"
-       x="100.5017"
-       y="4.6188512" />
+       width="146.7317"
+       height="107.42556"
+       x="100.51768"
+       y="1.80032" />
     <rect
        style="fill:none;stroke:#00ff80;stroke-width:0.518932;stroke-dasharray:none;stroke-opacity:1"
        id="rect22"
@@ -1064,8 +1062,8 @@
        x="3.7791994"
        y="3.6686707" />
     <path
-       style="fill:none;stroke:#7d00ff;stroke-width:0.50731;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle)"
-       d="m 225.86906,108.75735 v 50.27564 H 200.0199"
+       style="fill:none;stroke:#7d00ff;stroke-width:0.498539;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle)"
+       d="m 225.88531,110.57737 v 48.49469 h -25.87982"
        id="path22" />
     <text
        xml:space="preserve"
