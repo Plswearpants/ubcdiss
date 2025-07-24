@@ -308,12 +308,26 @@ It is worth nothing that the algorithm mistakenly treats the defect on the top r
 \end{figure}
 
 \subsection{ZrSiTe}
+msg: 
+1. success run of the single slice:
+	a. MC-SBD run on two kernels. overview
+	b. activation perfect match 
+	c. defect dependent scattering features.
+2. success run on whole block of data:
+	a. defect scattering energy dispersion.
+
+$ZrSiTe$ is a system with multiple types of defect that present different scattering features, making it one of the best fit to apply \ac{MC-SBD} algorithm. 
+
+Figure. \ref{fig:ZrSiTe1} shows an overview of the application of the algorithm. The input observation b) is the post processed image from raw data a); it underwent the process of Bragg peak removal, cropping, streak removal and defect masking. We run the algorithm with two initialized kernels shown on the right of b); the initial guesses are cropped from the two black boxes in b) with a Gaussian window($\sigma = 3$) applied to damp the features on the edges. Panel d) shows the reconstructed observation, with two output kernels shown on the right. This reconstruction gives a residual observation $Y^{res}$ shown in c), on which most of the streaky noise and contributions from other defects are left. We then look at \textbf{\textit{OF}}, the variance ratio between the noise region (see the green box in b)) and the residual observation. The resulting \textbf{\textit{OF}} is 1.1, which might be surprising, as we have contributions from other defects in the residual observation. The reason is that most of the intensity variations are actually from the streaky noise; since the reconstructed observation d) is free from streaks, the same level of streaks are presented in both the noise region and the residual observation. 
+
 \begin{figure}
 	\includegraphics[width= \textwidth]{ZrSiTe1.pdf} 
 	\centering
 	\caption{}
 	\label{fig:ZrSiTe1}
 \end{figure}
+
+We thus take a closer look at the activation match between the reconstructed and original observations. As shown in Figure. \ref{fig:ZrSiTe2}, we first annotate all occurrence of both defect types in circle markers as shown in c), then overlay these markers to defect specific reconstructed observations a) and b); the perfect activation match indicates a high reconstruction quality. We can also note that the occurrence number is 16 for defect type 1, and 17 for defect type 2; these numbers are close to the critical occurrence threshold $N^{critical}$ for $SNR=1$ according to Figure. \ref{fig:KS_vs_N}. Given the $SNR$ of our system exceeding 1, we should expect a perfect reconstruction from the output kernels.
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{ZrSiTe2.pdf} 
@@ -322,6 +336,10 @@ It is worth nothing that the algorithm mistakenly treats the defect on the top r
 	\label{fig:ZrSiTe2}
 \end{figure}
 
+The output kernels in panel d) and e) shows two different QPI patterns. We can better characterize the difference between two scattering features in q-space; in panel f), the QPI signal features two concentric squares, these two squares are also nested with their sides in parallel. QPI signal in panel g) is substantially different, it features an inner square and a circle that are concentric. Moreover, there are also two sets of parallel lines on the radial directions that stick out from the outer circle. These distinct scattering signatures are inaccessible from h), the direct Fourier transform of the observation, in which defect dependent scattering features are entangled.
+
+We further apply the algorithm to the whole block of grid. We are able to get the bias dependent defect-specific scattering features for both types across a full energy range of -800 meV to 800 meV, with an energy resolution of 8 meV. As an example, we plot 5 evenly spaced energy slices of the two output kernels around the Fermi level in Figure. \ref{fig:ZrSiTe3}. We can make simple observation of the second and fourth row, and find the q-space QPI patterns for both defects are highly dispersive in energy; this indicates that both defects indeed contribute, but in different ways, to the electron-impurity scattering in ZrSiTe. Studying these impurity dependent dispersive features can help us uncover the underlying scattering mechanism behind each impurity type, and further expand our understanding of this system. 
+
 \begin{figure}
 	\includegraphics[width= \textwidth]{ZrSiTe3.pdf} 
 	\centering
@@ -329,7 +347,11 @@ It is worth nothing that the algorithm mistakenly treats the defect on the top r
 	\label{fig:ZrSiTe3}
 \end{figure}
 
+Defect states present themselves differently in different energy levels. In ZrSiTe, when bias exceeds 200 meV, an additional type of defect becomes equally prominent compared to the two types mentioned above, and we can run the algorithm with additional number of kernels on slices beyond $E=200meV$. The result of a example slice at $E=320meV$ is shown in Figure. \ref{fig:ZrSiTe4}. The algorithm successfully run with four kernels, with reconstructed observation b) resembles closely with the original observation a). Panel c)-d) are output kernels for the two known defect types, whereas e)-f) are the output kernels of two orientations for this new type of defect that looks like a symbol 'H'.  
+
+To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper preprocessing on real datasets with enough number of defect occurrence, the \ac{MC-SBD} algorithm is capable of delivering high quality reconstruction up to 4 kernels across a wide range of energy. 
 \begin{figure}
+	%todo: black box around different defect types.
 	\includegraphics[width= \textwidth]{ZrSiTe4.pdf} 
 	\centering
 	\caption{}
