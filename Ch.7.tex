@@ -277,6 +277,9 @@ Apart from the complexities and mitigation discussed above, there are other more
 Now that we established the preprocessing pipeline, we are ready to apply the algorithm to some real datasets and present their results.
 
 \subsection{Ag}
+We start by examining our algorithm on a grid spectroscopy on Ag(111) surface. A slice of the raw grid at the Fermi level is shown in panel a) of Figure. \ref{fig:Ag1}, which is featured by QPI pattern around CO adsorbates as impurities. We then process the raw image with cropping and streak removal to get the input observation $Y$ in b). The Fourier transform of observation $Y$ shows pattern of speckles. We then apply the \ac{MC-SBD} algorithm and get an output kernel $A^{out}$ as shown in e); together with the output activation map, we reconstructed an observation $Y^rec$ d) that successfully resembles the original observation $Y$. The q-space QPI map f), or the Fourier transform of $A^{out}$, is free from speckle as expected; the clear ring feature directly reflects the intra-band scattering of Ag's simple single band across the Fermi level. 
+
+Impurity scattering by CO adsorbates on Ag(111) spans a wide energy range. We can thus apply the algorithm to the corresponding energy range of the grid map, and show examples of the resulting reconstructions near the Fermi level in Figure. \ref{fig:Ag2}. It is worth noting that while running the algorithm on multiple slices, the activation map across different slices are identical for a single type of defect; since we get a perfect reconstruction at the slice at Fermi level(0 meV), result from other slices are guaranteed to be high-quality and thus trust-worthy. We can thus construct a 3D kernel across both spatial and energy dimensions. This allows us to access energy dispersion of QPI features free from speckles, which can be clearly illustrated by comparing the second and third row of Figure. \ref{fig:Ag2}.
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{Ag1.pdf} 
@@ -293,12 +296,17 @@ Now that we established the preprocessing pipeline, we are ready to apply the al
 \end{figure}
 
 \subsection{LiFeAs}
+We then apply the algorithm to the Fe-based unconventional superconductor $LiFeAs$, a material with multiple types of impurities that host different scattering features. Panel a) in Figure. \ref{fig:LiFeAs} is a slice of grid spectroscopy on $LiFeAs$ near the Fermi level. Among multiple types of impurities presented, there is a type of impurity with two different orientations that dominates in numbers. This can be better seen in b), a image that undergoes the processing of cropping, streak removal and defect center masking. In b), red and green markers are manually labeled on the defect centers of the horizontal and vertical orientations, respectively. Despite being the same type of defect, the algorithm treats these two orientations as two types of kernels. We thus choose the number of kernels to be two, and apply the algorithm to observation b). We then get two output kernels e), h), and the reconstructed observations d) and g). The markers in d) and g) are copied from b) as references to the defect locations. We can clearly see that the reconstructed observations successfully identified all occurrence of the defect in both orientations. This illustrates the algorithm's ability to both demix and deconvolute the experimental grid spectroscopy(single slice) into multiple kernels and their activation locations. 
+
+It is worth nothing that the algorithm mistakenly treats the defect on the top right corner as an occurrence of horizontally oriented kernel; however, the influence from this assignment is minimal due to its faint activation. This run of algorithm gives us an observation fidelity of ~0.5, half of the ideal $\textbf{\textit{OF}} =1$. This might be counter-intuitive as we did see a nearly perfect identification of the defect locations; this discrepancy roots from the fact that apart from the 2 kernels the algorithm reconstruct, there are intensities from other types of defect contributing to the original observation. For instance the cross-shaped defect on the bottom left corner will remain in the residual observation $Y^{res} = Y - \sum_i Y_i^{rec}$; this is actually desirable since the contribution of other defect types are not used to deconvolute the designated kernels, making the reconstruction more trust worthy. Therefore, in cases where the observation consists of defect types other than the  reconstructed kernels, we need both \textbf{\textit{OF}} and the empirical observation of the activation matching to assess the quality of reconstruction. 
+
 \begin{figure}
 	\includegraphics[width= \textwidth]{LiFeAs.pdf} 
 	\centering
 	\caption{}
 	\label{fig:LiFeAs}
 \end{figure}
+
 \subsection{ZrSiTe}
 \begin{figure}
 	\includegraphics[width= \textwidth]{ZrSiTe1.pdf} 
