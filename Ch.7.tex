@@ -272,14 +272,16 @@ Lastly, an unstable \ac{STM} tip cause artifacts in grid spectroscopy measuremen
 	\label{fig:pipeline}
 \end{figure}
 
-Apart from the complexities and mitigation discussed above, there are other more standardized steps one usually take in a STM-QPI analysis. We collected a series of operations and bundled them into a preprocessing pipeline; The raw data is fed into this pipeline and then the outcome will be fed into the algorithm. We illustrate this pipeline in Figure. \ref{fig:pipeline}. A raw ZrSiTe image is shown in a), we can see a large amount of streak noises, also hinted by the strong horizontal signal at zero frequency in the Fourier transform space shown in e). We first remove the atomic corrugation by masking out the four Bragg peaks in the q-space as shown in f); this step is to ensure all the signal variation comes from the modified \ac{LDOS} from different impurities, bring the dataset more similar to the simulated data. We then apply the streak removal algorithm discussed and get c); most streaks are removed, especially the more severe ones, leaving us with a cleaner dataset with only minor artifacts. This method's success can also be seen in the q-space, where the horizontal DC signal is strongly suppressed; We can see from c) that there are multiple types of defects presented in this dataset, where the examples of two most prominent types are circled in yellow and purple. To reduce the data volatility, it is a good practice to mask out the defect centers with high intensity; in this case, we masked out the defect centers of the yellow type since its intensity is 10 fold that of the pristine area and 4 fold that of the purple type. The mask we used is called a truncated Gaussian, which suppresses the signal locally around each defect center without introducing abrupt cutoffs. Its maximum value is capped at 0.99, ensuring that the defect signal is nearly removed while preserving surrounding features. To avoid artificial edges that could distort downstream analysis, I introduced a hyperbolic tangent–based step function that smoothly tapers the mask. After masking all occurrence of the yellow type defect, we are granted with image d) where the fine defect features are more clearly revealed. 
+Apart from the complexities and mitigation discussed above, there are other more standardized steps one usually take in a STM-QPI analysis. We collected a series of operations and bundled them into a preprocessing pipeline; The raw data is fed into this pipeline and then the outcome will be fed into the algorithm. We illustrate this pipeline in Figure. \ref{fig:pipeline}. A raw ZrSiTe image is shown in a), we can see a large amount of streak noises, also hinted by the strong horizontal signal at zero frequency in the Fourier transform space shown in e). We first remove the atomic corrugation by masking out the four Bragg peaks in the q-space as shown in f); this step is to ensure all the signal variation comes from the modified \ac{LDOS} from different impurities, bring the dataset more similar to the simulated data. We then apply the streak removal algorithm discussed and get c); most streaks are removed, especially the more severe ones, leaving us with a cleaner dataset with only minor artifacts. This method's success can also be seen in the q-space, where the horizontal DC signal is strongly suppressed; We can see from c) that there are multiple types of defects presented in this dataset, where the examples of two most prominent types are circled in yellow and purple. To reduce the data volatility, it is a good practice to mask out the defect centers with high intensity; in this case, we masked out the defect centers of the yellow type since its intensity is 10 fold that of the pristine area and 4 fold that of the purple type. The mask we used is called a truncated Gaussian, which suppresses the signal locally around each defect center without introducing abrupt cutoffs. Its maximum value is capped at 0.99, ensuring that the defect signal is nearly removed while preserving surrounding features. To avoid artificial edges that could distort downstream analysis, I introduced a hyperbolic tangent–based step function that smoothly tapers the mask. After masking all occurrence of the yellow type defect, we are granted with image d) where the fine defect features are more clearly revealed. Now that we established the preprocessing pipeline, we are ready to apply the algorithm to some real datasets and present their results. 
 
-Now that we established the preprocessing pipeline, we are ready to apply the algorithm to some real datasets and present their results.
+In total, we applied the algorithm on 4 grid maps on 4 materials: Ag(111), LiFeAs, ZrSiTe and PtSn$_4$. For each dataset, we follow a two-stage process, first we apply the algorithm to a single slice(aka the reference slice) of the grid map, second to a 3D block of the grid map. Note that both the amplitude of QPI patterns created by different defects and the noise level normally varies with energy. Since we can pick a reference slice that has strong QPI pattern and low noise level, the first stage is often less challenging. We can thus define a partial or complete success by whether the algorithm run output high-quality reconstruction on single slice or block of the grid map. 
 
-\subsection{Ag}
+In summary, the algorithm obtains a complete success on Ag(111) and ZrSiTe datasets, a partial success on LiFeAs dataset, and failed on the PtSn$_4$ dataset.  We will present their results in the following subsections; all the technical details of the algorithm runs, including system parameters and initialization definition, will be included in the running files in the MC-SBD github repository under \textit{\slash examples}. 
+
+\subsection{Ag(111)}
 We start by examining our algorithm on a grid spectroscopy on Ag(111) surface. A slice of the raw grid at the Fermi level is shown in panel a) of Figure. \ref{fig:Ag1}, which is featured by QPI pattern around CO adsorbates as impurities. We then process the raw image with cropping and streak removal to get the input observation $Y$ in b). The Fourier transform of observation $Y$ shows pattern of speckles. We then apply the \ac{MC-SBD} algorithm and get an output kernel $A^{out}$ as shown in e); together with the output activation map, we reconstructed an observation $Y^rec$ d) that successfully resembles the original observation $Y$. The q-space QPI map f), or the Fourier transform of $A^{out}$, is free from speckle as expected; the clear ring feature directly reflects the intra-band scattering of Ag's simple single band across the Fermi level. 
 
-Impurity scattering by CO adsorbates on Ag(111) spans a wide energy range. We can thus apply the algorithm to the corresponding energy range of the grid map, and show examples of the resulting reconstructions near the Fermi level in Figure. \ref{fig:Ag2}. It is worth noting that while running the algorithm on multiple slices, the activation map across different slices are identical for a single type of defect; since we get a perfect reconstruction at the slice at Fermi level(0 meV), result from other slices are guaranteed to be high-quality and thus trust-worthy. We can thus construct a 3D kernel across both spatial and energy dimensions. This allows us to access energy dispersion of QPI features free from speckles, which can be clearly illustrated by comparing the second and third row of Figure. \ref{fig:Ag2}.
+Impurity scattering by CO adsorbates on Ag(111) spans a wide energy range. We can thus apply the algorithm to the corresponding energy range of the grid map; out of the 120 slices results, we show examples of the reconstructions near the Fermi level in Figure. \ref{fig:Ag2}. It is worth noting that while running the algorithm on multiple slices, the activation map across different slices are identical for a single type of defect; since we get a perfect reconstruction on the slice at Fermi level(0 meV), result from other slices are guaranteed to be high-quality and thus trust-worthy. This effectively construct a 3D kernel across both spatial and energy dimensions, and allows us to access energy dispersion of QPI features free from speckles, which can be clearly illustrated by comparing the second and third row of Figure. \ref{fig:Ag2}.
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{Ag1.pdf} 
@@ -298,7 +300,7 @@ Impurity scattering by CO adsorbates on Ag(111) spans a wide energy range. We ca
 \subsection{LiFeAs}
 We then apply the algorithm to the Fe-based unconventional superconductor $LiFeAs$, a material with multiple types of impurities that host different scattering features. Panel a) in Figure. \ref{fig:LiFeAs} is a slice of grid spectroscopy on $LiFeAs$ near the Fermi level. Among multiple types of impurities presented, there is a type of impurity with two different orientations that dominates in numbers. This can be better seen in b), a image that undergoes the processing of cropping, streak removal and defect center masking. In b), red and green markers are manually labeled on the defect centers of the horizontal and vertical orientations, respectively. Despite being the same type of defect, the algorithm treats these two orientations as two types of kernels. We thus choose the number of kernels to be two, and apply the algorithm to observation b). We then get two output kernels e), h), and the reconstructed observations d) and g). The markers in d) and g) are copied from b) as references to the defect locations. We can clearly see that the reconstructed observations successfully identified all occurrence of the defect in both orientations. This illustrates the algorithm's ability to both demix and deconvolute the experimental grid spectroscopy(single slice) into multiple kernels and their activation locations. 
 
-It is worth nothing that the algorithm mistakenly treats the defect on the top right corner as an occurrence of horizontally oriented kernel; however, the influence from this assignment is minimal due to its faint activation. This run of algorithm gives us an observation fidelity of ~0.5, half of the ideal $\textbf{\textit{OF}} =1$. This might be counter-intuitive as we did see a nearly perfect identification of the defect locations; this discrepancy roots from the fact that apart from the 2 kernels the algorithm reconstruct, there are intensities from other types of defect contributing to the original observation. For instance the cross-shaped defect on the bottom left corner will remain in the residual observation $Y^{res} = Y - \sum_i Y_i^{rec}$; this is actually desirable since the contribution of other defect types are not used to deconvolute the designated kernels, making the reconstruction more trust worthy. Therefore, in cases where the observation consists of defect types other than the  reconstructed kernels, we need both \textbf{\textit{OF}} and the empirical observation of the activation matching to assess the quality of reconstruction. 
+It is worth nothing that the algorithm mistakenly treats the defect on the top right corner as an occurrence of horizontally oriented kernel; however, the influence from this assignment is minimal due to its faint activation. This run of algorithm gives us an observation fidelity of ~0.5, half of the ideal $\textbf{\textit{OF}} =1$. This might be counter-intuitive as we did see a nearly perfect identification of the activation for both kernels; this discrepancy roots from the fact that apart from the 2 kernels the algorithm reconstruct, there are intensities from other types of defect contributing to the original observation. For instance the 'X'-shaped defect on the bottom left corner will remain in the residual observation $Y^{res} = Y - \sum_i Y_i^{rec}$; this is actually desirable since the contribution of other defect types are not used to deconvolute the designated kernels, making the reconstruction more trust worthy. Therefore, in cases where the observation consists of defect types other than the  reconstructed kernels, we need both \textbf{\textit{OF}} and the empirical observation of the activation matching to assess the quality of reconstruction. 
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{LiFeAs.pdf} 
@@ -308,14 +310,6 @@ It is worth nothing that the algorithm mistakenly treats the defect on the top r
 \end{figure}
 
 \subsection{ZrSiTe}
-msg: 
-1. success run of the single slice:
-	a. MC-SBD run on two kernels. overview
-	b. activation perfect match 
-	c. defect dependent scattering features.
-2. success run on whole block of data:
-	a. defect scattering energy dispersion.
-
 $ZrSiTe$ is a system with multiple types of defect that present different scattering features, making it one of the best fit to apply \ac{MC-SBD} algorithm. 
 
 Figure. \ref{fig:ZrSiTe1} shows an overview of the application of the algorithm. The input observation b) is the post processed image from raw data a); it underwent the process of Bragg peak removal, cropping, streak removal and defect masking. We run the algorithm with two initialized kernels shown on the right of b); the initial guesses are cropped from the two black boxes in b) with a Gaussian window($\sigma = 3$) applied to damp the features on the edges. Panel d) shows the reconstructed observation, with two output kernels shown on the right. This reconstruction gives a residual observation $Y^{res}$ shown in c), on which most of the streaky noise and contributions from other defects are left. We then look at \textbf{\textit{OF}}, the variance ratio between the noise region (see the green box in b)) and the residual observation. The resulting \textbf{\textit{OF}} is 1.1, which might be surprising, as we have contributions from other defects in the residual observation. The reason is that most of the intensity variations are actually from the streaky noise; since the reconstructed observation d) is free from streaks, the same level of streaks are presented in both the noise region and the residual observation. 
@@ -349,7 +343,8 @@ We further apply the algorithm to the whole block of grid. We are able to get th
 
 Defect states present themselves differently in different energy levels. In ZrSiTe, when bias exceeds 200 meV, an additional type of defect becomes equally prominent compared to the two types mentioned above, and we can run the algorithm with additional number of kernels on slices beyond $E=200meV$. The result of a example slice at $E=320meV$ is shown in Figure. \ref{fig:ZrSiTe4}. The algorithm successfully run with four kernels, with reconstructed observation b) resembles closely with the original observation a). Panel c)-d) are output kernels for the two known defect types, whereas e)-f) are the output kernels of two orientations for this new type of defect that looks like a symbol 'H'.  
 
-To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper preprocessing on real datasets with enough number of defect occurrence, the \ac{MC-SBD} algorithm is capable of delivering high quality reconstruction up to 4 kernels across a wide range of energy. 
+To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper preprocessing on real datasets with enough number of defect occurrence, the \ac{MC-SBD} algorithm is capable of delivering high quality reconstruction up to 4 kernels across a wide range of energy.
+
 \begin{figure}
 	%todo: black box around different defect types.
 	\includegraphics[width= \textwidth]{ZrSiTe4.pdf} 
@@ -359,15 +354,23 @@ To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper
 \end{figure}
 
 \subsection{PtSn4}
+%todo: need to apply preprocessing to the other images and see the defect signature.
+The motivation of developing such a \ac{MC-SBD} algorithm was partly because we would like to address the speckle problem presented in 
+
 \begin{figure}
 	\includegraphics[width= \textwidth]{PtSn4.pdf} 
 	\centering
 	\caption{}
 	\label{fig:PtSn4}
 \end{figure}
-\subsection{Potential use in other materials}
-%What define a success in real data? It really depends on the questions we try to answer. But we can roughly define a ladder of the success. Given a 3D grid map with spatial and energy dimensions: $x*y*V$, the lowest level of success is, we can run the algorithm 
-%The lowest level of success is, given a 2D energy slice of the grid map, we can reconstruct The highest level of success is that, given a 3D grid map with spatial and energy dimensions: $x*y*V$, we 
+
+\section{discussion and conclusion}
+
+\subsection{Data taking guideline for MC-SBD}
+
+
+
+
 \section{Conclusion}
 \ac{MC-SBD} algorithm grant us the impurity-dependent resolution of STM-QPI data, and helps us answer:
 \begin{itemize}
@@ -375,5 +378,5 @@ To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper
 	\item 2. What are the energy dispersion features of these impurity-dependent states?
 \end{itemize} 
 \subsection{regime it works and doesn't}
-\subsection{Recipe to take data for MC-SBD}
+
 \subsection{Future directions}
