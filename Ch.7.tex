@@ -343,7 +343,7 @@ We further apply the algorithm to the whole block of grid. We are able to get th
 
 Defect states present themselves differently in different energy levels. In ZrSiTe, when bias exceeds 200 meV, an additional type of defect becomes equally prominent compared to the two types mentioned above, and we can run the algorithm with additional number of kernels on slices beyond $E=200meV$. The result of a example slice at $E=320meV$ is shown in Figure. \ref{fig:ZrSiTe4}. The algorithm successfully run with four kernels, with reconstructed observation b) resembles closely with the original observation a). Panel c)-d) are output kernels for the two known defect types, whereas e)-f) are the output kernels of two orientations for this new type of defect that looks like a symbol 'H'.  
 
-To conclude, the algorithm run on $ZrSiTe$ dataset illustrates that given proper preprocessing on real datasets with enough number of defect occurrence, the \ac{MC-SBD} algorithm is capable of delivering high quality reconstruction up to 4 kernels across a wide range of energy.
+To conclude, the algorithm run on ZrSiTe dataset illustrates that given proper preprocessing on real datasets with enough number of defect occurrence, the \ac{MC-SBD} algorithm is capable of delivering high quality reconstruction up to 4 kernels across a wide range of energy.
 
 \begin{figure}
 	%todo: black box around different defect types.
@@ -369,6 +369,12 @@ The motivation of developing such a \ac{MC-SBD} algorithm was partly because we 
 \subsection{Data taking guideline for MC-SBD}
 
 
+rules:
+1. Higher SNR 
+2. More defect occurrence -> if low in density, need to include more areas. 
+3. stable tip, especially need to avoid structured noise 
+
+the guideline should be hierarchical, first, increase the SNR, then find a grid area on which there are more than 10 occurrence of defect for each type. 
 
 
 \section{Conclusion}
@@ -377,6 +383,10 @@ The motivation of developing such a \ac{MC-SBD} algorithm was partly because we 
 	\item 1. At a given energy, is there any special states associated with different impurities?
 	\item 2. What are the energy dispersion features of these impurity-dependent states?
 \end{itemize} 
-\subsection{regime it works and doesn't}
+
 
 \subsection{Future directions}
+1. ZrSiTe has the floating band scattering that is missing, we might able to resolve it in the q-space QPI features with the new method developed. 
+2. Other new materials that exhibits the defect dependent scattering effect.
+3. Resolving individual defect scattering in real space opens up the possibility of studying phase sensitive scattering information, which were inaccessible in traditional Fourier transform analysis. To give an example, in unconventional superconductor, , in some  phase-sensitive scattering selection rules for Bogoliubov quasiparticles can be accessed 
+4. A gallery for defect specific scattering, a fundamental information pool to understand the material in the lens of defects. We know defects are very important in explaining some physics, especially when crystal quality are different, different physics emerges, the doping level of cuprates, the triplet SC in UTe2 crystal with various crystal qualities, etc. 
