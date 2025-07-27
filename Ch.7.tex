@@ -370,32 +370,34 @@ The motivation of developing such a \ac{MC-SBD} algorithm was partly because we 
 	\label{fig:PtSn4}
 \end{figure}
 
-\section{Data taking guideline for MC-SBD}
-We showed that the algorithm adapts well on various datasets. However, it is worthwhile to establish a guideline on how to take QPI-STM data that maximizes the success rate of the algorithm. 
+\section{A practical guide to perform MC-SBD on real data}
+This section summarizes key insights from the chapter and offers a set of practical guidelines to improve the success rate of applying the algorithm to experimental data.
 
-The dataset phase spaces shown in Figure. \ref{fig:phase_space} and \ref{fig:phase_spaceN=3} give quantitative references on the data taking process; if no additional complexities exists, one can expect the algorithm to produce perfect reconstruction in the regions defined by green markers. A safer region would be the box defined within XXX. Then it is to eliminate anomalies in the experimental datasets. Apart from the standard practice to minimize vibration and electric noise level in STM, we should be extra careful and minimize structured noise. 
+Although we do not elaborate in detail on best practices for scanning tunneling spectroscopy (STS), it is important to emphasize that the algorithm’s success depends critically on acquiring high-quality grid maps. This involves shaping a stable tip, minimizing vibrational and electronic noise, and maintaining optimal system tuning throughout the measurement. These foundational practices should always be followed. In addition, particular attention must be paid to avoiding structured noise, which can severely degrade algorithm performance.
 
+For optimal results, the grid map should ideally cover a region where the number of occurrences for each defect type of interest exceeds a threshold value, denoted as $N^{\text{critical}}$. Because defect types often vary significantly in their densities, it may be challenging to identify regions where all defect types are sufficiently represented. In such cases, it is advisable to focus on the defect types of greatest interest and select regions where these specific types surpass their respective $N^{\text{critical}}$.
+
+The value of $N^{\text{critical}}$ depends on the signal-to-noise ratio (SNR) of the measurement, which can be estimated by comparing the contrast strength of a defect relative to the pristine background. The estimated $N^{\text{critical}}$ based on the SNR is given in Figure. \ref{fig:KS_vs_N}, which was established in the synthetic data environment. However, due to additional complexities in experimental data, $N^{\text{critical}}$ shown in Figure. \ref{fig:KS_vs_N} is often underestimated. To mitigate this, it is beneficial to include a larger number of defects by either (i) identifying regions with higher local defect density, or (ii) increasing the physical coverage of the grid. The latter option may be constrained by cryogenic holding time; one possible trade-off is to reduce the real-space resolution. However, as shown in Figures \ref{fig:phase_space} and \ref{fig:phase_spaceN=3}, excessively high local defect density (e.g., $\geq$ 0.1 defects per lattice site) leads to reconstruction failure, so regions with defect clustering should be avoided.
+
+The algorithm allows users to specify the number of kernels to deconvolve. This number should generally match the number of distinct QPI patterns corresponding to the defect types of interest; note that in the case of same defect with different in-plane rotations, they are considered to have distinct QPI patterns; and we should use multiple kernels. Unrelated defect types can be ignored, as demonstrated in our analyses of LiFeAs (Figure \ref{fig:LiFeAs}) and ZrSiTe (Figure \ref{fig:ZrSiTe1}), where we used two kernels. However, if unwanted defects exhibit strong contrast, they can interfere with the reconstruction. In such cases, we recommend suppressing their signal intensity using truncated Gaussian masks during the preprocessing stage.
+
+As described earlier, the algorithm is typically run first on a single energy slice (“slice run”), followed by a full energy stack (“block run”) once success has been achieved on the slice. The block run benefits from the output activation maps of the slice run, which can be used as an initial guess. Since defect activations are assumed constant across energy, this initialization is often close to the global minimum of the data fidelity term and significantly improves the block run’s success rate.
+
+Finally, note that the sparsity regularization parameter $\lambda_i^{\text{block}}$ for each kernel type $i$ should be scaled relative to the number of energy slices. Specifically, if the slice run used a value of $\lambda_i^{\text{slice}}$, then the block run with $N_{slices}$ slices should use:
+\begin{equation}
+	\lambda_i^{\text{block}} = \sqrt{N_{slices}}\lambda_i^{\text{slice}}
+\end{equation}
+A detailed discussion of the sparsity regularizer $\lambda$ can be found in Section 5.3.2. 
 \section{Summary and outlooks}
+In this chapter, we presented a comprehensive validation and application of the MC-SBD-STM algorithm, showcasing its ability of demixing, deconvolving, denoising, and ultimately extracting defect-specific quasiparticle interference (QPI) patterns from both synthetic and experimental scanning tunneling microscopy (STM) data.
 
+We first developed a simulation framework that addressed key limitations in prior synthetic QPI datasets. By grounding kernel truncation in signal-to-noise ratio (SNR) and enforcing lattice-consistent defect placements, we generated realistic test cases for benchmarking.
 
+To evaluate algorithm performance, we introduced four metrics—Kernel Similarity (KS), Activation Similarity (AS), Observation Fidelity (OF), and Demixing Score (DS). These enabled systematic assessment of reconstruction quality across a broad parameter space. Our benchmarks revealed two key dependencies: kernel quality improves with the number of defect occurrences (due to denoising through averaging), while activation fidelity breaks down at high defect densities (due to increased interference). These observations led to the definition of a critical occurrence threshold, $N^{\text{critical}}$, providing a concrete guideline for experimental design.
 
+We then turned to the application of \ac{MC-SBD} to real STM datasets on four materials: Ag(111), LiFeAs, ZrSiTe, and PtSn\textsubscript{4}. To bridge the gap between simulation and experiment, we developed a preprocessing pipeline to mitigate real-world complexities including streak noise, periodic environmental noise, and high-contrast defect centers. This standardization step was crucial for algorithm success on experimental data.
 
-
-rules:
-1. Higher SNR 
-2. More defect occurrence -> if low in density, need to include more areas. 
-3. stable tip, especially need to avoid structured noise 
-
-the guideline should be hierarchical, first, increase the SNR, then find a grid area on which there are more than 10 occurrence of defect for each type. 
-
-
-\section{Conclusion}
-\ac{MC-SBD} algorithm grant us the impurity-dependent resolution of STM-QPI data, and helps us answer:
-\begin{itemize}
-	\item 1. At a given energy, is there any special states associated with different impurities?
-	\item 2. What are the energy dispersion features of these impurity-dependent states?
-\end{itemize} 
-
+The algorithm achieved full success on the Ag(111) and ZrSiTe datasets, producing clean, defect-resolved QPI patterns across energy. A partial success was observed in LiFeAs, where the dominant defect types were correctly identified and reconstructed, although the presence of other types reduced the overall observation fidelity. The run on PtSn\textsubscript{4} failed, due to insufficient defect statistics and possible unresolved experimental artifacts, reaffirming the practical importance of the guidelines established from synthetic benchmarks.
 
 \subsection{Future directions}
 1. ZrSiTe has the floating band scattering that is missing, we might able to resolve it in the q-space QPI features with the new method developed. 
