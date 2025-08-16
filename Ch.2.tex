@@ -45,7 +45,7 @@ The development of theory of quantum tunneling can be dated in 1928, when Robert
 
 Since our work include using a simple tungsten tip and a low bias voltage(amplitude within 1V), it is sufficient to use the result from Teroff and Hamann.  
 
-\subsection{Tunneling current--from Bardeen to Tersoff and Hamann}
+\subsection{Tunneling current}
 According to Fermi's golden rule, the transmission probability between the tip and sample is directly related to the matrix element $M_{ts}$ between the tip's state $\psi_{t}$, sample's state $\psi_{s}$, and their corresponding electron density $\rho$. When applied a small bias voltage $V_s$ to the sample, we can write:
 \begin{align}
 	P_{t->s} &= \frac{2\pi}{\hslash}\int_{-\infty}^{\infty}|M_{ts}|^2\rho_s(\epsilon + eV_s)[1-f(\epsilon+eV_s)]\cdot \rho_t(\epsilon)f(\epsilon) d\epsilon \\
@@ -55,7 +55,7 @@ where $f$ represents the Fermi-Dirac function. It is worth noting that in order 
 
 The tunneling current proportional to the net transmission probability across tip and sample, under one key assumption: the tunneling must not change the occupation number of both the sample and tip side. This is generally true since the tunneling current is normally is the order of nano-Ampere to pico-Ampere; this correspond to approximately $10^6 \textasciitilde 10^9$ electrons per second, which is tiny compared to the total number of electrons in both electrodes. Thus we can write the tunneling current $I_t$:
 \begin{align}
-	I_t & = 2e(P_{t->s}-P{s->t})\\
+	I_t & = 2e(P_{t->s}-P_{s->t})\\
 	& = 2e \cdot \frac{2\pi}{\hslash}\int_{-\infty}^{\infty}|M_{ts}|^2\rho_t(\epsilon) \rho_s(\epsilon + eV_s) \cdot[f(\epsilon) - f(\epsilon + eV_s)] d\epsilon.
 \end{align}
 The factor of 2 is a result of the spin degeneracy. At low temperature, when $k_BT<<V_s$, we can replace the Fermi-Dirac distribution function $f$ with a step-wise function, and simplifies the integral to: 
@@ -65,37 +65,138 @@ The factor of 2 is a result of the spin degeneracy. At low temperature, when $k_
 \end{equation} 
 From Equation \ref{eq:I_t}, we note that the tunneling current is proportional to both $\rho_t$ and $\rho_s$, since we are interested in probing the sample, we can simply pick the tip to have a featureless $\rho_t$. This can be achieved by using simple metal and their alloys; typically, \ac{STM}s today use tips made of tungsten or a platinum-iridium.
 
-The matrix element can be intuitively understood as the overlapping of sample states and tip states within the insulating barrier. Analytically, it can be expressed as: 
+
+\vspace{1em}
+\noindent\textbf{Approximating the matrix elements}
+
+\noindent In a semiclassical picture with WKB approximation, by estimating the transmission probability through a square barrier of height $W = (W_t + W_s)/2$, where $W_t$ and $W_s$ are the work function for the tip and sample respectively, we can get the matrix element $M_{ts}$: 
 \begin{equation}
-	content...
+	|M_{ts}|^2 = e^{-2\kappa d},
+\end{equation}
+where $\kappa = \sqrt{2mW}/\hslash$.
+
+However, the quantum mechanical determination of the matrix element is much more complex. Intuitively, it can be pictured as the overlapping of sample wave function and tip wave function within the insulating barrier. Here, I will follow the historical development to show how the matrix element is determined. Bardeen first made a significant leap by formulating a general expression for a metal–insulator–metal junction under a few key assumptions. Later, Tersoff and Hamann applied this framework to the idealized STM setup, featuring a sharp tip facing a flat sample surface.
+
+"The way to derive Bardeen's tunneling theory is not straightforward; it does not proceed by routine application of textbook techniques"\cite{gottliebBardeensTunnelingTheory}; this lead to many direct usage of his work without proper explanation on its provenance. Here I follow the approach of C.B.Duke\cite{dukeTunnelingSolids1973}. If the readers are curious, a very comprehensive and accessible tutorial can be found here\cite{gottliebBardeensTunnelingTheory}. 
+
+To start, we can first write the general expression of matrix element in real space as: 
+\begin{equation}
+	\label{eq:bardeen_1}
+	\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} = \int(V(\mathbf{r})- V_s(\mathbf{r})\phi_{\mu}(\mathbf{r})*\psi_{\nu}(\mathbf{r}))dr,
 \end{equation}
 
-However, the analytical determination of this overlap turns out to be a very difficult problem, especially when the tip and sample electronic geometries are unknown. The understanding of the matrix element that I will present was two stepped. First, Bardeen made a leap forward by crafting a general expression with a few assumptions given; then Tersoff and Hamann applied it to the ideal configuration of an STM, with a sharp tip and a flat sample surface. I will not elaborate the details of Bardeen's monstrous derivation on the general expression, and if the readers are curious, a very comprehensive and accessible tutorial can be found here\cite{gottliebBardeensTunnelingTheory}. I will, however, elaborate Tersoff and Hamann's work, but with a better proof proposed by Julian Chen \cite{chenTunnelingMatrixElements1990}, as the corresponding result sets the theoretical foundation for \ac{STM}'s key capacity as a local probe.  
+where $\phi_{\mu}$ and $\psi_{\nu}$ are the eigenstates of the tip Hamiltonian $H_t$ and sample Hamiltonian $H_s$, respectively. That is $H_t \phi_{\mu} = \epsilon_{\mu} \phi_{\mu}$, and $H_s \psi_{\nu} = E_{\nu} \psi_{\nu}$. Note that this is a key assumption in Bardeen's formalism, that the junction is in the weak tunneling condition, ie, the sample potential($V_s$) and the tip potential $V_t$ does not penetrate into each other. 
 
-a situation that  with a lot of assumptions and is a beast on its own. Intuitively, it is the  And area that I will not elaborate is  Matrix element between the tip and sample was initially formulated by Bardeen as: 
+Bardeen then artificially separate the barrier region into two part by drawing a "separation surface" $\mathbf{S}$; the volume that is close to the tip side is denoted as $\mathbf{T}$, and $\mathbf{S} = \partial \mathbf{T}$.
+
+We can then observe that the total Hamiltonian $H$ equate $H_t$ in region $\mathbf{T}$ due to the absence of sample potential $V_s$: 
 \begin{equation}
-	M_{ts}^{\mu\nu} = \frac{\hslash^2}{2m}\int_{\Sigma}[\psi_s^{\mu}\nabla\psi_t^{\nu*} - \psi_t^{\mu*} \nabla \psi_s^{\nu}]\cdot d\mathbf{S},
+	\label{eq:bardeen_2}
+	\begin{aligned}
+		0 &= \braket{\psi_{\nu}|(H-H_t)|\phi_{\mu}^*}_{\mathbf{T}}\\
+		 &= \int_{T} \psi_{\nu}(\mathbf{r}) \left( H - H_{t} \right) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
+		= \int_{T} \psi_{\nu}(\mathbf{r}) H \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
+		- E_{\nu} \int_{T} \psi_{\nu}(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} \\
+		&= -\frac{\hslash^2}{2m} \int_{T} \psi_{\nu}(\mathbf{r}) \Delta \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
+		+ \int_{T} \psi_{\nu}(\mathbf{r}) V(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
+		- E_{\nu} \int_{T} \psi_{\nu}(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r}.
+	\end{aligned}
 \end{equation}
-where $\psi_s^{\mu}$ and $\psi_t^{\nu}$ are the sample and tip wave functions at energy $E_\mu$ and $E_\nu$, respectively. The whole integral is down on the  
 
+And similarly, $H - H_s$ is a zero operator in the barrier region that is not $\mathbf{T}$. Thus the integral in Equation \ref{eq:bardeen_1} can be reduced to region $\mathbf{T}$:   
+\begin{equation}
+	\label{eq:bardeen_3}
+	\begin{aligned}
+		&\langle \phi_{\mu} | H - H_{\text{s}} | \psi_{\nu} \rangle \\
+		&= \int_{T} \phi_{\mu}^*(\mathbf{r}) \left( H - H_{\text{sam}} \right) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
+		= \int_{T} \phi_{\mu}^*(\mathbf{r}) H \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
+		- \epsilon_{\mu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} \\
+		&= -\frac{\hslash^2}{2m} \int_{T} \phi_{\mu}^*(\mathbf{r}) \Delta \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
+		+ \int_{T} \phi_{\mu}^*(\mathbf{r}) V(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
+		- \epsilon_{\mu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r}.
+	\end{aligned}
+\end{equation}
 
-In Bardeen's tunneling theory, he considered a metal-insulator-metal junction. Since we will eventually extend it to \ac{STM}, we can name the metal on the left side as Tip $T$, and other side as sample $S$. Initially, the two    
+Subtracting Equation \ref{eq:bardeen_2} from Equation \ref{eq:bardeen_3}, we get: 
+\begin{equation}
+	\label{eq:bardeen_matrixelement}
+	\begin{aligned}
+		\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} &= \int_\mathbf{T}\phi_{\mu}^*(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \psi_{\nu}(\mathbf{r}) - \epsilon_{\mu}\psi_{\nu}(\mathbf{r}))dr \\ 
+		& - \int_\mathbf{T}\psi_{\nu}(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \phi_{\mu}^*(\mathbf{r}) - E_{\nu}\phi_{\mu}^*(\mathbf{r}))dr.
+	\end{aligned}
+\end{equation}
+By considering only $\epsilon_n \approx E_j$, we can get:
+\begin{align}
+	\label{eq:bardeen4}
+	\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} &\approx -\frac{\hslash^2}{2m}\int_\mathbf{T}\nabla \cdot [\phi_{\mu}^*(\mathbf{r})\nabla\psi_{\nu}(\mathbf{r})-\psi_{\nu}(\mathbf{r})\nabla\phi_{\mu}^*(\mathbf{r})]dr\\ \label{eq:bardeen5}
+	& = -\frac{\hslash^2}{2m}\int_{\partial\mathbf{T}}[\phi_{\mu}^*(\mathbf{r})\nabla\psi_{\nu}(\mathbf{r})-\psi_{\nu}(\mathbf{r})\nabla\phi_{\mu}^*(\mathbf{r})]\cdot d\mathbf{n}.
+\end{align}
+
+This results in Bardeen's approximation of the matrix element, where $\mathbf{n}$ represent the normal vector of $\partial\mathbf{T}$, pointing away from the tip region.  
+
+Tersoff and Hamann took Equation \ref{eq:bardeen5} and applied it \ac{STM}. They considered the sample being a periodic crystal, with the sample states following a Bloch wave in x-y plane. The states are weighted by an exponentially decreasing decay factor and the sample wave function $\psi_{\nu}(r)$ can be expressed as:
+\begin{equation}
+	\label{eq:sample_wavefunction}
+	\psi_{\nu}(r) = \sum_G C_{k_{||},G} e^{-\alpha_{\nu,G}\cdot z }e^{i(k_{||}+G)x},
+\end{equation}
+where $K_{||}$ is the component of wave vector that is parallel to the surface. $G$ is the in-plane reciprocal lattice wave vector. And $\alpha_{n,G} = \sqrt{|k_{||}+G|^2 + \kappa_{\nu}^2}$, where $\kappa_{\nu} = \sqrt{2m(W_s - E_{\nu})/\hslash^2}$ and $W_s$ is the work function of sample. 
+
+The tip end was assumed to be locally spherical with a radius of R centered at tip center $\mathbf{r_0}$. The tip wave function outside of the tip region can be modeled as:
+\begin{equation}
+	\label{eq:tip_wavefunction}
+	\phi_{\mu}(r) = A_{\mu} \frac{e^{-\kappa_{\mu} |\mathbf{r-r_0}|}}{|\mathbf{r-r_0}|},
+\end{equation}
+With $\kappa_{\mu} = \sqrt{2m(W_t-\epsilon_{\mu})/\hslash^2}$. A schematic of the set up is shown in Figure.\ref{fig:tersoff}. 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{tunneling_schematic.png}
-	\caption{}
-	\label{fig:tunneling}
+	\includegraphics[width=0.8\textwidth]{tersoff_geometry.png}
+	\caption{A schematic of the set up used by Tersoff and Hamann. figure adopted from reference \cite{tersoffTheoryScanningTunneling1985}}
+	\label{fig:tersoff}
 \end{figure}
-Quantum tunneling is what allows \ac{STM} to probe surfaces without making mechanical contact. 
 
+They then plug Equation \ref{eq:sample_wavefunction} and \ref{eq:tip_wavefunction} into Equation \ref{eq:bardeen5}, and get the matrix element: 
+\begin{equation}
+	\label{eq:matrixelement_final}
+	M_{\mu \nu} = -\frac{2\pi\hslash^2}{m}A_{\mu}\psi_{\nu}(\mathbf{r_0})
+\end{equation}
+
+The final expression for matrix element is proportional to the sample's surface wave function at the center of the tip. This is the fundamental reason why \ac{STM} is considered a local probe. Moreover, $A_{\mu}$ contains the exponential decay term; the decay length is often sub-angstrom, allowing extremely fine control of the tip-sample junction distance. 
+
+We now recall that in the weak tunneling limit, the low-temperature net tunneling current is given by Equation \ref{eq:I_t}:
+\begin{equation}
+	I = \frac{4\pi e}{\hslash} \int_0^{eV}|M_{\mu \nu}|^2 \rho_t(\epsilon - eV) \cdot \rho_s(\epsilon) d\epsilon.
+\end{equation}
+we plug in the matrix element \ref{eq:matrixelement_final} and get:
+\begin{equation}
+	I(V) \propto \int_0^{eV}  \rho_s(\mathbf{r_0},\epsilon) \rho_t(\epsilon-eV) d\epsilon,
+\end{equation}
+where $\rho_s(\mathbf{r_0},\epsilon) = \sum_{\nu} |\psi_{\nu}(\mathbf{r_0})|^2 \delta(\epsilon - E_{\nu})$, is the local density of state(LDOS) of the sample at the tip center. We then substitute $E = E_F+ \epsilon - eV$. And at the low bias regime, the electron density of tip near the Fermi level can be seen as constant, we thus have: 
+\begin{equation}
+	I(V) \propto \int_{E_F}^{E_F+ eV}  \rho_s(\mathbf{r_0},E) dE,
+\end{equation}
+
+We can further take the derivative of the current with respect to the voltage, and get: 
+\begin{equation}
+	dI/dV \propto \rho_s(\mathbf{r_0},E_F + eV),
+\end{equation}
+which setting the theoretical foundation for Scanning Tunneling Spectroscopy(STS) measurement. 
 
 \section{Configuration of an STM}
+There are four components of a typical STM, they are tip-sample junction, the motion control system, feedback loop $\&$ controller, and environment control system. 
 
-A schematic of an \ac{STM} is shown in \ref{fig:stm_schematics}, 
+The tunneling tip-sample junction is the most important components, it is made of a metallic tip and a conductive flat sample. Tips are normally made of Tungsten and Platinum-Iridium wires. Electrical etching or mechanical cutting can yield apexes that are sharp under the optical microscope. Due to the atomic nature of \ac{STM} measurements, an atomically sharp tip is desired; while it is hard to obtain, tip-processing procedures like Ar-sputtering or electron annealing can generally help the tip condition. Conductive samples are normally prepared in Ultra High Vacuum(UHV) environment with pressure below $10^-9 mbar$ to prevent contamination from other molecules. The sample is mounted on a sample stage that allows relative position with respect to the tip. 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{STM_schematic.png}
-	\caption{}
-	\label{fig:stm_schematics}
-\end{figure}
+The motion of STM tip is driven by a set of piezoelectric scanners. Piezoelectricity is the ability of certain materials to generate a electric potential when a mechanical stress is applied. Inversely, when an electric field is applied, piezoelectric material causes mechanical deformation. A typical piezoelectric material used in STM is Quartz, which exhibits a high piezoelectric sensitivity. With typical displacement coefficients on the order of a few picometers per volt, sub-angstrom control of the STM tip position is allowed using modest driving voltages. Moreover, quartz also has rigid mechanical property and low thermal expansion, which are essential for durable operations across a wide temperature range.
+ \begin{figure}
+ 	\centering
+ 	\includegraphics[width=0.8\textwidth]{STM_schematic.png}
+ 	\caption{Schematic of a typical STM setup. Right: The tip–sample tunneling junction, consisting of a metallic tip (commonly W or Pt–Ir) brought within atomic distance of a clean, conductive sample surface prepared under UHV conditions. Middle: The STM head, roughly the size of a human fist, contains the piezoelectric scanner that provides sub-angstrom control of the tip motion. Left: Control electronics, including the bias source, current amplifier, and PID feedback circuit, regulate the tunneling current and tip–sample distance during operation. Together with vibration isolation, cooling, and vacuum systems, these components form the complete STM instrument.}
+ 	\label{fig:stm_schematics}
+ \end{figure}
+ 
+A set of controllers is used to apply bias voltage, monitor the tunneling current and manipulate the motion of the tip. A DC bias voltage is applied across the tip and sample, the experimental setup in this thesis applied the bias voltage to the sample while grounding the tip. Feedback electronics with a proportional-integral-derivative(PID) feedback mechanism are employed to keep the tunneling current stable during scanning. If the current falls, the tip is driven closer to the surface; if it rises above the setpoint, the controller retracts the tip slightly. In this way, the recorded motion of the tip accurately reflects the surface's topographic and electronic structure. The measured tunneling current ranges from pA to a few nA; thus another key components in the controller circuit is a current amplifier with low-noise and high-gain. Typically, a gain of $10^9$ to $10^10$ is used, and a series of filters are used after amplification to reduce the noise. 
+
+To connect the three components mentioned above to a complete \ac{STM} set up, a schematic is shown in Figure \ref{fig:stm_schematics}. From left to right, they represent different components at various scales. It is worth mention that while an \ac{STM} machine can take up a room of tens of square meters, the size of the \ac{STM} head is often similar to a fist of an adult male, as shown in the Figure \ref{fig:stm_schematics} middle panel.
+
+Apart from these three major components, modern \ac{STM} are often equipped with a complex set of support systems to control the operational environment. This typically includes a pumping system to maintain the UHV conditions in the chamber, a cooling system to reach cryogenic temperatures for improved stability and spectroscopic resolution, and a mechanical damping system to isolate the microscope head from vibration noise. Together, these systems ensure that the tunneling junction remains clean, stable, and free from external disturbances, which is essential for achieving atomic-scale resolution in measurements that truly reflect the intrinsic properties of the system under study.  
+
