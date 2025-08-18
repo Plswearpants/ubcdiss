@@ -1,4 +1,4 @@
-\section{from light to electron}
+\section{Beyond the Optical Horizon}
 Human have long history of harnessing light and creating optical microscopes that allow us to look closer. The resolution of the microscope is physically limited by the wavelength of the light, as framed by Abbe's diffraction limit:
 \begin{equation}
 	d = \frac{\lambda}{2\cdot NA}.
@@ -17,7 +17,7 @@ Scanning tunneling microscope(STM) marks another attempt to manipulate electrons
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{braille.png}
-	\caption{Analogy between the Braille reading and STM topography}
+	\caption[\textbf{Analogy between the Braille reading and STM topography}]{\textbf{Analogy between the Braille reading and STM topography}. a) finger tips are used for Braille reading, due to its high sensitivity to spatial variations. b) \ac{STM} maps out the atomic landscapes of target material with an atomically sharp tip. A red surface atom with different electronic structure will induce a different tip height, indicating \ac{STM}'s sensitivity to both spatial height and electronic structures.}
 	\label{fig:braille}
 \end{figure}
 The foundational work done by Ruska, Binnig and Rohrer on electron microscope was awarded the 1986 Nobel Price in Physics. From the earliest optical instruments to the advent of electron-based probes, each leap in resolution has revealed new structural detail. STM represents the culmination of this progression, pushing beyond the limits of conventional electron optics by harnessing quantum tunneling rather than direct imaging. With its ability to map surfaces atom by atom, STM opens up entirely new fields, including the study of point defects in quantum materials
@@ -25,7 +25,7 @@ The foundational work done by Ruska, Binnig and Rohrer on electron microscope wa
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Si111_binnig.png}
-	\caption{}
+	\caption[\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}]{\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}. The sixfold rotational symmetry around the rhombohedral corners is evident, with twelve adatoms in a unit cell clearly resolved. Crosses mark the adatom positions as proposed in the modified adatom model. Brightness reflects relative height (not to scale). The figure is adopted from reference \cite{binnig77Reconstruction1983}}
 	\label{figure:si111_binnig}
 \end{figure}
 
@@ -41,11 +41,11 @@ Quantum tunneling described the behavior of quantum mechanical object passing th
 \end{equation}
 In fact, according to de Broglie's  matter wave theory, even a classical object could theoretically tunnel through a seemly forbidden barrier, just extremely unlikely: the probability for a baseball traveling at 40 m/s to tunnel through a 10 cm thick brick wall is approximately $e^{-10^{33}}$. 
 
-The development of theory of quantum tunneling can be dated in 1928, when Robert Oppenheimer developed a time-dependent perturbation method trying to explain the ionization of hydrogen in an apply field\cite{oppenheimerThreeNotesQuantum1928}. A more general theory for a metal-insulator-metal junction is introduced by Bardeen in 1961\cite{bardeenTunnellingManyParticlePoint1961}, 20 years before the birth of \ac{STM}. Two years after the invention of \ac{STM}, Tersoff and Hamann extended Bardeen's theory to model an ideal STM tip-sample junction, which successfully interpreted the topography of Au crystal \cite{tersoffTheoryApplicationScanning1983}\cite{tersoffTheoryScanningTunneling1985}. Later, Lang found that one can effectively model the \ac{STM} operation with tunneling between only the single atom on the end of a tip(the acting atom) and the single atom on the surface, revealing the atomic nature of the \ac{STM} \cite{langVacuumTunnelingCurrent1985}\cite{langSpectroscopySingleAtoms1986}\cite{langApparentSizeAtom1987}. Inspired by the atomic picture, Julian Chen built a three-dimensional model of the tunneling considering different tip configurations by expanding the asymptotic wave function of the acting atom\cite{chenTunnelingMatrixElements1990}\cite{chenTheoryScanningTunneling1988}. 
+The development of theory of quantum tunneling can be dated in 1928, when Robert Oppenheimer developed a time-dependent perturbation method trying to explain the ionization of hydrogen in an apply field\cite{oppenheimerThreeNotesQuantum1928}. A more general theory for a metal-insulator-metal junction is introduced by Bardeen in 1961\cite{bardeenTunnellingManyParticlePoint1961}, 20 years before the birth of \ac{STM}. In 1983, Tersoff and Hamann extended Bardeen's theory to model an ideal STM tip-sample junction, which successfully interpreted the topography of Au crystal \cite{tersoffTheoryApplicationScanning1983}\cite{tersoffTheoryScanningTunneling1985}. Later, Lang found that one can effectively model the \ac{STM} operation with tunneling between only the single atom on the end of a tip(the acting atom) and the single atom on the surface, revealing the atomic nature of the \ac{STM} \cite{langVacuumTunnelingCurrent1985}\cite{langSpectroscopySingleAtoms1986}\cite{langApparentSizeAtom1987}. Inspired by the atomic picture, Julian Chen built a three-dimensional model of the tunneling considering different tip configurations by expanding the asymptotic wave function of the acting atom\cite{chenTunnelingMatrixElements1990}\cite{chenTheoryScanningTunneling1988}. 
 
-Since our work include using a simple tungsten tip and a low bias voltage(amplitude within 1V), it is sufficient to use the result from Teroff and Hamann.  
+Since our work include using a simple tungsten tip and a low bias voltage, it is sufficient to use the result from Teroff and Hamann.  
 
-\subsection{Tunneling current}
+\subsection{Interpretation of the tunneling current}
 According to Fermi's golden rule, the transmission probability between the tip and sample is directly related to the matrix element $M_{ts}$ between the tip's state $\psi_{t}$, sample's state $\psi_{s}$, and their corresponding electron density $\rho$. When applied a small bias voltage $V_s$ to the sample, we can write:
 \begin{align}
 	P_{t->s} &= \frac{2\pi}{\hslash}\int_{-\infty}^{\infty}|M_{ts}|^2\rho_s(\epsilon + eV_s)[1-f(\epsilon+eV_s)]\cdot \rho_t(\epsilon)f(\epsilon) d\epsilon \\
@@ -69,7 +69,7 @@ From Equation \ref{eq:I_t}, we note that the tunneling current is proportional t
 \vspace{1em}
 \noindent\textbf{Approximating the matrix elements}
 
-\noindent In a semiclassical picture with WKB approximation, by estimating the transmission probability through a square barrier of height $W = (W_t + W_s)/2$, where $W_t$ and $W_s$ are the work function for the tip and sample respectively, we can get the matrix element $M_{ts}$: 
+\noindent In a semiclassical picture with WKB approximation, by estimating the transmission probability through a square barrier of height $W = (W_t + W_s)/2$, where $W_t$ and $W_s$ are the work function for the tip and sample respectively, we can get the matrix element $M_{ts}$, such that: 
 \begin{equation}
 	|M_{ts}|^2 = e^{-2\kappa d},
 \end{equation}
@@ -77,9 +77,9 @@ where $\kappa = \sqrt{2mW}/\hslash$.
 
 However, the quantum mechanical determination of the matrix element is much more complex. Intuitively, it can be pictured as the overlapping of sample wave function and tip wave function within the insulating barrier. Here, I will follow the historical development to show how the matrix element is determined. Bardeen first made a significant leap by formulating a general expression for a metal–insulator–metal junction under a few key assumptions. Later, Tersoff and Hamann applied this framework to the idealized STM setup, featuring a sharp tip facing a flat sample surface.
 
-"The way to derive Bardeen's tunneling theory is not straightforward; it does not proceed by routine application of textbook techniques"\cite{gottliebBardeensTunnelingTheory}; this lead to many direct usage of his work without proper explanation on its provenance. Here I follow the approach of C.B.Duke\cite{dukeTunnelingSolids1973}. If the readers are curious, a very comprehensive and accessible tutorial can be found here\cite{gottliebBardeensTunnelingTheory}. 
+"The way to derive Bardeen's tunneling theory is not straightforward; it does not proceed by routine application of textbook techniques"\cite{gottliebBardeensTunnelingTheory}; this lead to many direct usage of his work without proper explanation on its provenance. Here I follow the approach of Gottlieb and Wesoloski\cite{gottliebBardeensTunnelingTheory}, which was mostly inspired by C.B.Duke\cite{dukeTunnelingSolids1973}. The readers are encouraged to read the full derivation in this comprehensive and accessible tutorial\cite{gottliebBardeensTunnelingTheory}. 
 
-To start, we can first write the general expression of matrix element in real space as: 
+To start, we can first write the general expression of matrix element in real space: 
 \begin{equation}
 	\label{eq:bardeen_1}
 	\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} = \int(V(\mathbf{r})- V_s(\mathbf{r})\phi_{\mu}(\mathbf{r})*\psi_{\nu}(\mathbf{r}))dr,
@@ -89,7 +89,7 @@ where $\phi_{\mu}$ and $\psi_{\nu}$ are the eigenstates of the tip Hamiltonian $
 
 Bardeen then artificially separate the barrier region into two part by drawing a "separation surface" $\mathbf{S}$; the volume that is close to the tip side is denoted as $\mathbf{T}$, and $\mathbf{S} = \partial \mathbf{T}$.
 
-We can then observe that the total Hamiltonian $H$ equate $H_t$ in region $\mathbf{T}$ due to the absence of sample potential $V_s$: 
+We can then observe that the total Hamiltonian $H$ equate the tip Hamiltonian $H_t$ in region $\mathbf{T}$ due to the absence of sample potential $V_s$: 
 \begin{equation}
 	\label{eq:bardeen_2}
 	\begin{aligned}
@@ -132,7 +132,7 @@ By considering only $\epsilon_n \approx E_j$, we can get:
 	& = -\frac{\hslash^2}{2m}\int_{\partial\mathbf{T}}[\phi_{\mu}^*(\mathbf{r})\nabla\psi_{\nu}(\mathbf{r})-\psi_{\nu}(\mathbf{r})\nabla\phi_{\mu}^*(\mathbf{r})]\cdot d\mathbf{n}.
 \end{align}
 
-This results in Bardeen's approximation of the matrix element, where $\mathbf{n}$ represent the normal vector of $\partial\mathbf{T}$, pointing away from the tip region.  
+The volume integral is reduced to the surface integral on $\partial \mathbf{T} = \mathbf{S}$ with divergence theorem in vector calculus. This result in Bardeen's approximation of the matrix element, where $\mathbf{n}$ represent the normal vector of $\mathbf{S}$, pointing away from the tip region.  
 
 Tersoff and Hamann took Equation \ref{eq:bardeen5} and applied it \ac{STM}. They considered the sample being a periodic crystal, with the sample states following a Bloch wave in x-y plane. The states are weighted by an exponentially decreasing decay factor and the sample wave function $\psi_{\nu}(r)$ can be expressed as:
 \begin{equation}
@@ -150,11 +150,11 @@ With $\kappa_{\mu} = \sqrt{2m(W_t-\epsilon_{\mu})/\hslash^2}$. A schematic of th
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{tersoff_geometry.png}
-	\caption{A schematic of the set up used by Tersoff and Hamann. figure adopted from reference \cite{tersoffTheoryScanningTunneling1985}}
+	\caption[\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model}]{\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model} The probe tip is approximated as locally spherical with radius of curvature $R$, centered at $\mathbf{r_0}$, where it approaches the surface at the nearest distance $d$. The figure is adopted from reference \cite{tersoffTheoryScanningTunneling1985}.}
 	\label{fig:tersoff}
 \end{figure}
 
-They then plug Equation \ref{eq:sample_wavefunction} and \ref{eq:tip_wavefunction} into Equation \ref{eq:bardeen5}, and get the matrix element: 
+They then plug Equation \ref{eq:sample_wavefunction} and \ref{eq:tip_wavefunction} into Equation \ref{eq:bardeen5}. By smartly picking the separation surface to be close to the tip apex, they get the matrix element: 
 \begin{equation}
 	\label{eq:matrixelement_final}
 	M_{\mu \nu} = -\frac{2\pi\hslash^2}{m}A_{\mu}\psi_{\nu}(\mathbf{r_0})
@@ -190,7 +190,7 @@ The motion of STM tip is driven by a set of piezoelectric scanners. Piezoelectri
  \begin{figure}
  	\centering
  	\includegraphics[width=0.8\textwidth]{STM_schematic.png}
- 	\caption{Schematic of a typical STM setup. Right: The tip–sample tunneling junction, consisting of a metallic tip (commonly W or Pt–Ir) brought within atomic distance of a clean, conductive sample surface prepared under UHV conditions. Middle: The STM head, roughly the size of a human fist, contains the piezoelectric scanner that provides sub-angstrom control of the tip motion. Left: Control electronics, including the bias source, current amplifier, and PID feedback circuit, regulate the tunneling current and tip–sample distance during operation. Together with vibration isolation, cooling, and vacuum systems, these components form the complete STM instrument.}
+ 	\caption[\textbf{Schematic of a typical STM setup}]{\textbf{Schematic of a typical STM setup}. Right: The tip–sample tunneling junction, consisting of a metallic tip (commonly W or Pt–Ir) brought within atomic distance of a clean, conductive sample surface prepared under UHV conditions. Middle: The STM head, roughly the size of a human fist, contains the piezoelectric scanner that provides sub-angstrom control of the tip motion. Left: Control electronics, including the bias source, current amplifier, and PID feedback circuit, regulate the tunneling current and tip–sample distance during operation. Together with vibration isolation, cooling, and vacuum systems, these components form the complete STM instrument.The figure is adopted from \cite{stuartScanningTunnellingMicroscopy2021}}
  	\label{fig:stm_schematics}
  \end{figure}
  
@@ -212,11 +212,11 @@ The bias voltage $V$ and tip displacement $\mathbf{r}$ dependence of the tunneli
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{topographic_modes.png}
-	\caption{}
+	\caption[\textbf{Schematic of the two basic STM topographic imaging modes}]{\textbf{Schematic of the two basic STM topographic imaging modes}. Top: constant-height mode, where the tip height is fixed and the tunneling current varies with tip position. Bottom: constant-current mode, where a feedback loop maintains constant current by adjusting the tip height. In both cases, the measured “height” reflects variations in the local density of states (LDOS) as well as geometric surface corrugation, such that atomic defects with modified DOS appear as apparent topographic features. The figure is adopted from reference \cite{stuartScanningTunnellingMicroscopy2021}}
 	\label{fig:topo_modes}
 \end{figure}
 
-The second mode of \ac{STM} operation is when we park the tip at a fixed position $\mathbf{r_0}$ within the tunneling region, and record the current while scanning the bias voltage. The result of such a measurement is an $I-V$ curve at $\mathbf{r} = \mathbf{r_0}$; by taking its derivative with respect to the voltage, we get the differential conductance, which is proportional to the sample's local electron density of state $\rho_s(\mathbf{r_0, E_F+eV})$. Another way to obtain the LDOS is through the use of a lockin-amplifier, which modulates the applied DC bias voltage $V_b$ by a sinusoidal AC voltage $V_{lockin}$.  $V_{lockin}$ normally has an amplitude of a few meV and a frequency $\omega$ ranging from a few hundred Hz to a few kHz. The extracted current response at $\omega$ is proportional to the differential conductance. The use of lock-in amplifier is particular useful in a noisy environment, since we can choose the lock-in frequency away from any noise peaks. This allows us to recover signal orders of magnitude smaller than the noise floor. However, despite being a powerful method, the use of lock-in has several limitations. The most significant is modulation broadening: the applied AC bias averages the signal over an energy window, which can smear out sharp spectral features and limit energy resolution. In addition, the lock-in assumes a fixed phase difference between the modulation and response; this means any phase lag, from either capacitance in the wiring of junction response time, can reduce the signal amplitude. Finally, the high sensitivity of lock-in detection often relies on long integration times, making measurements slower and less suited for systems with significant drift or low cryogenic holding time.
+The second mode of \ac{STM} operation is when we park the tip at a fixed position $\mathbf{r_0}$ within the tunneling region, and record the current while scanning the bias voltage. The result of such a measurement is an $I-V$ curve at $\mathbf{r} = \mathbf{r_0}$; by taking its derivative with respect to the voltage, we get the differential conductance, which is proportional to the sample's local electron density of state $\rho_s(\mathbf{r_0}, E_F+eV)$. Another way to obtain the LDOS is through the use of a lockin-amplifier, which modulates the applied DC bias voltage $V_b$ by a sinusoidal AC voltage $V_{lockin}$.  $V_{lockin}$ normally has an amplitude of a few meV and a frequency $\omega$ ranging from a few hundred Hz to a few kHz. The extracted current response at $\omega$ is proportional to the differential conductance. The use of lock-in amplifier is particular useful in a noisy environment, since we can choose the lock-in frequency away from any noise peaks. This allows us to recover signal orders of magnitude smaller than the noise floor. However, despite being a powerful method, the use of lock-in has several limitations. The most significant is modulation broadening: the applied AC bias averages the signal over an energy window, which can smear out sharp spectral features and limit energy resolution. In addition, the lock-in assumes a fixed phase difference between the modulation and response; this means any phase lag, from either capacitance in the wiring of junction response time, can reduce the signal amplitude. Finally, the high sensitivity of lock-in detection often relies on long integration times, making measurements slower and less suited for systems with significant drift or low cryogenic holding time.
 
 One can combine both the spatial and energy resolution of \ac{STM} by perform a spatial \ac{STS}, which is a way to collect local tunneling spectroscopy on many points on the material surface following a 2D grid. This give arise to a three-dimensional output data known as the grid map, which contains the spatially-variational electronic structure of the material. This makes \ac{STM} grid map spectroscopy a powerful mode in studying spatial features with characteristic \ac{LDOS}. At large scales, it has been widely used to probe emergent collective orders such as charge- and spin-density waves, which features periodic modulations of the local density of states. On intermediate scales, grid maps capture quasiparticle interference(QPI) patterns, enabling the reconstruction of electronic band dispersions in metal/semimetals, superconductors, and topological materials\cite{avrahamQuasiparticleInterferenceStudies2018}. Moving toward the nanoscale, they reveal spatial inhomogeneity in correlated systems, such as variations in the superconducting gap of high-Tc cuprates\cite{duanSingleparticleTunnelingSpectroscopy2021}\cite{boyerImagingTwoGaps2007} or the localized states in vortex cores of type-II superconductors\cite{panSTMStudiesElectronic2000}\cite{suderowImagingSuperconductingVortex2014}. Ultimately, at the atomic limit, grid maps excel at resolving the spatial variation of bound states attached to local defects — from donor or acceptor states in semiconductors\cite{mahieuDirectEvidenceShallow2005} to in-gap resonances near magnetic impurities\cite{schneiderMagnetismIngapStates2019}\cite{yangIngapQuasiparticleExcitations2013}\cite{chatzopoulosSpatiallyDispersingYuShibaRusinov2021}.
 
@@ -225,6 +225,13 @@ This study focus on revealing defect-specific information, and all three modes a
 \section{STM used in this thesis project}
 In this study, a commercial STM made from SPS-CreaTec GmbH (Createc for short) is used. It is a low-temperature, ultra-high vacuum STM system consists of a load lock chamber for sample transfer, a preparation chamber for tip and sample treatments, a dual cryostat with an inner Liquid Helium dewar and the outer Liquid Nitrogen sleeve, and most importantly, the main STM chamber and the STM head. 
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{STM_head.png}
+	\caption{}
+	\label{fig:STM_head}
+\end{figure}
+
 Createc's STM head used a Besocke style design\cite{besockeEasilyOperableScanning1987b}. This design differs from the typical Pan-type style STM head in its configuration of piezoelectric stacks. As shown in Figure. \ref{fig:STM_head}, The tip and sample are mounted on opposite sides of a tripod of piezoelectric legs. On the tip side, one tube attached to the copper plate act as the scanner motor, which enabled the three-axis sub-angstrom movement of tip attached to the end of it. On the sample side, three tubes underneath the copper plate dictating the coarse motion of the tip. A sapphire ball is in the end of each coarse piezoelectric tube to ensures a firm contact to the copper plate. This allows for the slip-stick motion, which is the mechanism behind the relative movement of copper plate and the coarse motion tube. Four thin layers of metal pointing at $\pm x$ and $\pm y$ directions are coated on the side of each coarse piezoelectric cylinder. By applying different high voltages across $x-y$ direction, the tube can be bent at any in-plane direction. It is worth mention that the surface of contact between the sapphire balls and the copper plate has a small slop. By driving each coarse tube in the same angular direction, we can rotate the copper plate and thus tune the tip height.
 
 The coarse z-range is determined by the size and slope of the copper plate. In the case of this Createc \ac{STM}, we have a coarse z-range of about 0.6 mm, very short compared to the pan-type STM. This limited z-range sets a tight constrain to the tip-sample distance. Figure. \ref{fig:Createc-tip-sample-junction} shows a schematic of the junction when the tip is maximally retracted. The tip holder has a standardized shape but the tip length $Z_t$ can be tuned. On the sample side, while the sample stage and plate are fixed, height of the mushroom-shape sample holder $Z_m$ can be adjusted. According to the manufacturer, distance $Z_t + d +Z_m$ should be 11.6mm. However, the sample stage was found to have an offset of around +0.25 mm, which leaves the distance $Z_t + d +Z_m$ to be 11.35mm, this has been found consistent during the course of this study. To ensure a successful tip landing, the tip-sample distance $d-Z_s$ should be kept within 0.6 mm. Ideally, to allow the maximum traveling range in z-direction, we want $(d-Z_s) \in [0.2,0.4]$mm. This raised two complexities: first, $Z_s$ is the sample height post-cleaving, which is hard to estimate especially when the pre-cleaving sample is thick. Second, given an estimated $Z_s$, we need to ensure $(Z_t+Z_m)\in[10.95-Z_s, 11.15-Z_s]$mm, which needs to be achieved by fine-tuning both the tip height and sample holder height.  
@@ -232,7 +239,7 @@ The coarse z-range is determined by the size and slope of the copper plate. In t
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Createc_sample_tip_junction.png}
-	\caption{}
+	\caption[\textbf{Schematic of the STM tip-sample junction with the tip maximally retracted}]{\textbf{Schematic of the STM tip-sample junction with the tip maximally retracted}. The tip holder has a standardized shape but allows adjustment of the tip length $Z_t$. On the sample side, the stage and plate are fixed, while the height of mushroom-shaped holder $Z_m$ can be tuned. Together, these components determine the effective tip–sample spacing, which must be carefully balanced to ensure a successful landing and provide sufficient traveling range along the vertical direction.}
 	\label{fig:Createc-tip-sample-junction}
 \end{figure}
 
@@ -240,11 +247,4 @@ The core advantage of the Besocke design is its robustness against thermal expan
 
 Createc has a cryogenic holding time of approximately four days at its base temperature of 4.4 K. With the support of a pumping system, the STM chamber remains under UHV at a typical pressure of $10^-10$mbar. For each run of experiment, a electrochemically etched tungsten tip is used. After being transferred into the preparation chamber, the tip typically undergoes a series of tip treatment processes including Ar\textsuperscript{+} sputtering, thermal annealing with accelerated electron beams. In STM chamber, the tip can also be treated by performing field emission on a noble metal on the sample holder. 
 
-Createc \ac{STM} was functioning well from the beginning of the study to May 2023, when its dry scroll pump experienced a catastrophic failure, likely due to lack of service. Soon after the scroll pump seized, the turbo molecular pump shut itself due to overheating, this resulted in a rapid drop in vacuum quality in both preparation and STM chambers. Before the ion getter pumps shut itself, the high voltage across it induced arcing in bad vacuum and caused varies shorts in the circuit and other issues. A major repair that spanned one and a half years was thus performed by me, with some help from LAIR postdoc Dr. Altthaler Markus. A detailed report on this repair is included in Appendix. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{STM_head.png}
-	\caption{}
-	\label{fig:STM_head}
-\end{figure}
+Createc \ac{STM} was functioning well from the beginning of the study to May 2023, when its dry scroll pump experienced a catastrophic failure, likely due to lack of service. Soon after the scroll pump seized, the turbo molecular pump shut itself due to overheating, this resulted in a rapid drop in vacuum quality in both preparation and STM chambers. Before the ion getter pumps shut itself, the high voltage across it induced arcing in bad vacuum and caused varies shorts in the circuit and other issues. I thus performed a major repair that spanned one and a half years, together with some help from LAIR postdoc Dr. Altthaler Markus. A detailed report on this repair is included in Appendix \ref{appen:fix}. 

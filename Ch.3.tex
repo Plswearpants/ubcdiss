@@ -1,22 +1,34 @@
 \chapter{STM Measurements of PtSn\textsubscript{4}}
-\section{Intro to PtSn\textsubscript{4}}
-%todo: write about how PtSn4 bonds, with interlayer bonding not merely van der Waals force but metallic bonds. 
-\subsection{Crystal Structure}
-\subsection{Crystalline Symmetry and Band Structure} 
-\footnote{Theory Calculations and Previous ARPES Study}
-\footnote{Transport Measurements and Previous Studies}
+PtSn\textsubscript{4} has emerged as a compelling platform to investigate defect scattering phenomena in topological materials. ARPES measurements revealed the presence of unusual Dirac node arc states on its surface, placing PtSn\textsubscript{4} among the growing family of topological semimetals\cite{wuDiracNodeArcs2016}. Beyond its exotic surface states, its bulk transport is equally remarkable: PtSn\textsubscript{4} exhibits an extremely large residual resistivity ratio (RRR), approaching or even exceeding 1000, and correspondingly low residual resistivity in the nanohm-centimeter range \cite{munMagneticFieldEffects2012}\cite{perevalovaFeaturesElectronicTransport2022}\cite{diazSemiclassicalOriginExtreme2024}. Such behavior points to minimal defect scattering at low temperatures, a feature that could be contributed to the lack of scattering center due to crystal perfection, or from the suppression of electron backscattering due to exotic band topology, an affect both found in experiment and predicted by theories\cite{roushanTopologicalSurfaceStates2009}\cite{kimRobustProtectionBackscattering2014}\cite{ivanovAbsenceBackscatteringFermiarc2024}. These characteristics make PtSn\textsubscript{4} an ideal candidate for \ac{STM} studies of individual defects and their role in scattering processes, offering a unique opportunity to connect atomic-scale disorder with macroscopic transport.
 
-\section{Sample Preparation}
-\par Sample preparation is one of the keys to a successful STM experiment. As the surface of the sample is what we are trying to probe, making sure the surface is as clean and stable as possible is usually the goal of sample preparation. 
+In the chapter, we present the defects characterization study on PtSn\textsubscript{4} with our low temperature Createc \ac{STM}. We found that there are various types of defects in PtSn\textsubscript{4}, and report their unique topographic and electronic structures. We also found that defects in PtSn\textsubscript{4} occur rarely; to quantitatively characterize the densities associated with different types of defect, we developed a mutinomial model for defect statistics. The validity of the model was discussed and examined. We found the defect-specific density of PtSn\textsubscript{4} to be extremely low, indicating the classical origin of its low residual resistivity. 
 
-\par We achieve a clean and stable crystal surface via in-situ cleaving, it is worth mentioning that prior to the successful room-temperature cleaving, we did 2 trials of low-temperature cleaving at around 20K and the they failed, thus we will elaborate the in-situ root-temperature cleaving we performed. We first prepare the sample on bench, a mushroom like sample holder made of oxygen free copper is used. You can see a stacking structure on the left of \ref{fig:ch4_cleaves} a), from bottom to top the components are sample holder, a Pt-sheet, PtSn$_4$ single crystal, a cylindrical MACRO ceramic post. Each components are attached to the neighbors via EPO-TEK H20E, a hundred-percent solid silver-filled epoxy with low contact resistance. A polycrystalline gold is mounted next to the assembly serving as a reference metal and a tip cleaning surface. 
+\section{Crystal and electronic structures of PtSn\textsubscript{4}}
+
+PtSn\textsubscript{4} crystallizes in the orthorhombic Ccca structure (space group No. 68). As shown in Figure \ref{fig:crystal_struc} panel a), PtSn\textsubscript{4} crystal consists of quasi-two-dimensional Sn–Pt–Sn sandwiches stacked along the crystallographic b axis. Each layer is composed of a square lattice of Pt atoms encapsulated by Sn layers, forming edge-sharing PtSn\textsubscript{8} antiprisms. This structural motif hints a layered system with weak interlayer bonding; however, it is experimentally confirmed that the electronic structure of PtSn\textsubscript{4} is highly three-dimensional, with non-trivial K\textsubscript{z} dispersion of Fermi surfaces  \cite{wuDiracNodeArcs2016}\cite{linUltrafastCarrierRelaxation2024}\cite{inamdarQuantumOscillationsUltra2013a}\cite{munMagneticFieldEffects2012}\cite{yaraSmallFermiSurfaces2018a}\cite{diazSemiclassicalOriginExtreme2024}; Moreover, it is also shown that both Pt and Sn orbitals contribute on a similar level to the carrier pockets across Fermi-level, with significant hybridization\cite{luoOriginExtremelyLarge2018}. 
+
+This hybrid character, structurally layered but electronically three-dimensional, leaves two potential points worth considering in the subsequent \ac{STM} study. First, the metallic interlayer coupling may complicate the cleaving process. Unlike van der Waals layered materials that cleave cleanly along weakly bonded planes, PtSn$_4$ has metallic Sn–Sn bonds between its Sn–Pt–Sn sandwiches. As a result, cleavage may not always yield a uniform termination, and indeed, both Sn- and Pt-terminated surfaces were observed in a previous study\cite{liDiracNodalArc2019}. This makes surface preparation less predictable and requires extra care in identifying the exposed layer in STM studies. Secondly, Since \ac{STM} is inherently a surface-sensitive probe, its spectroscopic signals are usually interpreted as an average over momentum along the out-of-plane direction ($k_z$). This approximation works well in electronically quasi-2D systems, where $k_z$ dispersion is negligible. In PtSn$_4$, however, the pronounced $k_z$ dependence of the band structure complicates this picture: STM measurements no longer reflect a simple slice of the Fermi surface, but rather a projection that mixes contributions from different $k_z$ states. Addressing this challenge may require specialized approaches, such as $k_z$-selective techniques developed in recent tomographic studies \cite{marquesTomographicMappingHidden2021}.
+
+Figure. \ref{fig:crystal_struc} panel c) shows a typical PtSn\textsubscript{4} crystal used in the study; it is featured by well-defined rectangular facets along the crystallographic b-axis. The crystals are grown by our collaborator Samikshya Sahu with a standard self-flux method with excessive Sn. X-ray diffraction was performed on a crystal in the same batch as the one in c), and the refinement confirmed the orthorhombic Ccca structure and shows high crystalline quality. The high quality was also confirmed by the temperature dependent resistivity measurement on these samples, where their residual resistivity ratio(RRR) shows remarkable values above 1000, shown in the two S1 datasets on panel e). It is worth noting that even under deliberately unfavorable growth conditions designed to increase disorder, PtSn\textsubscript{4} crystals retain RRR values well above 100, far surpassing the benchmarks of most metals.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{PtSn4.png}
+	\caption[\textbf{Structural and transport properties of PtSn\textsubscript{4}}]{\textbf{Structural and transport properties of PtSn\textsubscript{4}}. (a,b) PtSn\textsubscript{4} adopts a quasi-two-dimensional crystal structure consisting of staggered layers, each formed by a Pt square lattice sandwiched between two Sn layers. Within each layer, square antiprismatic PtSn\textsubscript{8} units share edges, as seen along the b-axis. The two crystallographically equivalent Sn positions, Sn\textsubscript{a} and Sn\textsubscript{b}, can appear as distinct surface terminations upon cleaving. (c) The metallic self-flux method produces centimeter-scale PtSn\textsubscript{4} crystals with well-defined rectangular facets along the crystallographic b-axis. (d) Rietveld refinement of powder x-ray diffraction confirms the orthorhombic Ccca (no. 68) structure and high crystalline quality. (e) These crystals exhibit exceptionally high residual resistivity ratios (RRRs) exceeding 1000 under standard cooling conditions (60 hrs). Even with accelerated cooling (12 and 1.5 hrs), RRR values remain above 100, reflecting excellent crystalline quality and minimal defect concentration. The figure was prepared by Samikshya Sahu and is taken from an unpublished manuscript that I co-authored.}
+	\label{fig:crystal_struc}
+\end{figure}
+
+\section{Sample surface Preparation}
+\par Sample surface preparation is one of the keys to a successful STM experiment. As the surface of the sample is what we are trying to probe, making sure the surface is as clean and stable as possible is usually the goal of sample preparation. 
+
+\par We achieve a clean and stable crystal surface via in-situ cleaving, it is worth mentioning that prior to the successful room-temperature cleaving, we did 2 trials of low-temperature cleaving at around 20K and the they failed, thus we will elaborate the in-situ root-temperature cleaving we performed. We first prepare the sample on bench, a mushroom like sample holder made of oxygen free copper is used. We can see a stacking structure on the left of \ref{fig:ch4_cleaves} a), from bottom to top the components are sample holder, a Pt-sheet, PtSn$_4$ single crystal, a cylindrical MACRO ceramic post. Each components are attached to the neighbors via EPO-TEK H20E, a hundred-percent solid silver-filled epoxy with low contact resistance. A polycrystalline gold is mounted next to the assembly serving as a reference metal and a tip cleaning surface. 
 
 \par As discussed in Section 3.1, despite having a layered structure, the inter-layer bonding of PtSn$\textsubscript{4}$ is not merely weak van der Waals force, but rather metallic, making PtSn$_4$ not easily cleavable. To increase the success rate, a Pt-sheet is mounted as a buffer layer between the sample holder and the crystal. The copper sample holder has a rough surface with some residual of silver epoxy which is hard to remove, the Pt-sheets offers a cleaner interface for the epoxy polymer-network to form. And the downside of having another epoxy layer between copper sample holder and the sheet is compensated by the large Cu-Pt interface area. Therefore, cleaving on Pt-sheet gives a larger chance for a successful cleave and thus lays the foundation for the \ac{STM} experiments in this study. It is also worth mentioning that all silver epoxies are cured at the same optimal condition for good consistency. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Ch4_cleaving.pdf}
-	\caption{Cleaving of PtSn$_4$, a), b): Pre-cleaving and post-cleaving of the first trail with only S1 sample. c), d): Pre-cleaving and post cleaving of the second trial with dual samples, left is the S1 and right the S2 sample. }
+	\caption[\textbf{The cleaving process of PtSn\textsubscript{4}}]{\textbf{The cleaving process of PtSn\textsubscript{4}}, (a) Pre-cleaving setup of the first trial with only the S1 sample. From top to bottom: a MACRO post, the sample crystal, and a flat Pt plate, each interface bonded with EPO-TEK H20E epoxy. (b) Post-cleaving surface imaged with a K2 camera, showing large shiny regions and a central crack. (c,d) Pre-cleaving setup of the second trial with dual samples, S1 (left) and S2 (right). Two posts of different heights are used; during cleaving, the taller left post is first cleaved along the left red arrow, followed by the right post along the opposite direction to avoid contamination. (d) Post-cleaving image shows both samples with shiny flat areas and some cracks.}
 	\label{fig:ch4_cleaves}
 \end{figure}
 
@@ -33,7 +45,7 @@ In \ac{STM} experiment, we should specify the cleaving surface as well as the sa
 		\textbf{Sample name} & \textbf{S1} & \textbf{S2} \\ \hline
 		\textbf{Cooling rate} & 4 \degree C/hr & 20 \degree C/hr \\ \hline
 		\textbf{\ac{RRR}} & 1200 & 200 \\ \hline
-		\textbf{Cleaved surface} & S1\_a, S1\_b & S2\_a \\ \hline
+		\textbf{Cleaved surface} & S1\textsubscript{a}, S1\textsubscript{b} & S2\textsubscript{a} \\ \hline
 	\end{tabular}
 	\caption{Sample properties based on growth process and transport characteristics.}
 	\label{table:sample}
@@ -45,19 +57,12 @@ In \ac{STM} experiment, we should specify the cleaving surface as well as the sa
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch4_Pristine_PtSn4.pdf}
-	\caption{ }
+	\caption[\textbf{Pristine topography on PtSn\textsubscript{4}}]{\textbf{Pristine topography on PtSn\textsubscript{4}}(a)Typical STM topography of PtSn$_4$, characterized by waffle-like square corrugations and sparse defects at different atomic sites. (b) Overlay of the Pt layer on the topography, which aligns perfectly with the observed square corrugations.}
 	\label{fig:ch4_pristinetopo}
 \end{figure}
 
 \par In total, we took over 20000 STM topographies in this study, covering an area of over two million nanometer squared. More specifically, we acquired around 10000 images on 5 macroscopic spots on the S1$_a$ surface, around 5000 images on the S1$_a$ surface, and around 2000 images on 2 macroscopic spots on the S2$_a$ surface. 
 Panel a) of \ref{fig:ch4_pristinetopo} exhibits a typical STM topography on PtSn$_4$, it is featured by waffle-like square corrugations and sparse defects at different atomic sites. Pristine cleaved surfaces are remarkably defect free, which we quantify through a careful statistical analysis in a subsequent section. We can overlay the Pt-layer to the surface of the pristine surface as shown in b) of \ref{fig:ch4_pristinetopo} and it maps perfectly with the square corrugations we observed. It might be tempting to say that we are typically scanning on the Pt-surface, but note that as mentioned in Ch.2, the tunneling current of STM has both the contribution of distance and electronic structure of the sample, the pattern revealed on topography is not necessarily the top most surface. To determine on what termination we are scanning, we ran a full terrace characterization.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{example-image-a} % Replace with your image file
-	\caption{Placeholder for cleaving planes of PtSn$_4$}
-	\label{fig:ch4_cleavingplane}
-\end{figure}
 
 
 \subsection{Terrace determination}
@@ -67,7 +72,8 @@ Panel a) of \ref{fig:ch4_pristinetopo} exhibits a typical STM topography on PtSn
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch4_termination.png}
-	\caption{termination characterization}
+	\caption[\textbf{Termination analysis of PtSn\textsubscript{4} surfaces}]{\textbf{Termination analysis of PtSn\textsubscript{4} surfaces}.Top: STM topography showing multiple terraces labeled A–F, corresponding to distinct cleavage terminations.
+	Bottom: Histogram of step heights measured relative to the top terrace, aligned with structural models of candidate terminations. Both raw and corrected step-height values are listed. The figure is adopted from reference \cite{warnerDefectTerraceCharacterization2022}}
 	\label{fig:ch4_termination}
 \end{figure}
 
@@ -87,18 +93,14 @@ Before we discuss the result shown in panel b) of \ref{fig:ch4_termination}, we 
 
 
 \section{Defect Analysis}
+Defects play a central role in determining the low-temperature transport properties of PtSn\textsubscript{4}. At cryogenic temperatures, electron-phonon and electron-electron scattering are strongly suppressed, leaving electron-defect scattering as the dominant contribution to the residual resistivity. A detailed characterization of the real-space features, spectroscopic signatures, and densities of existing types of defect is therefore essential to understand the microscopic origin of electron scattering in this system.
 
-\subsection{Defects in STM}
-what is a defect?
-Phenomenologically, defects are any disruptions in ideal, periodic lattice arrangement in STM topography. They can have different origins; for point defects, they can be due to site vacancy, substitution, adatoms on the surface, or interstitials that reside between layers.
-Lattice imperfection breaks the local translational symmetry and is one the major sources of electron scattering in a metallic system. As the electron-phonon scattering and electron-electron scattering got supressed in low temperature, the temperature independent electron-defect scattering term dominates the residual resistance. Therefore, characterizing the defects in PtSn4 is crucial to understand the low temperature limit of resistance. In real space, electron-defect scattering process results in the outgoing electron being scattered with a modulated momentum and will thus create interference patterns around the scattering center, this modulation can be directly observed with STM spectroscopy, as the signal of differential conductance is proportional to the local density of state (LDoS) of electron. 
-However, not all defects observed in STM can be considered a scattering center for the bulk material, as some defects can only reside on the surface or can be an artifact introduced by STM experiments.  For example, the adatoms defects are purely surface, with the cause being surface contamination either from the vacuum environment or from the tip, the adatom will never be observed in the bulk. 
-In this study, we first identify different types of defects via topographic images, then we take point spectroscopy measurement on the defects ,and grid maps around defect rich areas to characterize their scattering behavior. In this section, we will present all the point defects types we observed in PtSn$_4$ and the their density via rigorous statistical analysis. 
+In this section, we combine high-resolution STM topography, defect-specific spectroscopy, and statistical analysis to build a comprehensive picture of the defect landscape in PtSn\textsubscript{4}. Topographic imaging allows us to classify defects by lattice site and local symmetry. Spectroscopy provides insight into how different defects perturb the local density of states, distinguishing weak perturbations at Pt sites from stronger modifications at Sn sites. Finally, a statistical framework enables quantitative estimates of defect densities and their correlation with transport properties across samples of different crystalline quality. Together, these complementary approaches clarify the intrinsic and extrinsic contributions to scattering and establish the role of defects in governing the exceptional residual resistivity ratio of PtSn\textsubscript{4}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch4_defect_gallery.pdf}
-	\caption{defect gallery}
+	\caption[\textbf{Gallery of nine distinct defect types identified in PtSn\textsubscript{4}}]{\textbf{Gallery of nine distinct defect types identified in PtSn\textsubscript{4}}: (a–c) three Sn-site defects and (d–i) six Pt-site defects. The black lines mark the corresponding mirror planes of each defect. STM images were acquired under varying tunneling conditions: (a, d, f, g, h) at –400 meV, 500 pA; (b) at +400 meV, 600 pA; (c) at –400 meV, 600 pA; (e) at –500 meV, 500 pA; and (i) at –400 meV, 500 pA. All measurements were conducted at 4.4 K.}
 	\label{fig:ch4_defectgallery}
 \end{figure}
 
@@ -108,10 +110,33 @@ Throughout the exploration on both fast-cooled and slow-cooled sample, different
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Ch4_symmetry.png}
-	\caption{In plane lattice symmetry, left: Sn layer, right: Pt layer}
+	\caption[\textbf{Symmetry of a point defect on Sn and Pt layer}]{\textbf{Symmetry of a point defect in Sn and Pt layer}. Left: Sn-layer defect with preserved C\textsubscript{1v} mirror symmetry. Right: Pt-layer defect with preserved C\textsubscript{2v} symmetry.}
 	\label{fig:ch4_symmetry}
 \end{figure}
 
+
+\subsection{Defect Spectroscopy}
+To investigate the local electronic response of individual defects in PtSn\textsubscript{4}, we performed spatially resolved scanning tunneling spectroscopy (STS) across six distinct defect types observed in both slow- and fast-cooled samples. Figure \ref{fig:defect_spectro} summarizes the results, combining structural topographies, defect-centered spectra, and reference pristine spectra.
+
+The top row of Fig. \ref{fig:defect_spectro} (panels a–d) presents representative STM topographies of three Sn-site (Sn1, Sn2, Sn3) and three Pt-site (Pt1, Pt2, Pt3) defects. The second row (panels e–h) shows $dI/dV$ spectra acquired directly on defect centers and in their vicinity, together with a pristine reference spectrum extracted from the same scan. Because of the sparse distribution of defects in PtSn\textsubscript{4}, no single field of view contained all defect types; instead, four independent scans were used. To account for variations in junction conditions between scans, pristine reference spectra were taken from each corresponding dataset and serve as the baseline for comparison. The third row (panels i–l) displays sets of pristine spectra acquired from defect-free regions, with individual traces in faint blue and their average in black. Three recurring spectral features near the Fermi level are highlighted by vertical colored markers: a shoulder feature at $\sim$250 meV (green), followed by a steep rise, and two dominant peaks at $\sim$300 meV (cyan) and $\sim$450 meV (purple).
+
+Spectroscopic signatures at Pt-site defects show only modest deviations from the pristine response. As illustrated in panels e) and f), all three characteristic spectral features remain visible, and their relative energies are unchanged. The most notable effect is a suppression of the overall spectral weight, typically in the range of 10–25\% compared to pristine regions. This indicates that Pt-site defects perturb the local density of states (LDOS) only weakly, acting potentially only as minor scattering centers.
+
+By contrast, Sn-site defects produce far more substantial modifications of the LDOS. For the Sn1 defect, the low-energy shoulder shifts toward lower bias by approximately 50 meV, and the $\sim$300 meV peak is strongly suppressed or absent altogether. The higher-energy $\sim$450 meV peak persists but with an overall reduction in intensity of about 50\%. The Sn2 defect exhibits an even more striking spatial variation: spectra taken directly at the defect center show an $\sim$80\% suppression of the intensity peak, while spectra taken at the lobes surrounding the defect closely resemble the pristine surface. For the Sn3 defect, the shoulder region is enhanced, the $\sim$300 meV peak remains nearly unchanged, and the $\sim$450 meV peak is absent. These diverse responses among Sn-site defects highlight their ability to reshape the local electronic environment in distinct ways.
+
+In summary, the spectroscopy reveals two main effects. First, no distinct defect-bound states are detected within the stable energy window; instead, defect-centered spectra largely preserve the pristine LDOS features, with modifications limited to overall intensity. Second, Sn-site and Pt-site defects exhibit different degrees of LDOS modulation: Pt-site defects cause only mild suppression of spectral weight, while Sn-site defects shift or suppress characteristic features and display strong spatial variation. The weak perturbation from Pt-site defects is consistent with the observed defect intolerance and high carrier mobility of PtSn\textsubscript{4}, whereas the stronger LDOS modifications from Sn-site defects suggest they may represent the dominant source of electron scattering when present.
+
+However, as noted in Appendix \ref{appen:non-intrinsic}, certain Sn-site features—such as the Sn1 defect—may have non-intrinsic origins. This distinction underscores the importance of considering both intrinsic and extrinsic contributions when interpreting defect statistics.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{defect_specs_ALL.pdf}
+	\caption[\textbf{Defect-specific spectroscopy in PtSn\textsubscript{4}}]{\textbf{Defect-specific spectroscopy in PtSn\textsubscript{4}}:
+		(a–d): STM topographies of six distinct defect types (Sn1, Sn2, Sn3, Pt1, Pt2, Pt3) observed across fast- and slow-cooled PtSn\textsubscript{4} samples.
+		(e–h): Spatially resolved dI/dV spectra taken at and around each defect, with a reference pristine spectrum from the same scan. Overall density suppression and partial suppression of spectral features are presented on different defect centers; However, distinct defect states close to the Fermi level are not observed. All measurement locations are marked in the topographies above.
+		(i-l): Pristine spectra extracted from blue-boxed regions in the topographies. Individual spectra are shown in faint blue; their average is plotted in black. Three characteristic spectral features near the Fermi level are highlighted by vertical colored lines.}
+	\label{fig:defect_spectro}
+\end{figure}
 \subsection{Defect Statistics}
 
 \subsubsection{Statistical Framework}
@@ -169,32 +194,8 @@ Just to give the reader a sense, we collected around 20000 topographic images in
 %todo: Need revisit. after analysis of QPI in PtSn4 for different defects, I can maybe then claim the scattering rate of different defects differ little, and thus, we can correlate e-i scattering directly to defect density.
 Note that electron-impurity scattering is contributed by both the density of different types of defects and their scattering strength, however, as shown by the \ac{QPI} analysis in Ch.6, the scattering strength of different defect types differ little, we could expect a linear correlation between defect concentration and residual resistivity due to electron-defect scattering. The observed increase of $1.5$ times in the Pt site defects described here fails to account for the $5\times$ decrease in the \ac{RRR} value for S2 as compared to S1. We therefore conclude that, although the Sn site defects are dramatically obscured by the non-intrinsic effects described above, they must account for the majority of increased scattering centers. 
 
-\subsection{Non-Intrinsic Defects in PtSn$_4$} \textcolor{red}{In Appendix?}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{Ch4_croissant.png}
-	\caption{Two Sn$_1$ defect annihilation, indicating the origin of Sn$_1$ defects being from Frankel pairs}
-	\label{fig:Ch4_croissantannihilation}
-\end{figure}
+\section{Conclusion}
+In this chapter, we established a statistical framework to quantify defect populations in PtSn\textsubscript{4} using multinomial statistics on STM topographies. By distinguishing between Pt- and Sn-site defects and systematically comparing multiple samples under different growth conditions, we found that the defect densities are exceptionally low—even under rapid cooling. This places PtSn\textsubscript{4} among the most defect-free semimetals studied to date.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{Ch4_rotationcroissant.pdf}
-	\caption{Sn$_1$ defect under consecutive scans, rotations and annihilation were found in the green circle.}
-	\label{fig:Ch4_rotationcroissant}
-\end{figure}
-%todo: make differentiation between the non/intrinsic defect type and non/intrinsic defect number. meaning that there could be a defect type with both intrinsic and non-intrinsic origin, e.g 20% being intrinsic but 80% extrinsic.
-\par In our experiment, we have observed that the Sn1 defect, located at the Sn-site, is highly mobile under conditions of high scanning biases (exceeding 600mV). Notably, rotation of this defect is consistently observed in consecutive scans, example given in \ref{fig:Ch4_rotationcroissant}, and instances of annihilation between two Sn1 defects have also been documented, as shown in \ref{fig:Ch4_croissantannihilation} and \ref{fig:Ch4_rotationcroissant} b) to c). These events demonstrate the ability to both create and annihilate defects during scanning. This behavior also suggests that the origin of the Sn1 defect could be a Frankel pair on the Sn site. %could elaborate more on the origin of Sn1 defect. 
-%todo: prepare figure on the population over different macroscopic spots. 
-\par Moreover, the density of Sn1 defects varies significantly across different macroscopic locations on the crystal, as evidenced in STM observations (e.g., figure X). This variation, with density differences exceeding fiftyfold among explored locations, suggests that different cleaving planes may influence the introduction of Sn1 defects. Such spatial dependence supports the hypothesis that Sn1 defects could also be introduced during the cleaving process. 
-
-\par While there is no direct evidence to suggest that Sn2 and Sn3 defects are non-intrinsic, the observed decrease in their densities from samples with higher residual resistivity ratio (RRR) to those with lower RRR supports the likelihood of these defects also being non-intrinsic. This variation could be indicative of differences in crystal order influenced by experimental conditions rather than intrinsic material properties.
-
-\par In conclusion, while the intrinsic qualities of PtSn$_4$ are well-represented in STM studies, the influence of experimental techniques such as cleaving and scanning under bias voltage introduces a variety of non-intrinsic defects. However, it is worth noting that despite the ability to introduce these defects via experimental manipulations, these defects can still intrinsically exist in bulk samples, making the studies around properties of these defects relevant. 
-
-\section{discussion}
-%todo: to write this section after ch.3 is finished
-\par This section need to be written after the intro for PtSn4. ie Ch.2. 
-
-\par This reasoning is consistent with both the numerically larger concentration of Sn atoms relative to Pt and the significantly reduced cost to form a Sn site vacancy as compared to a Pt Site vacancy as determined by DFT. Nonetheless, the dramatically small number of Pt site defects, where the occurrence of intrinsic defect is as rare as 1 in 10,000 unit cells, is good evidence that crystalline perfection is the underlying cause for the long mean free paths and hence the high RRRs observed in PtSn$_4$. 
+The implications of such dilute defect populations are twofold. On a methodological level, the ability to resolve defect-specific densities provides a microscopic metric for benchmarking crystal quality. On a physical level, the scarcity of scattering centers naturally accounts for the vanishing residual resistivity and exceptionally high residual resistivity ratio (RRR) reported in transport studies. This interpretation points to crystalline perfection, rather than exotic topological suppression of scattering; in line with the semi-classical transport models established to address the origin of the extreme magnetoresistance in PtSn\textsubscript{4}\cite{diazSemiclassicalOriginExtreme2024}. To conclude, the statistical analysis of defect-specific populations not only underscores the intrinsic quality of PtSn\textsubscript{4}, but also reframes its remarkable transport properties in terms of lattice perfection, with topological effects playing at most a secondary role. 
