@@ -80,17 +80,17 @@ The kernel $A^{(0)}$ is first randomly initialized and normalized, it is then fe
 Using the Frobenius square norm score in the shift-truncate method is common practice and works well in most cases. However, it fails in more complicated situations, especially when we have other features in the padded kernel, this is illustrated in Figure. \ref{fig:ch6_phase2mod}, given primary kernel $A^{(0)}_*$, we pad it and apply $\mathbf{ASolve}$ to get $A^{(1)}_*$. The Frobenius square norm score is shown in c) and by picking the maximum, we get e), which resembles the primary kernel. This issue is mainly due to faint features around the primary feature. We can improve this algorithm by applying a radial decay term $\eta_d(r) = e^{-lnd \cdot r}$ to the Frobenius square norm, where r is the normalized distance from the submatrix window center, and d is the tunable decay factor. This biases the center features and is consistent with the decaying nature of the QPI patterns. With this decay term (d=2) applied, we obtain a heat map $S'$ as shown in d), and a truncated kernel $A^{(1)'}$ in f) has the primary more centered compared to e). For convenience, unless otherwise mentioned, all phase II that we introduced later will be using the center-biased Frobenius square norm. 
 
 \begin{figure}
-	\includegraphics[width= \textwidth]{phase2old.pdf}
+	\includegraphics[width= 0.8\textwidth]{phase2old.pdf}
 	\centering
-	\caption{}
+	\caption[\textbf{Illustration of the Phase II refinement step using the shift-truncate method}]{\textbf{Illustration of the Phase II refinement step using the shift-truncate method}. a) The primary Kernel $A^{(0)}_*$ obtained from Phase I is zero-padded at the edges to generate a larger kernel. b) The padded kernel is refined with a stricter sparsity regularizer $\lambda_k > \lambda_0$ to yield $A_*^{(k)}$. c) For each submatrix of size ($m_1$,$m_2$) within $A_*^{(k)}$, the Forbenius square norm is calculated, generating a heat map where each pixel corresponds to one submatrix. The red square in (b) marks an example submatrix window, while the red cross in (c) indicates the submatrix with the largest norm. Truncating to this submatrix and normalizing produces the refined kernel $A^{(1)}$ in d), which is aligned to remove the degeneracy due to the translational symmetry}
 	\label{fig:ch6_phase2}
 \end{figure}
 
 
 \begin{figure}
-	\includegraphics[width= \textwidth]{phase2mod.pdf}
+	\includegraphics[width= 0.8\textwidth]{phase2mod.pdf}
 	\centering
-	\caption{}
+	\caption[\textbf{Modification of the Phase II shift–truncate method with a center-biased Frobenius score}]{\textbf{Modification of the Phase II shift–truncate method with a center-biased Frobenius score}. (a–b) Starting from the primary kernel $A^{(0)}_*$, zero-padding and refinement yield the padded kernel $A_*^{(1)}$. (c) The conventional Frobenius square norm map leads to the truncated kernel in (e), which undesirably resembles the original primary kernel due to faint surrounding features. (d) Introducing a radial decay factor $\eta_d(r) = e^{-lnd\dot{r}}$ biases the score toward central features, consistent with the spatial decay of QPI patterns. (f) The resulting kernel $A^{(1)'}$, obtained with decay factor d=2, shows improved centering compared to (e). Unless otherwise stated, all Phase II refinements in this thesis employ the center-biased Frobenius square norm.}
 	\label{fig:ch6_phase2mod}
 \end{figure}
 
@@ -125,7 +125,7 @@ This hierarchical approach enables isolated analysis for each type’s recovery:
 
 Smaller $Y_i^{residual}$ values for all $i \neq j$ lead to better-posed subproblems for each type. Consequently, when updating with the \ac{SBD} algorithm, we can produce a result $Y_j = A_j* X_j$ that is closer to the true component $Y_j^{gt}$. This motivates a loop structure in our algorithm: by updating one type (e.g. $j$), we reduce its residual $Y_j^{residual}$, which in turn helps improve the subsequent recovery of another type $i \neq j$. Through iterative refinement, given the local convergence guarantees provided by the \ac{RTRM} method, the residuals across all types could be gradually minimized, allowing the full reconstruction to converge towards the ground truth. However, this logic can break down in the early stages of optimization, where the residuals are large and noisy—making it difficult for the algorithm to enter a reliable refinement path. To address this challenge, we designed specific strategies that guide the optimization toward stability and correctness during these critical initial steps.
 
-A complete description of the \ac{MC-SBD} algorithm is presented in Algorithm \ref{MTSBDalgo}; it preserves the two-phase structure from the original \ac{SBD} method. Apart from the loop structure discussed above, two important strategies are worth noting. 
+A complete description of the \ac{MC-SBD} algorithm is presented in Algorithm \textbf{2}; it preserves the two-phase structure from the original \ac{SBD} method. Apart from the loop structure discussed above, two important strategies are worth noting. 
 
 First, The blending strategy is a dynamic weighting mechanism that constructs an effective observation for each kernel by combining the current residual with the global reconstruction: 
 \begin{equation}
@@ -137,8 +137,7 @@ This approach is particularly important in the early stages of decomposition, wh
 
 Another strategy is the variance-based update ordering, it prioritizes kernel updates according to the magnitude of their kernel variance, processing high-variance components first. This ordering is crucial because the residual is updated sequentially after each kernel is refined, meaning earlier updates have a greater influence on the remaining residual. By addressing the most dominant structures in the data first, the algorithm quickly reduces the residual and improves the signal quality for the weaker components updated later. This leads to better-conditioned subproblems throughout the iteration and helps avoid cumulative distortion that could arise from poor early updates to minor components.
 
-\begin{algorithm}
-	\label{MTSBDalgo}
+\begin{algorithm}\label{MTSBDalgo}
 	\caption{Multi-Type SBD-STM Procedure}
 	\textbf{Input:}
 	\begin{itemize}
