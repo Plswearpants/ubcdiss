@@ -22,14 +22,23 @@ As introduced in the end of Ch5 and theorized explicitly in Equation \ref{eq.539
 \begin{equation}
 	\delta \rho(\mathbf{x}, \omega) = \sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega),
 \end{equation}
+\begin{equation}
+	\delta \rho(\mathbf{x}, \omega) = \sum_{\alpha=1}^{N_d}c_{\alpha} \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_{\alpha}},\omega),
+\end{equation}
 \noindent where $\delta \rho_0$ is the \ac{LDOS} modulation from individual defect located at at $\mathbf{x_j}$. We can further separate the spatial information by utilizing a Kronecker delta $\Delta(\mathbf{u})$, so that $\Delta(\mathbf{u})=1$ if $\mathbf{u} = 0$, and $\Delta(\mathbf{u})=0$ elsewhere: 
 \begin{equation}
 	\sum_{j=1}^{N}c_j \cdot \delta \rho_0(\mathbf{x}-\mathbf{x_j},\omega) = \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot(\sum_{j=1}^{N} c_j \cdot \Delta(\mathbf{u-x_j})).
 \end{equation}
+
+
 \noindent We can then construct a convolution sum between the individual \ac{QPI} pattern and the spatial information by defining a defect location function $D(\mathbf{x}) \equiv \sum_{j=1}^{N} c_j \cdot \Delta(\mathbf{u-x_j})$, we have: 
+\begin{equation}
+	D(\mathbf{x}) \equiv \sum_{\alpha=1}^{N_d} c_{\alpha} \cdot \Delta(\mathbf{u-x_{\alpha}})
+\end{equation}
 \begin{equation}
 	\delta \rho(\mathbf{x}, \omega) =  \sum_{\mathbf{u}} \delta \rho_0(\mathbf{x}-\mathbf{u},\omega)\cdot D(\mathbf{u}) = (\delta \rho_0 *D)(\mathbf{x}, \omega).
 \end{equation}
+
 
 We illustrate this convolution in Fig. \ref{fig:ch6_decon} a); first, we use $\delta \rho_0$ simulated in Ch.5.2 as the \ac{QPI} pattern from an single defect, we then randomly generate a binary defect location map given a defect density, and use the convolution sum to construct an observation. To unify the language, we will now refer to the single defect \ac{QPI} pattern as a kernel, denoted as A, and the defect location map as an activation map, denoted as X; thus, we can express our observation as $Y = A * X$. Then, we follow the conventional approach and take \ac{FT} of both the observation Y and the kernel A As shown in panel b), the \ac{FT} of Y shows clear speckle compared to the \ac{FT} of the kernel.
 
@@ -72,5 +81,7 @@ The demixing problem is the inverse of the observation generation process: given
 	Y_{\omega} = \sum_d ( A_{d,{\omega}} * X_d) + \beta. 
 \end{equation} 
 
-
+\begin{equation}
+	Y = \sum_{Type_j} ( A_{j} * X_j) + \beta. 
+\end{equation} 
 
