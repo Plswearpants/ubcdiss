@@ -11,7 +11,7 @@ A convolutional model of STM interprets STM spectroscopy measurement as the conv
 \begin{figure}
 	\includegraphics[width= \textwidth]{convolutional_model.pdf} 
 	\centering
-	\caption{Convolutional model of STM grid spectroscopy. a) Single defect convolutional model, introduced by Cheung et al. to solve Sparse Blind Deconvolution(SBD) problem.\cite{cheungDictionaryLearningFouriertransform2020}. b) Multi-defect convolutional model, used to address \ac{MC-SBD} problem.}
+	\caption[\textbf{Convolutional model of STM grid spectroscopy}]{\textbf{Convolutional model of STM grid spectroscopy}. a) Single defect convolutional model, introduced by Cheung et al. to solve Sparse Blind Deconvolution(SBD) problem.\cite{cheungDictionaryLearningFouriertransform2020}. b) Multi-defect convolutional model, used to address \ac{MC-SBD} problem.}
 	\label{fig:ch6_conv}
 \end{figure}
 
@@ -25,7 +25,7 @@ To understand the \ac{MC-SBD} problem, we need to first formulate its single-cha
 \begin{figure}
 	\includegraphics[width= \textwidth]{associativity.pdf} 
 	\centering
-	\caption{An extreme case illustrating associative symmetry of convolution. For any observation Y, there will always be two convolutions: one being we have a trivial activation, and all information is stored in the kernel with the same size as Y; The other is when we have a trivial scalar kernel, and all information is stored in the activation}
+	\caption[\textbf{An extreme case illustrating associative symmetry of convolution}]{\textbf{An extreme case illustrating associative symmetry of convolution}. For any observation Y, there will always be two convolutions: one being we have a trivial activation, and all information is stored in the kernel with the same size as Y; The other is when we have a trivial scalar kernel, and all information is stored in the activation}
 	\label{fig:ch6_assoc}
 \end{figure}
 
@@ -62,7 +62,7 @@ Introducing asymmetries in the cost function is another important implementation
 \begin{figure}
 	\includegraphics[width= \textwidth]{truncate and shift.pdf} 
 	\centering
-	\caption{Degeneracy caused by large kernel size. Given the ground truth QPI pattern (a) of size $m_0 \times m_0$, which naturally decays to near-zero intensity at the edges (or to the noise level in practical cases), this represents the ideal kernel we aim to reconstruct. However, ambiguity arises when constructing alternative kernels, such as in (b)–(d), by padding the ideal kernel with noise while preserving the vanishing edge condition. As the kernel size increases, the space of such degenerate solutions also grows, making the inverse problem increasingly ill-posed.}
+	\caption[\textbf{Degeneracy caused by large kernel size}]{\textbf{Degeneracy caused by large kernel size}. Given the ground truth QPI pattern (a) of size $m_0 \times m_0$, which naturally decays to near-zero intensity at the edges (or to the noise level in practical cases), this represents the ideal kernel we aim to reconstruct. However, ambiguity arises when constructing alternative kernels, such as in (b)–(d), by padding the ideal kernel with noise while preserving the vanishing edge condition. As the kernel size increases, the space of such degenerate solutions also grows, making the inverse problem increasingly ill-posed.}
 	\label{fig:ch6_t&s}
 \end{figure}
 
@@ -97,7 +97,7 @@ First, multiple channels increase the dimension of the manifold, thus making the
 \begin{figure}
 	\includegraphics[width= \textwidth]{defect_types.pdf} 
 	\centering
-	\caption{Complexity in STM data with multiple types of defects. (a) STM topography of ZrSiTe showing four distinct defect types (circled in red) and multiple instances of a single defect type appearing in different orientations (circled in yellow). (b) In PtSn4, rotational variants of the same "croissant" defect are highlighted, demonstrating how lattice symmetry can lead to multiple orientations of a single defect type. In multi-channel sparse blind deconvolution (MC-SBD), each orientation is treated as a separate kernel, underscoring the increased complexity of real-world data and the motivation for extending single-defect SBD methods to handle multiple, orientation-dependent components.}
+	\caption[\textbf{Complexity in STM data with multiple types of defects}]{\textbf{Complexity in STM data with multiple types of defects}. (a) STM topography of ZrSiTe showing four distinct defect types (circled in red) and multiple instances of a single defect type appearing in different orientations (circled in yellow). (b) In PtSn4, rotational variants of the same "croissant" defect are highlighted, demonstrating how lattice symmetry can lead to multiple orientations of a single defect type. In multi-channel sparse blind deconvolution (MC-SBD), each orientation is treated as a separate kernel, underscoring the increased complexity of real-world data and the motivation for extending single-defect SBD methods to handle multiple, orientation-dependent components.}
 	\label{fig:ch6_defect}
 \end{figure}
 
