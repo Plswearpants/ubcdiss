@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="kernel_size.svg"
-   inkscape:export-filename="kernel_size.pdf"
+   inkscape:export-filename="Ch7_kernel_size.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -29,7 +29,7 @@
      inkscape:document-units="mm"
      inkscape:zoom="0.74564394"
      inkscape:cx="485.48641"
-     inkscape:cy="128.07722"
+     inkscape:cy="771.8161"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -241,68 +241,68 @@
        id="image7-9" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="7.845068"
        y="13.236641"
        id="text8"><tspan
          sodipodi:role="line"
          id="tspan8"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none;fill:#ffffff;fill-opacity:1"
          x="7.845068"
          y="13.236641">a)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="126.63836"
        y="13.236641"
        id="text8-4"><tspan
          sodipodi:role="line"
          id="tspan8-3"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none;fill:#ffffff;fill-opacity:1"
          x="126.63836"
          y="13.236641">b)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="7.8243923"
        y="132.23663"
        id="text8-7"><tspan
          sodipodi:role="line"
          id="tspan8-8"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none;fill:#ffffff;fill-opacity:1"
          x="7.8243923"
          y="132.23663">c)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="126.85884"
        y="132.23663"
        id="text8-6"><tspan
          sodipodi:role="line"
          id="tspan8-1"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none;fill:#ffffff;fill-opacity:1"
          x="126.85884"
          y="132.23663">d)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="4.3416176"
        y="250.23663"
        id="text8-5"><tspan
          sodipodi:role="line"
          id="tspan8-86"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none"
          x="4.3416176"
          y="250.23663">e)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-dasharray:none"
        x="125.03455"
        y="250.23663"
        id="text8-3"><tspan
          sodipodi:role="line"
          id="tspan8-9"
-         style="stroke-width:0.2"
+         style="stroke-width:0.2;stroke:none"
          x="125.03455"
          y="250.23663">f)</tspan></text>
   </g>
