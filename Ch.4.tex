@@ -14,7 +14,7 @@ The development of a quasiparticle model for Fermionic systems started in 1940s,
 
 Sommerfeld's theory of the electron gas worked quite well in standard metallic systems, but the success was unexpected, as the model neglected the Coulomb interaction between electrons. In a metallic system where the electron separation is in the order of the lattice spacing, the Coulomb interaction is in the order of eV, which is much larger than other energy scales, say, the thermal excitation considered in the electron gas mode. 
 
-In the late 1960s, Landau raised a theory of the Fermi liquid with a series of foundational papers\cite{Landau1956}\cite{Landau1957} to address that even in the presence of interactions, we can find fermionic excitations in these many-body systems, and describe these excitations with what is known as the Landau quasiparticles. By adding a time-variant interaction term, defined by time constant $\zeta$ to the non-interacting system, and constructing the system Hamiltonian as
+In the late 1960s, Landau raised a theory of the Fermi liquid with a series of foundational papers\cite{Landau1956,Landau1957} to address that even in the presence of interactions, we can find fermionic excitations in these many-body systems, and describe these excitations with what is known as the Landau quasiparticles. By adding a time-variant interaction term, defined by time constant $\zeta$ to the non-interacting system, and constructing the system Hamiltonian as
 \begin{equation}\label{adiabatic}
 	H_{\zeta} = H_0 + H_{\text{int}} e^{-\zeta t}, \quad t > 0,
 \end{equation}
@@ -34,30 +34,13 @@ since typical excited energy is in the order of temperature, and the lifetime is
 This requirement can be satisfied at a range of low temperature. Later we will also see that the requirements also extend to the energy level of the states, since the quasiparticle lifetime decreases as energies deviate from the Fermi energy. 
 %todo: can refer to the chapter where we talk about the lifetime decay with simulation. 
 %Therefore, Landau's theory of Fermi liquid postulated that an interacting fermionic system can we mapped adiabatically to a non-interacting Fermi gas, with long-lived quasiparticle that shares the same quantum numbers near the Fermi surface. 
-In electronic systems, the theory works in a regime with weak to moderate electron-electron correlations at sufficiently low temperatures, and thus, it succeeds in explaining the properties of simple and noble metals. For more detailed reading regarding the theory, the textbooks of Pines and Nozieres\cite{nozieresTheoryQuantumLiquids2018} and Nozieres \cite{nozieresDerivationLandauTheory1962} offer derivations and in-depth discussions. 
+In electronic systems, the theory works in a regime with weak to moderate electron-electron correlations at sufficiently low temperatures, and thus, it succeeds in explaining the properties of simple and noble metals. For more detailed reading regarding the theory, the textbooks of Pines and Nozieres~\cite{nozieresTheoryQuantumLiquids2018} and Nozieres \cite{nozieresDerivationLandauTheory1962} offer derivations and in-depth discussions. 
 
-Landau’s theory proved insufficient for describing more complex systems; however, it provided the foundation for a more general quasiparticle concept, later formulated within the Green’s function framework of many-body theory. There have been many extensions and refinements of the quasiparticle theory throughout history; the meaning of quasiparticles and the corresponding regime where this can be applied varied drastically. Here, I would like to provide a rough list of those theories chronologically and give brief notes on them:
-\begin{itemize}
-	\item\textbf{Hartree-Fock Approximation (HF)} (1930s):
-	HF approximation is not an extension of Fermi liquid theory but it is the first step beyond a purely free-electron model, and it lays groundwork for diagrammatic expansions \cite{fockNaeherungsmethodeZurLoesung1930}, \cite{slaterNoteHartreesMethod1930}.
-	
-	\item\textbf{Random Phase Approximation (RPA)} (1950s): 
-	RPA extends the theory to moderate correlations where long-range screening is crucial, including dynamical screening. It successfully explains quasiparticle dispersion like plasmon dispersion and optical properties in metals and semiconductors \cite{bohmCollectiveDescriptionElectron1951}, \cite{nozieresCorrelationEnergyFree1958}.
-	
-	\item \textbf{BCS theory} (1957):
-	BCS theory of superconductivity established a microscopic explanation for the superconducting phase transition, which was initially described macroscopically by Ginzburg–Landau theory as a second-order phase transition with an order parameter $\Delta$. For $T>T_c$, one can describe the normal state low temperature excitations with landau quasiparticles, these quasiparticles are unstable approaching $T_c$ with a weak attractive interaction, as shown by Cooper\cite{cooperBoundElectronPairs1956}, and forms Copper pairs that breaks gauge symmetry and lead to superconducting phase. In the superconducting phase, the low energy excitations can be described by Bogoliubov quasiparticles. Since the excitations are gapped by a pairing gap $\Delta_k$; Bogoliubov quasiparticles have a finite energy and therefore are well defined and long-living in a clean superconductor \cite{bardeenTheorySuperconductivity1957},\cite{tinkhamIntroductionSuperconductivity2004}.
- 
-	\item\textbf{Gutzwiller (GW) Approximation} (1965):
-	GW approximation provided a more accurate approximation than RPA and can be implemented to stronger correlated systems \cite{hedinNewMethodCalculating1965}, \cite{aryasetiawanGWMethod1998}.
-	
-	\item\textbf{Dynamical Mean-Field Theory (DMFT)} (1990s):
-	DMFT was developed via a non-perturbative approach, this allows it to extend the concept of quasiparticles to account for strong local correlations in systems like transition metal oxides and f-electron materials. Although it kept the concpt of quasiparticles, it showed that they failed near Mott transitions when electron-electron interaction is large enough \cite{metznerCorrelatedLatticeFermions1989}, \cite{georgesDynamicalMeanfieldTheory1996}.
-	
-	\item\textbf{GW + DMFT} (2000s):
-	This combined method took the best of GW(dynamic and non-local screening) with DMFT(local, but exact correlation), making it suitable for systems with moderate to strong correlation as well as significant screening effects, like heavy fermion compounds \cite{biermannFirstprinciplesApproachElectronic2003}.
-\end{itemize}
+Landau’s Fermi-liquid theory, though limited in scope, provided the conceptual foundation for the quasiparticle picture and inspired its formalization within the Green’s function framework of many-body theory. The first step beyond a simple free-electron description came with the Hartree–Fock approximation (1930s), which introduced a self-consistent mean-field treatment of electron–electron interactions and laid the groundwork for systematic diagrammatic expansions~\cite{fockNaeherungsmethodeZurLoesung1930,slaterNoteHartreesMethod1930}. In the 1950s, the Random Phase Approximation (RPA) extended this picture to include dynamical screening, successfully describing collective modes such as plasmons and the optical properties of metals and semiconductors~\cite{bohmCollectiveDescriptionElectron1951,nozieresCorrelationEnergyFree1958}.
 
-A more detailed history of the development of the quasiparticle theory and its more recent application into systems like topological materials can be found in Peter et al.\cite{wolfleQuasiparticlesCondensedMatter2018}. 
+A major milestone arrived in 1957 with BCS theory, which provided a microscopic understanding of superconductivity. Near the critical temperature T\textsubscript{c}, Landau quasiparticles become unstable under a weak attractive interaction and form Cooper pairs, spontaneously breaking gauge symmetry. In the superconducting state, the elementary excitations are Bogoliubov quasiparticles, whose finite excitation energy and coherence factors render them well-defined and long-lived in clean superconductors~\cite{cooperBoundElectronPairs1956,bardeenTheorySuperconductivity1957,tinkhamIntroductionSuperconductivity2004}.
+
+Later developments extended the quasiparticle concept to systems with progressively stronger correlations. The GW approximation (1965) improved upon RPA by providing a more accurate treatment of dynamical screening~\cite{hedinNewMethodCalculating1965,aryasetiawanGWMethod1998}. In the 1990s, Dynamical Mean-Field Theory (DMFT) offered a non-perturbative framework to handle strong local interactions, showing that while quasiparticles remain well-defined in moderately correlated systems, they disappear near a Mott transition~\cite{metznerCorrelatedLatticeFermions1989,georgesDynamicalMeanfieldTheory1996}. More recently, the combined GW+DMFT framework has merged non-local dynamical screening with exact local correlations, enabling realistic modeling of heavy-fermion materials and other strongly correlated systems~\cite{biermannFirstprinciplesApproachElectronic2003}. These theoretical advances, while not exhaustive, highlight that the quasiparticle concept remains an approximation whose validity is system-dependent and continues to evolve. A detailed historical overview, including modern applications to topological materials, is given by Wölfle and Abrahams~\cite{wolfleQuasiparticlesCondensedMatter2018}.
 
 \subsection{Microscopic Theory of Quasiparticles}
 Landau quasiparticles are added to a system with the creation of excitations, therefore, we need to look at the retarted Green's function $G^R$ as it measures the density of states for adding particles, and thus a system's response to creating or annihilating a single fermion at a given state. We consider the one-particle retarded Green's function: 
@@ -356,7 +339,7 @@ Secondly, the quasiparticle lifetime decreases as we move away from the Fermi su
 \begin{figure}
 	\includegraphics[width=\textwidth]{Ch5_nesting.pdf} 
 	\centering
-	\caption[\textbf{Comparison of nesting effect on \ac{CEC} with different shapes}]{\textbf{Comparison of nesting effect on \ac{CEC} with different shapes}. Nesting is presented in the square-like \ac{CEC} a), and gives a more concentrated intensity in the QPI map b). While a circle-like \ac{CEC} like c) gives a more spread out the intensity in d).}
+	\caption[\textbf{Comparison of nesting effect on \ac{CEC} with different shapes}]{\textbf{Comparison of nesting effect on \ac{CEC} with different shapes} Nesting is presented in the square-like \ac{CEC} a), and gives a more concentrated intensity in the QPI map b). While a circle-like \ac{CEC} like c) gives a more spread out the intensity in d).}
 	\label{fig:ch5_nest}
 \end{figure}
 
@@ -415,7 +398,7 @@ This is problematic when we try to interpret the \textbf{q}-space \ac{QPI} map. 
 	\label{fig:ch5_phasenoise}
 \end{figure}
 
-Beyond the phenomenological illustration, we can further understand the source of phase noise with a mathematical analysis on multi-defect $\delta\rho(\textbf{x},\omega)$. We first discuss the form of the multi-defect T-matrix T, which is a $N_d \times N_d$ square matrix with entry T$_{\alpha \beta}$ representing the cross scattering term between defect m and n. We then separate the diagonal and off-diagonal terms and express T as\cite{leonard1972}:
+Beyond the phenomenological illustration, we can further understand the source of phase noise with a mathematical analysis on multi-defect $\delta\rho(\textbf{x},\omega)$. We first discuss the form of the multi-defect T-matrix T, which is a $N_d \times N_d$ square matrix with entry T$_{\alpha \beta}$ representing the cross scattering term between defect m and n. We then separate the diagonal and off-diagonal terms and express T as \cite{leonard1972}:
 \begin{align}
 	\ T_{\alpha\beta} &= t_{\alpha} \delta_{\alpha\beta} + t_{\alpha} G_{0\alpha\beta} (1 - \delta_{\alpha\beta}) t_{\beta} + \sum_{\alpha' \neq \alpha, \beta} t_{\alpha} G_{0\alpha\alpha'} t_{\alpha'} G_{0\alpha'\beta} t_{\beta} + \cdots \label{eq_tmul}\\
 	\label{eq.536}

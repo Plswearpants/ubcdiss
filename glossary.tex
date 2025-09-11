@@ -3,37 +3,31 @@
 
 \chapter{Glossary}
 
-This glossary uses the handy \latexpackage{acroynym} package to automatically
-maintain the glossary.  It uses the package's \texttt{printonlyused}
-option to include only those acronyms explicitly referenced in the
-\LaTeX\ source.  To change how the acronyms are rendered, change the
-\verb+\acsfont+ definition in \verb+diss.tex+.
+%This glossary uses the handy \latexpackage{acroynym} package to automatically maintain the glossary.  It uses the package's \texttt{printonlyused} option to include only those acronyms explicitly referenced in the \LaTeX\ source.  To change how the acronyms are rendered, change the \verb+\acsfont+ definition in \verb+diss.tex+.
 
-% use \acrodef to define an acronym, but no listing
-\acrodef{UI}{user interface}
-\acrodef{UBC}{University of British Columbia}
 
 % The acronym environment will typeset only those acronyms that were
 % *actually used* in the course of the document
 \begin{acronym}
-\acro{BZ}{Brillouin Zone}
-\acro{RRR}{Residual Resistivity Ratio}
-\acro{STM}{Scanning Tunneling Microscope}
-\acro{UHV}{Ultra High Vaccume}
-\acro{QPI}{Quasiparticle Interference}
-\acro{STS}{Scanning Tunneling Spectroscopy}
-\acro{FT}{Fourier Transform}
-\acro{FT-STS}{Fourier-Transform Scanning Tunneling Spectroscopy}
-\acro{LDOS}{Local Density of State}
-\acro{TB}{Tight-Binding}
-\acro{BLGF}{Bare Lattice Green's Function}
-\acro{CEC}{Constant Energy Contour}
-\acro{JDOS}{Joint Density of States}
-\acro{MC-SBD}{Multi-Channel Sparse Blind Deconvolution}
-\acro{SBD}{Sparse Blind Deconvolution}
-\acro{BD}{Blind Deconvolution}
-\acro{RTRM}{Riemannian Trust Region Method}
-\acro{ARPES}{Angle-Resolved Photoemission Spectroscopy}
+\acro{ARPES}{Angle-Resolved Photoemission Spectroscopy}  A technique that measures the energy and momentum of photoemitted electrons to map the electronic band structure.  
+\acro{BD}{Blind Deconvolution}  The general problem of recovering both the input signal and convolution kernel from their convolution without prior knowledge.  
+\acro{BLGF}{Bare Lattice Green's Function}  The Green’s function of a lattice without impurities or interactions, serving as the reference propagator.  
+\acro{BZ}{Brillouin Zone}  The primitive cell of the reciprocal lattice, containing all unique crystal momenta.  
+\acro{CEC}{Constant Energy Contour}  The set of momentum points in the Brillouin zone with the same electronic energy.  
+\acro{FT}{Fourier Transform}  A mathematical operation that converts a function from real space to reciprocal (frequency or momentum) space.  
+\acro{FT-STS}{Fourier-Transform Scanning Tunneling Spectroscopy} The Fourier transform of spatially resolved STS data, revealing scattering wavevectors and electronic structure.  
+\acro{JDOS}{Joint Density of States}  The momentum-resolved density of states weighted for all possible pairs of states connected by a given scattering vector.  
+\acro{LDOS}{Local Density of State} The spatially resolved density of electronic states at a given energy.  
+\acro{MC-SBD}{Multi-Channel Sparse Blind Deconvolution} An algorithm that jointly deconvolves multiple channels of data under a shared sparse kernel assumption.  
+\acro{QPI}{Quasiparticle Interference} Standing-wave patterns formed by elastically scattered quasiparticles, observable with STM/STS.  
+\acro{RRR}{Residual Resistivity Ratio} The ratio of resistivity at room temperature to that at low temperature, used as a measure of crystal purity.  
+\acro{RTRM}{Riemannian Trust Region Method} An optimization algorithm on Riemannian manifolds that iteratively refines solutions using second-order local models.  
+\acro{SBD}{Sparse Blind Deconvolution} A signal-processing method that recovers both a sparse activation map and an unknown convolutional kernel.  
+\acro{STM}{Scanning Tunneling Microscope} An instrument that maps surfaces with atomic resolution by measuring quantum tunneling current between a sharp tip and the sample.  
+\acro{STS}{Scanning Tunneling Spectroscopy} A technique using STM to measure differential conductance as a function of bias, probing the Local density of states.  
+\acro{TB}{Tight-Binding} A lattice model describing electrons as hopping between localized orbitals, often used to compute band structures.  
+\acro{UHV}{Ultra-High Vacuum} An environment with pressures below \(10^{-9}\,\mathrm{mbar}\).
+
 \end{acronym}
 
 % You can also use \newacro{}{} to only define acronyms
