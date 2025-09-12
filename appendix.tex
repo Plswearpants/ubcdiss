@@ -2,8 +2,6 @@
 \section{Major repair of Createc STM during 2023-2024}\label{appen:fix}
 
 \chapter{Non-Intrinsic Defects in PtSn\textsubscript{4}} \label{appen:non-intrinsic}
-
-
 %todo: make differentiation between the non/intrinsic defect type and non/intrinsic defect number. meaning that there could be a defect type with both intrinsic and non-intrinsic origin, e.g 20% being intrinsic but 80% extrinsic.
 \par In our experiment, we have observed that the Sn1 defect, located at the Sn-site, is highly mobile under conditions of high scanning biases (exceeding 600mV). Notably, rotation of this defect is consistently observed in consecutive scans, example given in \ref{fig:Ch4_rotationcroissant}, and instances of annihilation between two Sn1 defects have also been documented, as shown in \ref{fig:Ch4_croissantannihilation} and \ref{fig:Ch4_rotationcroissant} b) to c). These events demonstrate the ability to both create and annihilate defects during scanning. This behavior also suggests that the origin of the Sn1 defect could be a Frankel pair on the Sn site. %could elaborate more on the origin of Sn1 defect. 
 %todo: prepare figure on the population over different macroscopic spots. 
@@ -45,6 +43,26 @@ Finally, practical considerations in QPI simulations often involve matching the 
 In summary, the choice of $\epsilon$ in numerical QPI simulations is a balancing act. It must be small enough relative to the hopping parameter $t$ and the system's bandwidth to ensure that it only introduces a controlled broadening reflective of the finite quasiparticle lifetime, yet large enough to regularize singularities and smooth out discretization effects inherent in a finite simulation grid. By judiciously selecting $\epsilon$, one achieves both physical accuracy and numerical robustness in the simulation results.
 
 \chapter{System parameter space of MC-SBD-STM}\label{appen:system_param}
-this talks about how we chose the optimal parameter for synthetic dataset runs. 
+To investigate the influence of system parameters—specifically the mini-loop number $N$ and the sparsity regularizer $\lambda$—on algorithmic performance, we constructed a benchmark testing pool comprising 12 synthetic \ac{STM} grid maps that emulate typical scanning conditions. One of these datasets was intentionally designed to represent an extremely challenging scenario, which we will highlight shortly. We then defined 15 distinct algorithmic configurations by combining $\text{mini-loop} \in {1, 3, 9}$ with $\lambda \in {0.01, 0.03, 0.1, 0.3, 0.5}$. Each of the 12 datasets was processed under all 15 configurations, resulting in a total of 180 algorithmic runs.
+
+Each run was evaluated using two quantitative metrics: the kernel similarity and the activation map score, consistent with the definitions in Figure.\ref{fig:phase_space}. The results are visualized in two three-dimensional plots in Figure.\ref{fig:system_param}, where the $x$–$y$ plane represents the parameter space, and the $z$ axis encodes the metric value (higher values indicate better performance). Each sheet in these plots corresponds to one synthetic dataset and is color coded for clarity. The sheet exhibiting the poorest performance across both metrics is the same dataset (colored in red); this dataset corresponds to the intentionally challenging case and effectively delineates the algorithm’s performance boundary, as no tuning of the system parameters improves its results.
+
+Qualitatively, by comparing panel a) and b), we observe that the sheets are noticeably flatter in kernel similarity, suggesting that the kernel similarity is largely insensitive to the choice of system parameters but remains sensitive to the condition of the input dataset. In contrast, the activation map score exhibits stronger dependence on the system parameters, making it a more appropriate metric to optimize the system parameter. To better visualize these dependencies, we projected the three-dimensional activation map results (Figure.\ref{fig:system_param} b) onto two dimensions and present them in Figure.\ref{fig:proj_system_param}. Panels a)–c) display projections onto the sparse regularizer $\lambda$ at different mini-loop numbers, with the $y$ axis showing the activation map score. Across all three mini-loop settings, we observe a trend of improved performance in the majority of datasets as $\lambda$ increases up to 0.3. More importantly, for $\text{mini-loop} = 1$ and $3$, $\lambda = 0.3$ yields near-optimal results, with the activation map score approaching unity. This can be seen more clearly in panel d), which isolates the case $\lambda = 0.3$. For comparison, panel e) shows the projection for $\lambda = 0.1$, which also demonstrates good performance for most datasets.
+
+From this investigation, we determine the optimal range of system parameters as $\text{mini-loop} \in [1, 3]$ and $\lambda \in [0.1, 0.3]$. It is worth noting that the optimal sparse regularizer $\lambda$ reported here is valid only for two-dimensional input files. The dependence of the optimal $\lambda$ on three-dimensional inputs is discussed in detail in Section \ref{sec:guide}.  
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{Appen_D_1.png}
+	\centering
+	\caption{System parameter phase space}
+	\label{fig:system_param}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Appen_D_2.png}
+	\caption{2D projected view of system parameter space}
+	\label{fig:proj_system_param}
+\end{figure}
 
 \chapter{Streak detection mechanism}\label{appen:streak_detection}

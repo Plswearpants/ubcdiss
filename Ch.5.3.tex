@@ -137,7 +137,8 @@ This approach is particularly important in the early stages of decomposition, wh
 
 Another strategy is the variance-based update ordering, it prioritizes kernel updates according to the magnitude of their kernel variance, processing high-variance components first. This ordering is crucial because the residual is updated sequentially after each kernel is refined, meaning earlier updates have a greater influence on the remaining residual. By addressing the most dominant structures in the data first, the algorithm quickly reduces the residual and improves the signal quality for the weaker components updated later. This leads to better-conditioned subproblems throughout the iteration and helps avoid cumulative distortion that could arise from poor early updates to minor components.
 
-\begin{algorithm}\label{MTSBDalgo}
+\begin{algorithm}
+	\label{algo:MTSBDalgo}
 	\renewcommand{\baselinestretch}{0.9}\selectfont
 	\small
 	\caption{Multi-Type SBD-STM Procedure}
