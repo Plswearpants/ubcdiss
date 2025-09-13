@@ -65,4 +65,43 @@ From this investigation, we determine the optimal range of system parameters as 
 	\label{fig:proj_system_param}
 \end{figure}
 
-\chapter{Streak detection mechanism}\label{appen:streak_detection}
+\chapter{Streak detection and correction}\label{appen:streak_detection}
+Streaks in scanning tunneling microscopy (STM) data can originate from a variety of sources. One of the most common causes is tip change. In this scenario, the tip transitions from an initial state (state 1) to an altered state (state 2), resulting in a modified imaging response. This altered state typically persists for a finite duration before the tip reverts to its original state. The onset of a tip change can occur abruptly, often coinciding with the start of a new scan line in the slow-scan direction, or it may be triggered by a tip–surface interaction at specific surface features, such as defects. The transition between states leads to a pronounced change in image contrast, which manifests as the streak patterns commonly observed in both \ac{STM} topographies and grid maps.
+
+Two principal effects arise from tip changes. The first is a baseline offset effect, where the tunneling current shifts between tip states 1 and 2. The second is a relative contrast effect, where the tip images surface features with a different relative intensity depending on its state. In most cases, the baseline offset dominates and is the primary focus of our correction algorithm.
+
+To illustrate these effects, Figure \ref{fig:streak_1}, panel (a), shows a representative scan exhibiting tip changes. The data, taken from a ZrSiTe grid map with the fast-scan direction oriented vertically, displays streaks of darker contrast aligned with the fast-scan direction—signatures of transitions between tip states. The mean value of each column, plotted below panel (a), closely follows the bright–dark modulation in the image, confirming that the contrast changes are linked to tip-state transitions. Panel (b) plots these column means in greater detail, revealing a clear two-level distribution with mean currents of approximately $2\times10^{-13}$ A and $-5\times10^{-13}$ A, each corresponding to one of the two tip states. To further probe the effect of tip changes, we select two adjacent columns that straddle a tip-change event (indicated by the blue and purple arrows in panel a), corresponding to states 1 and 2, respectively. Their line profiles, shown in panel (c), highlight two key observations: (1) a clear global baseline offset between the two columns, and (2) the preservation of the periodic lattice corrugation pattern, demonstrating that the primary difference between tip states is a uniform current shift rather than a change in relative feature contrast.
+
+In addition to full-column tip-state transitions, panel (b) also reveals columns with intermediate mean values that do not fall neatly into either tip state. For instance, column 13 has a mean current near zero (highlighted with a red dot and arrow in panel a), corresponding to a partial streak in the image. These partial streaks affect only a subset of rows within a column, making them challenging to correct with a simple column-wise leveling procedure. To address this, our algorithm detects the specific rows impacted by partial tip changes, allowing for more localized and accurate correction.
+
+Streak identification involves two key elements: (1) determining the positions of the streak edges and (2) estimating the streak width along the horizontal direction. Edge detection is performed using the image Laplacian, which captures regions of rapid intensity change. The discrete horizontal Laplacian at pixel coordinates $(i,j)$ is defined as
+$$L_{i,j} = I_{i,j-1} + I_{i,j+1} - 2I_{i,j}$$
+where $I_{i,j}$ denotes the intensity at $(i,j)$. At locations where tip-state transitions cause abrupt changes in signal amplitude, this Laplacian yields large values, effectively marking the streak boundaries.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{AppenE_1.pdf}
+	\centering
+	\caption[\textbf{Illustration of tip-change–induced streaks and their correction challenge}]{\textbf{Illustration of tip-change–induced streaks and their correction challenge}(a) Representative slice of a ZrSiTe grid map with the fast-scan direction oriented vertically, showing dark streaks corresponding to tip-state transitions. The color strip below panel (a) plots the column-wise mean current, which exhibits alternating bright–dark modulation correlated with the streak pattern. (b) Detailed plot of the column means, revealing a clear two-level distribution with mean currents near $2\times10^{-13}$ A and $-5\times10^{-13}$ A, each associated with a distinct tip state. Column 13 (marked with a red arrow in panel a) shows an intermediate value, corresponding to a partial streak event. (c) Line profiles of two adjacent columns straddling a tip-change event (blue and purple arrows in panel a), demonstrating a global baseline offset between the two tip states while preserving the periodic lattice corrugation pattern.}
+	\label{fig:streak_1}
+\end{figure}
+
+To detect streaks of varying widths, we employ a multi-scale Laplacian approach. Rather than relying solely on nearest neighbors, we compute Laplacian responses over multiple scales by varying the neighbor separation $n$:
+$$L_n(i,j) = I_{i,j-n} + I_{i,j+n} - 2I_{i,j}$$
+This calculation is performed for all $n < \text{max width}$, where max width specifies the largest expected streak width. The responses from all scales are then combined by taking the maximum absolute value at each pixel, producing a single composite Laplacian map. Thresholding this map yields a binary mask indicating streak locations. Figure \ref{fig:streak_2}b shows an example of such a mask (white pixels), which successfully identifies all streaks in the pre-processed image in panel (a).
+
+Once identified, the streaked pixels are corrected iteratively, proceeding column by column from left to right. Each affected column—or partial column, in the case of partial streaks—is adjusted such that its mean value matches that of the nearest unperturbed column to its left for the corresponding rows. This process propagates across all subsequent columns, producing the corrected image shown in panel (e). For comparison, panel (f) displays the result of a conventional column-wise leveling approach, which fails to handle partial streaks effectively.
+
+A critical factor for successful streak identification is the selection of an appropriate threshold for the Laplacian map. As a practical criterion, we choose the threshold that minimizes the variance of the resulting post-processed image, under the assumption that streak-induced amplitude changes are the dominant contributors to image variance. Figure \ref{fig:streak_2}d plots the image variance as a function of threshold value, with the selected reference threshold indicated by a red line. This threshold produces the mask shown in panel (b). Users may further fine-tune the threshold value around this reference to improve identification if needed. For additional insight, panel (c) shows the histogram of the composite Laplacian response, providing a complementary view of where the threshold is placed relative to the overall distribution.  
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{AppenE_2.pdf}
+	\centering
+	\caption[\textbf{Multi-scale Laplacian detection and correction of tip-change streaks}]{\textbf{Multi-scale Laplacian detection and correction of tip-change streaks}. 
+		(a) Pre-processed ZrSiTe grid map slice showing streak artifacts caused by tip-state transitions. 
+		(b) Binary mask of detected streak pixels, obtained by thresholding the multi-scale Laplacian response; white pixels correspond to identified streak regions. 
+		(c) Histogram of the composite Laplacian response, illustrating the threshold position relative to the distribution of response magnitudes. 
+		(d) Image variance as a function of threshold value, with the red line indicating the reference threshold that minimizes variance and produces the mask in (b). 
+		(e) Post-processed image after streak correction using the row-resolved leveling algorithm, demonstrating effective removal of both full and partial streaks. 
+		(f) Result of conventional column-wise leveling, which fails to adequately correct partial streaks and leaves residual artifacts.}
+	\label{fig:streak_2}
+\end{figure}  
