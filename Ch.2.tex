@@ -8,7 +8,7 @@ The first STM was built in 1981 by Gerd Binnig and Heinrich Rohrer at IBM Zurich
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{braille.png}
-	\caption[\textbf{Analogy between the Braille reading and STM topography}]{\textbf{Analogy between the Braille reading and STM topography}.a) In Braille, fingertips resolve patterns through their sensitivity to spatial variations. b) In STM, an atomically sharp tip scans across a material’s surface, where the tunneling current is modulated by both the surface topography and the local electronic structure. The red atom illustrates how variations in electronic states influence the measured signal, highlighting STM’s dual sensitivity to geometric and electronic features.}
+	\caption[\textbf{Analogy between the Braille reading and STM topography}]{\textbf{Analogy between the Braille reading and STM topography}.a) In Braille, fingertips resolve patterns through their sensitivity to spatial variations (Courtesy of the American Foundation for the Blind). b) In STM, an atomically sharp tip scans across a material’s surface, where the tunneling current is modulated by both the surface topography and the local electronic structure. The red atom illustrates how variations in electronic states influence the measured signal, highlighting STM’s dual sensitivity to geometric and electronic features.}
 	\label{fig:braille}
 \end{figure}
 
@@ -21,7 +21,7 @@ In essence, an \ac{STM} works by taking advantage of the spatial dependence of t
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Si111_binnig.png}
-	\caption[\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}]{\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}. The sixfold rotational symmetry around the rhombohedral corners is evident, with twelve adatoms in a unit cell clearly resolved. Crosses mark the adatom positions as proposed in the modified adatom model. Brightness reflects relative height (not to scale). The figure is adopted from reference \cite{binnig77Reconstruction1983}}
+	\caption[\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}]{\textbf{STM topographic image of the Si(111)-$7 \times 7$ reconstructed surface}. The sixfold rotational symmetry around the rhombohedral corners is evident, with twelve adatoms in a unit cell clearly resolved. Crosses mark the adatom positions as proposed in the modified adatom model. Brightness reflects relative height (not to scale). The figure is reprinted with permission from G.~Binnig \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{50}, 120 (1983). \textcopyright{} 1983 American Physical Society.~\cite{binnig77Reconstruction1983}}
 	\label{figure:si111_binnig}
 \end{figure}
 
@@ -77,17 +77,16 @@ where $\phi_{\mu}$ and $\psi_{\nu}$ are the eigenstates of the tip Hamiltonian $
 
 Bardeen then artificially separated the barrier region into two parts by drawing a "separation surface" $\mathbf{S}$; the volume that is close to the tip side is denoted as $\mathbf{T}$, and $\mathbf{S} = \partial \mathbf{T}$.
 
-We can then observe that the total Hamiltonian $H$ is equal to the tip Hamiltonian $H_t$ in region $\mathbf{T}$ due to the absence of sample potential $V_s$: 
+We can then observe that the total Hamiltonian $H$ is equal to the tip Hamiltonian $H_t$ in region $\mathbf{T}$ due to the absence of sample potential $V_s$, that is $H-H_t$ is an zero operator in T, we thus can write
 \begin{equation}
 	\label{eq:bardeen_2}
 	\begin{aligned}
-		0 &= \braket{\phi_{\mu}|(H-H_t)|\psi_{\nu}}_{\mathbf{T}}\\
-		 &= \int_{T} \psi_{\nu}(\mathbf{r}) \left( H - H_{t} \right) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
-		= \int_{T} \psi_{\nu}(\mathbf{r}) H \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
-		- E_{\nu} \int_{T} \psi_{\nu}(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} \\
-		&= -\frac{\hslash^2}{2m} \int_{T} \psi_{\nu}(\mathbf{r}) \Delta \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
+		0 &= \int_{T}  \psi_{\nu}(\mathbf{r}) \left( H - H_{t} \right) \phi_{\mu}^*(\mathbf{r})  \, d\mathbf{r} \\
+		&= \int_{T} \psi_{\nu}(\mathbf{r}) H \phi_{\mu}^*(\mathbf{r})  \, d\mathbf{r} 
+		- E_{\mu} \int_{T}   \psi_{\nu}(\mathbf{r})\ \phi_{\mu}^*(\mathbf{r}) d\mathbf{r} \\
+		&= -\frac{\hslash^2}{2m} \int_{T}   \psi_{\nu}(\mathbf{r}) \Delta \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
 		+ \int_{T} \psi_{\nu}(\mathbf{r}) V(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r} 
-		- E_{\nu} \int_{T} \psi_{\nu}(\mathbf{r}) \phi_{\mu}^*(\mathbf{r}) \, d\mathbf{r}.
+		- E_{\mu} \int_{T}  \psi_{\nu}(\mathbf{r}) \phi_{\mu}^*(\mathbf{r})\, d\mathbf{r}.
 	\end{aligned}
 \end{equation}
 And similarly, $H - H_s$ is a zero operator in the barrier region that is not $\mathbf{T}$. Thus the integral in Equation \ref{eq:bardeen_1} can be reduced to region $\mathbf{T}$:   
@@ -97,21 +96,21 @@ And similarly, $H - H_s$ is a zero operator in the barrier region that is not $\
 		&\langle \phi_{\mu} | H - H_{\text{s}} | \psi_{\nu} \rangle \\
 		&= \int_{T} \phi_{\mu}^*(\mathbf{r}) \left( H - H_{\text{sam}} \right) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
 		= \int_{T} \phi_{\mu}^*(\mathbf{r}) H \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
-		- \epsilon_{\mu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} \\
+		- \epsilon_{\nu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} \\
 		&= -\frac{\hslash^2}{2m} \int_{T} \phi_{\mu}^*(\mathbf{r}) \Delta \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
 		+ \int_{T} \phi_{\mu}^*(\mathbf{r}) V(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r} 
-		- \epsilon_{\mu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r}.
+		- \epsilon_{\nu} \int_{T} \phi_{\mu}^*(\mathbf{r}) \psi_{\nu}(\mathbf{r}) \, d\mathbf{r}.
 	\end{aligned}
 \end{equation}
 Subtracting Equation \ref{eq:bardeen_2} from Equation \ref{eq:bardeen_3}, we get: 
 \begin{equation}
 	\label{eq:bardeen_matrixelement}
 	\begin{aligned}
-		\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} &= \int_\mathbf{T}\phi_{\mu}^*(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \psi_{\nu}(\mathbf{r}) - \epsilon_{\mu}\psi_{\nu}(\mathbf{r}))dr \\ 
-		& - \int_\mathbf{T}\psi_{\nu}(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \phi_{\mu}^*(\mathbf{r}) - E_{\nu}\phi_{\mu}^*(\mathbf{r}))dr.
+		\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} &= \int_\mathbf{T}\phi_{\mu}^*(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \psi_{\nu}(\mathbf{r}) - \epsilon_{\nu}\psi_{\nu}(\mathbf{r}))dr \\ 
+		& - \int_\mathbf{T}\psi_{\nu}(\mathbf{r})(-\frac{\hslash^2}{2m} \nabla \phi_{\mu}^*(\mathbf{r}) - E_{\mu}\phi_{\mu}^*(\mathbf{r}))dr.
 	\end{aligned}
 \end{equation}
-By considering only $\epsilon_n \approx E_j$, we can get:
+By considering only $\epsilon_{\nu} \approx E_{\mu}$, we can get:
 \begin{align}
 	\label{eq:bardeen4}
 	\braket{\phi_{\mu}|H-H_s|\psi_{\nu}} &\approx -\frac{\hslash^2}{2m}\int_\mathbf{T}\nabla \cdot [\phi_{\mu}^*(\mathbf{r})\nabla\psi_{\nu}(\mathbf{r})-\psi_{\nu}(\mathbf{r})\nabla\phi_{\mu}^*(\mathbf{r})]dr\\ \label{eq:bardeen5}
@@ -135,8 +134,8 @@ The tip end was assumed to be locally spherical with a radius of R centered at t
 With $\kappa_{\mu} = \sqrt{2m(\Phi_t-\epsilon_{\mu})/\hslash^2}$. A schematic of the set up is shown in Figure.\ref{fig:tersoff}. 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{tersoff_geometry.png}
-	\caption[\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model}]{\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model} The probe tip is approximated as locally spherical with radius of curvature $R$, centered at $\mathbf{r_0}$, where it approaches the surface at the nearest distance $d$. The figure is adopted from reference \cite{tersoffTheoryScanningTunneling1985}.}
+	\includegraphics[width=0.5\textwidth]{STM_Tip_Tersoff-Hamann model.png}
+	\caption[\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model}]{\textbf{Schematics of the tunneling geometry in the Tersoff–Hamann model} The probe tip is approximated as locally spherical with radius of curvature $R$, centered at $\mathbf{r_0}$, where it approaches the surface at the nearest distance $d$.}
 	\label{fig:tersoff}
 \end{figure}
 
@@ -183,7 +182,14 @@ The motion of an STM tip is driven by a set of piezoelectric scanners. Piezoelec
  \begin{figure}
  	\centering
  	\includegraphics[width=0.8\textwidth]{STM_schematic.png}
- 	\caption[\textbf{Schematic of a typical STM setup}]{\textbf{Schematic of a typical STM setup}. Right: The tip–sample tunneling junction, consisting of a metallic tip (commonly W or Pt–Ir) brought within atomic distance of a clean, conductive sample surface prepared under UHV conditions. Middle: The STM head, roughly the size of a human fist, contains the piezoelectric scanner that provides sub-angstrom control of the tip motion. Left: Control electronics, including the bias source, current amplifier, and PID feedback circuit, regulate the tunneling current and tip–sample distance during operation. Together with vibration isolation, cooling, and vacuum systems, these components form the complete STM instrument.The figure is adopted from \cite{stuartScanningTunnellingMicroscopy2021}}
+ 	\caption[\textbf{Schematic of a typical STM setup}]{\textbf{Schematic of a typical STM setup}. 
+			Right: The tip–sample tunneling junction, consisting of a metallic tip (commonly W or Pt–Ir) brought within atomic distance of a clean, conductive sample surface prepared under UHV conditions. 
+ 			Middle: The STM head, roughly the size of a human fist, contains the piezoelectric scanner that provides sub-angstrom control of the tip motion. 
+ 			Left: Control electronics, including the bias source, current amplifier, and PID feedback circuit, regulate the tunneling current and tip–sample distance during operation. 
+ 			Together with vibration isolation, cooling, and vacuum systems, these components form the complete STM instrument. 
+ 			Reproduced from~\cite{stuartScanningTunnellingMicroscopy2021} under 
+ 			\href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{CC BY-NC-ND 4.0}, no changes were made.
+ 	}
  	\label{fig:stm_schematics}
  \end{figure}
  
@@ -205,7 +211,7 @@ Recall that the tunneling current can be expressed as:
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{topographic_modes.png}
-	\caption[\textbf{Schematic of the two basic STM topographic imaging modes}]{\textbf{Schematic of the two basic STM topographic imaging modes}. Top: constant-height mode, where the tip height is fixed and the tunneling current varies with tip position. Bottom: constant-current mode, where a feedback loop maintains constant current by adjusting the tip height. In both cases, the measured “height” reflects variations in the local density of states (LDOS) as well as geometric surface corrugation, such that atomic defects with modified DOS appear as apparent topographic features. The figure is adopted from reference \cite{stuartScanningTunnellingMicroscopy2021}}
+	\caption[\textbf{Schematic of the two basic STM topographic imaging modes}]{\textbf{Schematic of the two basic STM topographic imaging modes}. Top: constant-height mode, where the tip height is fixed and the tunneling current varies with tip position. Bottom: constant-current mode, where a feedback loop maintains constant current by adjusting the tip height. In both cases, the measured “height” reflects variations in the local density of states (LDOS) as well as geometric surface corrugation, such that atomic defects with modified DOS appear as apparent topographic features. This figure is reproduced from Brandon Stuart's Ph.D. thesis~\cite{stuartScanningTunnellingMicroscopy2021}, licensed under  \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{CC BY-NC-ND 4.0}. No changes were made.}
 	\label{fig:topo_modes}
 \end{figure}
 

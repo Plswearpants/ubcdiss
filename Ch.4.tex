@@ -84,22 +84,21 @@ We can see that by introducing the retarded self-energy that encodes the interac
 
 This indicate a sharp peak at $\omega=\epsilon^*_\textbf{k}$, thus resembles the spectral function of a Fermi gas, and the pole is what we call the quasiparticle in the Fermi liquid theory. However, we can see that Equation \ref{eq.akw} does not fulfill the normalization rule: 
 \begin{equation}
-	\int_{-\infty}^{+\infty} \frac{d\omega}{2\pi} A(\textbf{k},\omega) = 1, 
+	\int_{-\infty}^{+\infty} \frac{d\omega}{2\pi} A(\textbf{k},\omega) = 1. 
 \end{equation}
-
-we need to incorporate another term $A'(\textbf{k},\omega)$ into $ A(\textbf{k},\omega)$ to that has an integrated wight given by 1-Z, giving us: 
+To restore this normalization, we introduce an additional incoherent term $A'(\mathbf{k},\omega)$ such that its integrated weight is $1 - Z$. The full spectral function then reads:
 \begin{equation}
 	\label{eq.akw}
-	A(\textbf{k},\omega) = 2\pi Z\delta(\omega-\epsilon^*_\textbf{k}) + A'(\textbf{k},\omega)
+	A(\textbf{k},\omega) = 2\pi Z\delta(\omega-\epsilon^*_\textbf{k}) + A'(\textbf{k},\omega),
 \end{equation}
-Fig. \ref{fig:ch5_spect} \cite{bruusManyBodyQuantum2004} illustrates this effect, and that term $A'(\textbf{k},\omega)$ captures the remaining excitations other than the well defined quasiparticle pole. 
+where the term $A'(\textbf{k},\omega)$ captures the remaining excitations other than the well defined quasiparticle pole. 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{Ch5_spectralfunciton.png}
-	\caption[\textbf{Spectral function $A(\textbf{k},\omega)$}]{\textbf{Spectral function $A(\textbf{k},\omega)$}. The spectral function $A(\textbf{k},\omega)$ that includes the quasiparticle peak and the background function $A'(\textbf{k},\omega)$ stemming from other types of excitation}
-	\label{fig:ch5_spect}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\textwidth]{Ch5_spectralfunciton.png}
+%	\caption[\textbf{Spectral function $A(\textbf{k},\omega)$}]{\textbf{Spectral function A(\textbf{k},\omega)$}. The spectral function $A(\textbf{k},\omega)$ that includes the quasiparticle peak and the background function $A'(\textbf{k},\omega)$ stemming from other types of excitation}
+%	\label{fig:ch5_spect}
+%\end{figure}
 
 \section{Introduction to Quasiparticle Interference}
 
@@ -152,6 +151,7 @@ We will quantitatively showcase this \ac{LDOS} modulation with a simulation on a
 As mentioned in last section, a \ac{QPI} measurement is achieved by taking spectroscopy measurements on a real-space region that presents QPI pattern. As \ac{STM} spectroscopy probes the \ac{LDOS}, We must therefore, understand the origin of \ac{QPI} pattern and how it modifies the \ac{LDOS}. Here, I present an investigation into the \ac{LDOS} modulation caused by point defects on a square lattice, this textbook exercise is inspired by work from Cheung et al \cite{cheungDictionaryLearningFouriertransform2020}.
 
 \subsubsection{Theory}
+
 We first consider a square lattice with lattice constant $a$, and model it through the single-electron Tight-Binding model considering only nearest-neighbor hopping. This hopping is characterized with a fixed negative number $t$, the hopping-parameter, which represents the probability amplitude for an electron to move between two neighboring atomic orbitals. We then place $N_d$ number of defects onto different lattice sites as a perturbation to the \ac{TB} Hamiltonian $H_0$. The total Hamiltonian can then be written as: 
 $\hat{H} = \hat{H}_0 + \hat{H}_d$. $\hat{H}_d$ can be written as: 
 \begin{equation}

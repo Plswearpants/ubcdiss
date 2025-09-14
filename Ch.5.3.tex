@@ -37,7 +37,10 @@ We can then write the Complete SBD-STM procedure:
 
 \begin{algorithm}
 	\label{SBDalgo}
-	\caption{Complete SBD-STM Procedure}
+	\caption{Complete SBD-STM Procedure. \\
+			\small Reproduced from Cheung \textit{et al.}, licensed under 
+			\href{http://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}. 
+			No changes were made.}
 	\textbf{Input:}
 	\begin{itemize}
 		\item Observation $Y \in \mathbb{R}^{n_1 \times n_2 \times s}$,
@@ -48,7 +51,7 @@ We can then write the Complete SBD-STM procedure:
 	\textbf{Phase I:}
 	\begin{enumerate}
 		\item Randomly initialize: $A^{(0)} \in S = \mathbb{S}^{m_1 \times m_2 \times s}$.
-		\item $A_\star^{(0)} \leftarrow \texttt{ASolve}^N(A^{(0)}, \lambda_0, loop)$.
+		\item $A_\star^{(0)} \leftarrow \texttt{ASolve}(A^{(0)}, \lambda_0, loop)$.
 	\end{enumerate}
 	
 	\textbf{Phase II:}
@@ -57,7 +60,7 @@ We can then write the Complete SBD-STM procedure:
 		\item Set $\lambda_1 = \lambda_0$.
 		\item Refinement: \textbf{Repeat} for $k = 1, 2, \dots$ \textbf{until} $\lambda_k \leq \lambda_{\text{end}}$,
 		\begin{enumerate}
-			\item[(a)] $A_\star^{(k)} \leftarrow \texttt{ASolve}^N(A^{(k)}, \lambda_k)$,
+			\item[(a)] $A_\star^{(k)} \leftarrow \texttt{ASolve}(A^{(k)}, \lambda_k)$,
 			\item[(b)] \textbf{Centering}:
 			\begin{enumerate}
 				\item[i.] Find the size $m_1 \times m_2$ submatrix of $A_\star^{(k)}$ that maximizes the Frobenius (square) norm across all $m_1 \times m_2$ submatrices.

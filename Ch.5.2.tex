@@ -11,7 +11,11 @@ A convolutional model of STM interprets STM spectroscopy measurement as the conv
 \begin{figure}
 	\includegraphics[width= \textwidth]{convolutional_model.pdf} 
 	\centering
-	\caption[\textbf{Convolutional model of STM grid spectroscopy}]{\textbf{Convolutional model of STM grid spectroscopy}. a) Single defect convolutional model, introduced by Cheung et al. to solve Sparse Blind Deconvolution(SBD) problem.\cite{cheungDictionaryLearningFouriertransform2020}. b) Multi-defect convolutional model, used to address \ac{MC-SBD} problem.}
+	\caption[\textbf{Convolutional model of STM grid spectroscopy}]{\textbf{Convolutional model of STM grid spectroscopy}. a) Single-defect convolutional model, introduced by Cheung \textit{et al.} in 2020 to solve the Sparse Blind Deconvolution (SBD) problem~. 
+		b) Multi-defect convolutional model, used to address the \ac{MC-SBD} problem. 
+		Panel a) is reproduced from Cheung \textit{et al.}\cite{cheungDictionaryLearningFouriertransform2020}, licensed under 
+		\href{http://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}. 
+		No changes were made.}
 	\label{fig:ch6_conv}
 \end{figure}
 
@@ -97,7 +101,12 @@ First, multiple channels increase the dimension of the manifold, thus making the
 \begin{figure}
 	\includegraphics[width= \textwidth]{defect_types.pdf} 
 	\centering
-	\caption[\textbf{Complexity in STM data with multiple types of defects}]{\textbf{Complexity in STM data with multiple types of defects}. (a) STM topography of ZrSiTe showing four distinct defect types (circled in red) and multiple instances of a single defect type appearing in different orientations (circled in yellow). (b) In PtSn4, rotational variants of the same "croissant" defect are highlighted, demonstrating how lattice symmetry can lead to multiple orientations of a single defect type. In multi-channel sparse blind deconvolution (MC-SBD), each orientation is treated as a separate kernel, underscoring the increased complexity of real-world data and the motivation for extending single-defect SBD methods to handle multiple, orientation-dependent components.}
+	\caption[\textbf{Complexity in STM data with multiple types of defects}]{\textbf{Complexity in STM data with multiple types of defects}. (a) STM topography of ZrSiTe showing four distinct defect types (circled in red) and multiple instances of a single defect type appearing in different orientations (circled in yellow). 
+		(b) In PtSn$_4$, rotational variants of the same ``croissant'' defect are highlighted, demonstrating how lattice symmetry can lead to multiple orientations of a single defect type. 
+		In multi-channel sparse blind deconvolution (MC-SBD), each orientation is treated as a separate kernel, underscoring the increased complexity of real-world data and the motivation for extending single-defect SBD methods to handle multiple, orientation-dependent components. 
+		Panel (a) is reproduced from Brandon Stuart's Ph.D. thesis~\cite{stuartScanningTunnellingMicroscopy2021}, licensed under 
+		\href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{CC BY-NC-ND 4.0}. 
+		No changes were made.}
 	\label{fig:ch6_defect}
 \end{figure}
 
