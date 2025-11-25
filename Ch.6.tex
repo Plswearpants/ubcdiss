@@ -1,4 +1,4 @@
- \chapter{MC-SBD-STM Results}
+ \chapter{MC-SBD-STM Results} \label{chapter:MC-SBD-STM Results}
 %todo: change impurities to defects, defects include impurities and vacancies. 
 In this chapter, we present the results from the \ac{MC-SBD} on the synthetic data. We first introduce a synthetic QPI-STM data generation process, build a corresponding system of metrics, and evaluate the performance of the algorithm on a wide range of synthetic data to evaluate the robustness of the algorithm. 
 
@@ -155,7 +155,8 @@ Since it is a common practice to set the spatial resolution as either 2 or 3 whe
 
 Apart from the above parameters, we also tuned the number of different types of defects(or kernel types). However, due to the drastic increase in computational expense with increasing kernel types, we first run a full exploration of the parameter spaces and discuss the results with 2 types of kernels, then we will show result on a toy run with kernel types = 3. 
 
-In the full exploration runs we ran on 2 types of kernels, we run the algorithm on 3 trials with different datasets. The datasets with different parameter sets are listed in Table.6.2. In total, 180 different observations are generated to cover defect density from sparse to dense, grid maps of sizes ranging from $10^2$ to $10^4$ nanometer squares (given a normal bond length is around 2-5 angstrom), and signal to noise ratio from as low as 0.5 to 3. We then collect the results from all the trials and plot the corresponding metrics to a 3D phase space plot shown in Figure. \ref{fig:phase_space}. There are two things to evaluate, the kernel and activation maps, since they can behave differently within the parameter space, we make one subplot each. On the left, we use \textbf{\textit{KS}} to evaluate the performance on the kernel recovery, and on the right, since there are two metrics defined to evaluate the activation maps, for convenience, we use \textbf{Activation map score(\textit{AMS})}:   
+In the full exploration runs we ran on 2 types of kernels, we run the algorithm on 3 trials with different datasets. The datasets with different parameter sets are listed in Table.6.2. In total, 180 different observations are generated to cover defect density from sparse to dense, grid maps of sizes ranging from $10^2$ to $10^4\,\text{nm}^2$ (given a normal bond length is around 2-5\,\AA), and signal to noise ratio from as low as 0.5 to 3. We then collect the results from all the trials and plot the corresponding metrics to a 3D phase space plot shown in Figure. \ref{fig:phase_space}. There are two things to evaluate, the kernel and activation maps, since they can behave differently within the parameter space, we make one subplot each. On the left, we use \textbf{\textit{KS}} to evaluate the performance on the kernel recovery, and on the right, since there are two metrics defined to evaluate the activation maps, for convenience, we use \textbf{Activation map score(\textit{AMS})}:
+
 \begin{equation}
 	\textbf{\textit{AMS}} = \sqrt{\textbf{\textit{AS}} \cdot \textbf{\textit{DS}}}.
 \end{equation} 

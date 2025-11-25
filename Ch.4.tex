@@ -242,7 +242,7 @@ The setup of simulation is illustrated in Fig. \ref{fig:ch5_qpisim_demo}, a grid
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{ch5_singe_simulation.pdf} % Replace with your image file
-	\caption[\textbf{single defect QPI pattern simulation}]{\textbf{single defect QPI pattern simulation}: $\delta\rho(\textbf{x},\omega)$ for single defect at the center of the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
+	\caption[\textbf{single defect QPI pattern simulation}]{\textbf{single defect QPI pattern simulation}: $\delta\rho(\textbf{x},\omega)$ for single defect at the center of the 51 by 51 lattice grid with V$_\textbf{d}$ = -0.02, t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45\,eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
 	\label{fig:ch5_single_scattering}
 \end{figure}
 
@@ -260,11 +260,11 @@ Typical \ac{LDOS} maps at different energy are shown in Fig. \ref{fig:ch5_single
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{ch5_multi_simulation.pdf} 
-	\caption[\textbf{Multi-defect QPI pattern simulation}]{\textbf{Multi-defect QPI pattern simulation}: $\delta\rho(\textbf{x},\omega)$ for 5 randomly placed defect on the 51 by 51 lattice grid with t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
+	\caption[\textbf{Multi-defect QPI pattern simulation}]{\textbf{Multi-defect QPI pattern simulation}: $\delta\rho(\textbf{x},\omega)$ for 5 randomly placed defect on the 51 by 51 lattice grid with V$_\textbf{d}$ = -0.02, t = -0.2 and $\omega$ = 0.45, 0.20, -0.05 and -0.45 eV for a)-d), respectively; the integrand size is defined by n = 300, $\epsilon = 1*10^{-3}$. Contrast for each image is self-normalized to [0,1].}
 	\label{fig:ch5_multi_scattering}
 \end{figure}
 
-We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, where 5 defect locations are randomly selected on the lattice points. It is worth noting that multi-defect scattering calculation is relatively expensive as the size of T matrix grows as the square of defect numbers, later in Ch.5.3.2 we will show that we could approximate the multi-defect T matrix with only its diagonal terms with some corrections, making the calculation time linear with the numbers of defect.  
+We also calculated multi-defect results, for this, the T-matrix is no longer a scalar but rather a real matrix capturing the correlation between defects. Numerical results are calculated with Equation \ref{multi_defect_eq}, and shown in Fig. \ref{fig:ch5_multi_scattering}, where 5 defect locations are randomly selected on the lattice points. It is worth noting that multi-defect scattering calculation is relatively expensive as the size of T matrix grows as the square of defect numbers, later in section \ref{sec: multi-defect QPI theory} we will show that we could approximate the multi-defect T matrix with only its diagonal terms with some corrections, making the calculation time linear with the numbers of defect.  
 %we can see that the interference pattern from different defect sources are more prominent on spots with clustered defects. 
 
 
@@ -386,7 +386,7 @@ A set of proper parameters for \ac{QPI} measurement aims to extract the most amo
 \end{figure}
 
 
-\subsection{multi-defect QPI pattern and phase noise}
+\subsection{multi-defect QPI pattern and phase noise} \label{sec: multi-defect QPI theory}
 \ac{QPI} patterns present themselves around defects. While an ideal \ac{QPI} measurement is performed on isolated defects in a large field of view, it is normally difficult to find such a case. In real experiments, grid maps are usually taken on areas with multiple defects; this causes interference between the \ac{QPI} patterns originating from different defects, as hinted by Ch.4.2.3 when discussing Fig. \ref{fig:ch5_multi_scattering}.
 
 This is problematic when we try to interpret the \textbf{q}-space \ac{QPI} map. As illustrated in Fig. \ref{fig:ch5_phasenoise}, when we have multiple defects scattered in the field of view, we start to see some noise patterns associated with the spatial distribution of the defects, as we can see by comparing c) and e), we see that with nothing but the relative locations of the defects changed, the corresponding \textbf{q}-space \ac{QPI} maps possess different noise patterns. This effect is referred to as phase noise, which hinders our ability to analyze the underlying quasiparticle scattering process. 
