@@ -23,13 +23,13 @@ By the principle of adiabatic continuity, Landau is able to bridge between the s
 
 Landau's quasiparticle is an extremely useful concept in computing the screening and the transport properties of an electron-gas-like system. However, we should emphasize that the theory is only valid with several assumptions:
 
-For an adiabatic procedure to hold, time scale $\zeta$ in Equation \ref{adiabatic} should be bounded by two conditions: 1. rate of evolution should be small compared to the energy of the state: $\zeta << \epsilon_{k,\sigma}$, 2. the final bound state remains the same as the initial one, meaning the lifetime $\tau_{QP}$ of the bound state should be long enough: $\tau_{QP} >> \zeta^{-1}$. Therefore, $\zeta$ should suits: 
+For an adiabatic procedure to hold, time scale $\zeta$ in Equation \ref{adiabatic} should be bounded by two conditions: 1. rate of evolution should be small compared to the energy of the state: $\zeta \ll \epsilon_{k,\sigma}$, 2. the final bound state remains the same as the initial one, meaning the lifetime $\tau_{QP}$ of the bound state should be long enough: $\tau_{QP} \gg \zeta^{-1}$. Therefore, $\zeta$ should suits: 
 \begin{equation}
-	\tau_{QP}^{-1} << \zeta << \epsilon_{k,\sigma},
+	\tau_{QP}^{-1} \ll \zeta \ll \epsilon_{k,\sigma},
 \end{equation}
 since typical excited energy is in the order of temperature, and the lifetime is inversely proportional to $T^2$, we can also write:
 \begin{equation}
-	T^2 << \zeta << k_B T,
+	T^2 \ll \zeta \ll k_B T,
 \end{equation}
 This requirement can be satisfied at a range of low temperature. Later we will also see that the requirements also extend to the energy level of the states, since the quasiparticle lifetime decreases as energies deviate from the Fermi energy. 
 %todo: can refer to the chapter where we talk about the lifetime decay with simulation. 

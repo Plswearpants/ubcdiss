@@ -1,7 +1,7 @@
 \chapter{MC-SBD-STM on experimental data} \label{chapter:MC-SBD-STM on experimental data}
 This chapter aims to demonstrate the application of the algorithm to real experimental data. We first elaborate the layers of complexity posed by real experimental data compared to the synthetic data. We then address the additional complexity by introducing a preprocessing pipeline that removes some common experimental artifacts and standardizes the experimental data condition before we apply the algorithm. Lastly, we applied the whole workflow to four different material systems. The results from these algorithm runs not only showcased the success and limitations of the algorithm, but also offered an opportunity to glance into the potential novel physics the method uncovers. 
 
-\section{additional complexity in experimental data}
+\section{Additional complexity in experimental data}
 The phase space analysis in the last section showed the algorithm can work robustly in a vast regime of synthetic datasets. However, despite the effort we made to generate experiment-informed synthetic data, the real data might deviate from the synthetic data. For a practical application of this algorithm, it is essential to have the discussion around the complexities created by these deviations, with the focus on whether they will be a failure mode to the algorithm. We then created a pipeline that both addresses these failure modes and standardize the input dataset.
 
 \begin{figure}
@@ -13,7 +13,7 @@ The phase space analysis in the last section showed the algorithm can work robus
 
 While achieving low noise level in \ac{STM} is an important topic on its own \cite{geAchievingLowNoise2019}, the algorithm is robust against noise randomly distributed in space and time. The failure mode of the algorithm lies in any features that are structured but unwanted or non-intrinsic. There are three sources of these abnormality in \ac{STM} measurements: The sample surface getting contaminated, the tip being unstable, and an imperfect scanning environment. We will discuss the distinct complexities introduced by these three sources and how we mitigate each of them.  
 
-Surface contamination introduces additional atoms or molecules that are non-intrinsic on the surface. It is unfavorable as it normally introduces non-repetitive features on the surface, and should be mitigated preferably by scanning on a cleaner area. However, if a completely clean surface is not accessible, minor contamination features can be suppressed by applying a truncated Gaussian mask; this mask is also used to perform the defect masking in standard STM-QPI analysis, which will be elaborated when introducing the preprocessing pipeline.
+Surface contamination introduces additional atoms or molecules that are non-intrinsic on the surface. It is unfavorable as it normally introduces non-repetitive features on the surface, and should be mitigated preferably by scanning on a cleaner area. However, if a completely clean surface is not accessible, minor contamination features with strong contrast can be suppressed by applying a truncated Gaussian mask at their center; this type of mask is also used to perform the defect masking in standard STM-QPI analysis, which will be elaborated when introducing the preprocessing pipeline.
 
 \begin{figure}
 	\includegraphics[width= \textwidth]{streaknoise.pdf} 
@@ -204,7 +204,6 @@ Recognizing that the primary limitation in Attempt 1 was the single occurrence p
 However, the reliability of this reconstruction remains questionable for two reasons. First, we lack validation for the critical assumption that QPI patterns from distinct defect orientations are identical. Second, the dataset has a relatively low signal-to-noise ratio ($SNR\sim 1$), and as shown in Figure \ref{fig:KS_vs_N}, a reliable reconstruction at this SNR level requires approximately 15 occurrences per defect type. Therefore, even if the assumption holds, the reconstruction may still be statistically unreliable.
 
 Finally, the attempt using the post-noise-leveled dataset $Y_2$ also failed. Specifically, the output activation map for the $Sn\textsubscript{3}$ defect (panel i) poorly matches the expected defect locations. Since Attempts 2 and 3 share identical parameters and initializations, this outcome demonstrates that when the SNR is already low, the cost of increasing the overall noise level through noise-leveling can outweigh its benefits. In such cases, this preprocessing step may degrade rather than improve algorithm performance, and should be omitted.
-
 
 \section{MC-SBD Result Summary}
 In chapter \ref{chapter:MC-SBD-STM Results} and \ref{chapter:MC-SBD-STM on experimental data}, we presented a comprehensive validation and application of the MC-SBD-STM algorithm, showcasing its ability to demix, deconvolve, denoise, and ultimately extract defect-specific quasiparticle interference (QPI) patterns from both synthetic and experimental scanning tunneling microscopy (STM) data.
