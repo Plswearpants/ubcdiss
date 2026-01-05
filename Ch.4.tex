@@ -49,7 +49,9 @@ Landau quasiparticles are added to a system with the creation of excitations, th
 \end{equation}
 where $\epsilon_k= \frac{k^2}{2m-\mu}$ is the free electron energy with respect to the chemical potential $\mu$, and $\Sigma^R_{k \sigma, \omega}$ is the retarded self-energy that is irreducible in diagrammatic expansion. 
 
-We then expand the self-energy into real and imaginary parts, the effective single-electron energy is $\epsilon'_{k} = \epsilon_k + \operatorname{Re}\Sigma^R(k,\omega)$. We can then define the renormalized Fermi momentum $k^*_{F}$ as $\epsilon'_{\tilde{k_{F}}} = 0$. Then we expand $G^R_{k, \omega}$ around $k = k^*_{F}$ and get: 
+We then expand the self-energy into real and imaginary parts, the effective single-electron energy is $\epsilon'_{k} = \epsilon_k + \operatorname{Re}\Sigma^R(k,\omega)$. We can then define the renormalized Fermi momentum $k^*_{F}$ as $\epsilon'_{\tilde{k_{F}}} = 0$. It is worth noting that, according to the Luttinger's theorem, in an isotropic Fermi liquid at a fixed density, Fermi momentum is protected and remain unrenormalized. However, in systems with interactions that induce a spontaneous symmetry breaking, the Fermi surface can be deformed and is no longer isotropic. This introduces an angular dependence to the Fermi wave vector and thus effectively renormalizes it. This instability of the Fermi surface is known as the Pomeranchuk instability, and is experimentally observed in quantum Hall systems, Sr\textsubscript{3}Ru\textsubscript{2}O\textsubscript{7}, and iron-based superconductors \cite{fradkin_nematic_2010,chubukov_fermi-liquid_2018}.
+
+In the absence of magnetic field, we then expand $G^R_{k, \omega}$ in equation \ref{retardedgreen} around $k = k^*_{F}$ and get: 
 
 \begin{equation}
 \label{gr_full}
@@ -65,7 +67,7 @@ where
 	\Gamma_{\mathbf{k}} &= Z~\mathrm{Im} \Sigma^{R}({k}, 0) 
 \end{align}
 
-\noindent here, $\epsilon^*_{\mathbf{k}}$ is the renoramlized energy, $\Gamma_{\mathbf{k}}$ is the relaxation rate which is inverse proportional to the quasiparticle lifetime $\tau_{QP}$, and $Z$ is the weight factor of the qausiparticle. We can further parameterize the renormalized energy with the effective mass $m^*$: 
+\noindent here, $\epsilon^*_{\mathbf{k}}$ is the renoramlized energy, $\Gamma_{\mathbf{k}}$ is the relaxation rate which is inverse proportional to the quasiparticle lifetime $\tau_{QP}$, and $Z$ is the quasiparticle residue, or weight factor of the qausiparticle. We can further parameterize the renormalized energy with the effective mass $m^*$: 
 \begin{equation}\label{energy}
 	\epsilon^*_{\mathbf{k}} = \frac{k^*_F(k-k^*_F)}{m^*}
 \end{equation}
