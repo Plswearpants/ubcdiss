@@ -1,5 +1,5 @@
 \section{A convolutional model of QPI-STM}
-A convolutional model of STM interprets STM spectroscopy measurement as the convolution of the features sourced from defects and their corresponding activation. The first convolutional model of STM was raised by Cheung et al \cite{cheungDictionaryLearningFouriertransform2020}; As shown in Figure \ref{fig:ch6_conv} a), an STM observation Y is the convolution of a kernel $A_0$ and its corresponding activation $X_0$. We extend the convolutional model to the multi-type defect case, as hinted in Figure \ref{fig:ch6_demix}, we now have multiple kernels $A_d$ with different sizes and their corresponding activation map $X_d$. This is exactly what we formulated in the demixing problem with Equation \ref{eq:demixing}:
+A convolutional model of STM interprets STM spectroscopy measurement as the convolution of the features sourced from defects and their corresponding activation. The first convolutional model of STM was raised by Cheung et al~\cite{cheungDictionaryLearningFouriertransform2020}; As shown in Figure \ref{fig:ch6_conv} a), an STM observation Y is the convolution of a kernel $A_0$ and its corresponding activation $X_0$. We extend the convolutional model to the multi-type defect case, as hinted in Figure \ref{fig:ch6_demix}, we now have multiple kernels $A_d$ with different sizes and their corresponding activation map $X_d$. This is exactly what we formulated in the demixing problem with Equation \ref{eq:demixing}:
 
 \begin{equation}
 	Y_{\omega} = \sum_d ( A_{d,{\omega}} * X_d) + \beta,
@@ -13,7 +13,7 @@ A convolutional model of STM interprets STM spectroscopy measurement as the conv
 	\centering
 	\caption[\textbf{Convolutional model of STM grid spectroscopy}]{\textbf{Convolutional model of STM grid spectroscopy}. a) Single-defect convolutional model, introduced by Cheung \textit{et al.} in 2020 to solve the Sparse Blind Deconvolution (SBD) problem~. 
 		b) Multi-defect convolutional model, used to address the \ac{MC-SBD} problem. 
-		Panel a) is reproduced from Cheung \textit{et al.}\cite{cheungDictionaryLearningFouriertransform2020}, licensed under 
+		Panel a) is reproduced from Cheung \textit{et al.}~\cite{cheungDictionaryLearningFouriertransform2020}, licensed under 
 		\href{http://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}. 
 		No changes were made.}
 	\label{fig:ch6_conv}
