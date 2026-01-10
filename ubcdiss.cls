@@ -294,7 +294,7 @@
     \noindent The following individuals certify that they have read,
     and recommend to the Faculty of Graduate and Postdoctoral Studies
     for acceptance, the thesis entitled:\\[1em]
-        {\large \textbf{\@title}}\\[1em]
+        {\large \textbf{\@title}: \textbf{\@subtitle}}\\[1em]
     submitted by 
 	\textbf{\@author}
     in partial fulfillment of the requirements for the degree of
