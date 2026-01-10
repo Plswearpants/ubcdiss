@@ -1,52 +1,5 @@
-# `ubcdiss` &ndash; a dissertation template for LaTeX
+# Defect-specific scattering in quantum materials
 
-This distribution provides a community-maintained LaTeX template
-for writing a dissertation that conforms with UBC Graduate and Postdoctoral Studies (GPS) specifications. 
+Point defects in quantum materials, once regarded as imperfections, are now recognized as central players in shaping electronic properties. They can scatter quasiparticles, modify local order, and in some cases host entirely new states of matter. Scanning tunneling microscopy provides a uniquely powerful window into these effects, combining atomic-scale spatial resolution with spectroscopic access to electronic structure. Yet in practice, the contributions of different defect types are typically entangled, obscuring their individual roles.
 
-This template provides a document class builds on top of the standard
-LaTeX _book_ class to ensure much better compatibility with
-standard LaTeX packages.  The functionality is implemented using
-the commonly available packages found in most LaTeX distributions
-such as [MacTeX](http://www.tug.org/mactex/), [MikTeX](https://miktex.org), and [TeXLive](https://www.tug.org/texlive/).
-(Give thanks to the countless volunteers who write and maintain these many TeX packages!)
-
-The template has some documentation in [`doc.pdf`](doc.pdf).  This
-documentation is itself written using the template, and the content
-is found in [`ack.tex`](ack.tex), [`glossary.tex`](glossary.tex),
-and [`intro.tex`](intro.tex).  [`diss.tex`](diss.tex) is the
-main file but all the content is contained in the other files which
-are included from [`diss.tex`](diss.tex) using `\include`.
-
-You will almost certainly need to use additional LaTeX packages for
-your dissertation.  There are some pointers in [`diss.tex`](diss.tex)
-and [`doc.pdf`](doc.pdf) to useful packages for handling common
-problems/requirements.  You may need to manually install these for
-your distribution; teTeX in particular seems to ship with a much
-smaller package base.
-
-GPS has very strict formatting requirements, and these requirements
-may change.  You should review the GPS
-[_Thesis Specifications_](http://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/structure-ubc-theses-dissertations)
-and [_Formatting Requirements_](http://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/formatting-requirements).  GPS is very lenient with
-font choice providing the fonts are used consistently.
-Please [open an issue](https://github.com/briandealwis/ubcdiss/issues/new)
-if GPS requires you to make formatting or organization changes:
-I'll fold those changes into the template for future students.
-
-Please report problems with the
-template by [opening an issue on Github](https://github.com/briandealwis/ubcdiss/issues/new).  Before reporting a problem, please ensure that:
-
- 1. you have the latest version of the template (see the abstract
-    in [`doc.pdf`](doc.pdf)),
- 2. you are using the latest version of your TeX distribution,
- 3. your question isn't answered in [the FAQ file](FAQ.md), and
- 4. you've exhausted your local LaTeX wizard's help.  Tip: You can
-    often find your own wizard by buying beer for a CS grad at Koerner's.
-
-When reporting a problem BE SURE TO INCLUDE:
-
- 1. the version used of this template
- 2. details on the operating system and TeX distribution you are using 
-    (e.g., Windows XP and MikTeX 2.5, SuSE Linux 10 and its bundled
-    installation, MacOS X 10.5.4 and MacTeX 2007),
- 3. the log file (likely called `diss.log`).
+In this thesis, I develop two complementary approaches to address this problem. First, I establish a statistical framework to estimate the global densities and their associated uncertainties of each type of defect directly from scanning tunneling microscopy topographs. Applied to the ultra-pure semimetal PtSn\textsubscript{4}, this approach demonstrates how nanoscale imaging can yield quantitative information about the populations of distinct defect species across macroscopic crystals. Second, I introduce a new analysis method—multi-channel sparse blind deconvolution tailored for scanning tunneling data—designed to disentangle overlapping quasiparticle interference patterns into defect-specific scattering fingerprints. Benchmarks on synthetic datasets identified the conditions required for reliable reconstruction, and application to experimental data produced defect-resolved interference patterns in several systems. Full success was achieved on Ag(111) and ZrSiTe, partial success on LiFeAs, and failure on PtSn\textsubscript{4}, where the limitations of the method matched expectations from simulations. In ZrSiTe in particular, the defect-resolved interference pattern for the Zr\textsubscript{2} defect revealed clear evidence of floating-band scattering features, which had previously been reported as absent.
